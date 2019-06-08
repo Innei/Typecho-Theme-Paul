@@ -34,12 +34,12 @@ endwhile;
         </h1>
         <div class="paul-note" id="<?php $this->cid() ?>">
             <div class="note-content">
-                <center><h1><?php $this->title() ?></h1></center>
+                <span style="text-align: center"><h1><?php $this->title() ?></h1></span>
                 <?php $this->content();?>
 
             </div>
             <div class="note-inform">
-                <span class="user"><?php $this->user->name(); ?></span>
+                <span class="user"><?php $this->author(); ?></span>
                 <span class="mood" title="好心情可以带来美好的一天">一般</span>
             </div>
             <div class="note-action">

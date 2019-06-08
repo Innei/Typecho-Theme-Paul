@@ -82,7 +82,7 @@ require_once 'functions.php';
                     </a>
                 <?php endif; ?>
 
-                <a href="/index.php/feed" target="_blank" ks-tag="bottom" ks-text="RSS 订阅"><i class="fa fa-rss"
+                <a href="<?php $this->options->feedUrl(); ?>" target="_blank" ks-tag="bottom" ks-text="RSS 订阅"><i class="fa fa-rss"
                                                                                               style="color: #9c27b0"></i></a>
             </div>
         </div>
