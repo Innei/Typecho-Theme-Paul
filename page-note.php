@@ -7,14 +7,28 @@
  */
 $this->need('header.php');
 require_once 'functions.php';
-define('__TYPECHO_DEBUG__', true);
+$this->widget('Widget_Contents_Page_List')->to($pages);
+global $pages_note, $pages_say;
+while ($pages->next()):
+    switch ($pages->slug) {
+        case 'note':
+            $pages_note = $pages->permalink;
+            break;
+        case 'saying':
+            $pages_say = $pages->permalink;
+            break;
+        default:
+            break;
+    }
+endwhile;
 ?>
 
     <main class="is-article">
         <nav class="navigation">
-            <a href="/index.php/note.html" class="active">日记</a>
-            <?php if ($this->options->blog_url): ?><a href="<?php $this->options->blog_url(); ?>" target="_blank">博文</a><?php endif ?>
-            <?php  ?><a href="/index.php/saying.html">语录</a>
+            <a href="<?php echo $pages_note; ?>" class="active">日记</a>
+            <?php if ($this->options->blog_url): ?> <a href="<?php $this->options->blog_url(); ?>" target="_blank">
+                    博文</a><?php endif; ?>
+            <a href="<?php echo $pages_say; ?>">语录</a>
         </nav>
         <article>
             <?php
@@ -50,7 +64,7 @@ define('__TYPECHO_DEBUG__', true);
                 <p>评论功能暂时关闭</p>
             </div>
         </section>-->
-        <section class="post-form is-note">
+        <!--<section class="post-form is-note">
             <h3><i class="fa fa-edit"></i>编写新日记</h3>
             <textarea id="content" rows="8" placeholder="内容："></textarea>
             <select name="mood">
@@ -76,8 +90,7 @@ define('__TYPECHO_DEBUG__', true);
             <div class="submit">
                 <button class="btn yellow" id="submit"><i class="fa fa-paper-plane"></i> 提交</button>
             </div>
-            -->
-        </section>
+        </section>-->
     </main>
 
 <?php $this->need('footer.php'); ?>
