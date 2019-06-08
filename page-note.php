@@ -13,8 +13,8 @@ define('__TYPECHO_DEBUG__', true);
     <main class="is-article">
         <nav class="navigation">
             <a href="/index.php/note.html" class="active">日记</a>
-            <a href="<?php $this->options->blog_url(); ?>" target="_blank">博文</a>
-            <a href="/index.php/saying.html">语录</a>
+            <?php if ($this->options->blog_url): ?><a href="<?php $this->options->blog_url(); ?>" target="_blank">博文</a><?php endif ?>
+            <?php  ?><a href="/index.php/saying.html">语录</a>
         </nav>
         <article>
             <?php

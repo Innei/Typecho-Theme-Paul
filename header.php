@@ -22,7 +22,6 @@
                 background-image: url(<?php $this -> options -> background(); ?>)
             }</style>
     <?php endif; ?>
-    <link rel="alternate" type="application/rss+xml" title="奇趣保罗的日记 RSS" href="https://paul.ren/feed">
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1">
     <meta property="og:site_name" content="<?php $this->options->title(); ?>">
     <meta property="og:title" content="<?php $this->archiveTitle(array(

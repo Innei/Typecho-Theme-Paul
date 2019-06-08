@@ -1,15 +1,26 @@
 <?php
-if(!defined('__TYPECHO_ROOT_DIR__')) exit;
-function themeConfig($form) {
+if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+function themeConfig($form)
+{
     // 自定义站点图标
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('站点图标'), _t('在这里填入一张 png 图片地址（<a>192x192px</a>），不填则使用默认图标'));
-    $form -> addInput($favicon);
+    $form->addInput($favicon);
     // 自定义背景图
     $background = new Typecho_Widget_Helper_Form_Element_Text('background', NULL, NULL, _t('站点背景'), _t('在这里填入一张图片地址，不填则显示纯色背景'));
-    $form -> addInput($background);
+    $form->addInput($background);
     // Github Username
     $github_username = new Typecho_Widget_Helper_Form_Element_Text('github_username', NULL, NULL, _t('GitHub'), _t(''));
-    $form -> addInput($github_username);
+    $form->addInput($github_username);
+    // Weibo ID
+    $weibo_id = new Typecho_Widget_Helper_Form_Element_Text('weibo_id', NULL, NULL, _t('Weibo ID'), _t(''));
+    $form->addInput($weibo_id);
+    // Netease ID
+    $netease_id = new Typecho_Widget_Helper_Form_Element_Text('netease_id', NULL, NULL, _t('Netease ID'), _t(''));
+    $form->addInput($netease_id);
+    // BiliBili ID
+    $bili_id = new Typecho_Widget_Helper_Form_Element_Text('bili_id', NULL, NULL, _t('BiliBili ID'), _t(''));
+    $form->addInput($bili_id);
+
 
     $db_host = new Typecho_Widget_Helper_Form_Element_Text('db_host', NULL, 'localhost', _t('数据库地址'));
     $form->addInput($db_host);
@@ -111,3 +122,5 @@ function restore_db()
     global $db_1;
     Typecho_Db::set($db_1);
 }
+
+

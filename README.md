@@ -16,4 +16,4 @@
 
 ## 版权
 
-@Pual-Dreamer 所有, 开源遵循 MIT.
+@Dreamer-Paul 所有, 开源遵循 MIT.

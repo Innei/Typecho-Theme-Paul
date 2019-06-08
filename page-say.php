@@ -6,14 +6,30 @@
  * @package custom
  */
 $this->need('header.php');
+
+$this->widget('Widget_Contents_Page_List')->to($pages);
+global $pages_note, $pages_say;
+while ($pages->next()):
+    switch ($pages->slug) {
+        case 'note':
+            $pages_note = $pages->permalink;
+            break;
+        case 'saying':
+            $pages_say = $pages->permalink;
+            break;
+        default:
+            break;
+    }
+endwhile;
 ?>
 
 
 <main id="say">
     <nav class="navigation">
-        <a href="/index.php/note.html">日记</a>
-        <a href="<?php $this->options->blog_url(); ?>" target="_blank">博文</a>
-        <a href="/index.php/saying.html" class="active">语录</a>
+        <a href="<?php echo $pages_note; ?>">日记</a>
+        <?php if ($this->options->blog_url): ?> <a href="<?php $this->options->blog_url(); ?>" target="_blank">
+                博文</a><?php endif; ?>
+        <a href="<?php echo $pages_say; ?>" class="active">语录</a>
     </nav>
     <article class="paul-say">
         <?php
