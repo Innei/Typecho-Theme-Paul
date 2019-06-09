@@ -49,3 +49,5 @@ function threadedComments($comments, $options)
     <h1><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h1>
     <?php $comments->listComments(); ?>
 <?php endif; ?>
+
+<?php $this->need('comments.php') ?>

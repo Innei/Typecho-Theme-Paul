@@ -128,7 +128,7 @@ require_once 'functions.php';
         <div class="news-item">
             <div class="news-head grey">
                 <h3 class="title"><i class="fa fa-leaf"></i>代表作品</h3>
-                <h3 class="more"><a href="https://paul.ren/project" data-pjax-state=""><i
+                <h3 class="more"><a href="https://paul.ren/project"><i
                                 class="fa fa-chevron-right"></i></a></h3>
             </div>
             <div class="news-body">
@@ -148,7 +148,7 @@ require_once 'functions.php';
         <div class="news-item">
             <div class="news-head red">
                 <h3 class="title"><i class="fa fa-comments"></i>日记</h3>
-                <h3 class="more"><a href="https://paul.ren/note" data-pjax-state=""><i
+                <h3 class="more"><a href="https://paul.ren/note"><i
                                 class="fa fa-chevron-right"></i></a>
                 </h3>
             </div>

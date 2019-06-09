@@ -43,6 +43,9 @@
     content: '';
     clear: both;
 }
+.post-form.active {
+    z-index: 1;
+}
 
 .comment-list [id*="li-comment-"] {
     margin-bottom: 3rem;

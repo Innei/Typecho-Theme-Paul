@@ -374,7 +374,7 @@ var paul = new function () {
         ks.image("article img, .paul-say img, .project-screenshot img, .gallery-item");
     };
     var pjax = new Pjax({
-        elements: "a[href]:not([target=_blank])",
+        elements: "a[href]:not([target=_blank]):not([onclick])",
         selectors: ["title", "meta[name=description]", "meta[property]", "main", "action"],
         timeout: 10000,
         cacheBust: false

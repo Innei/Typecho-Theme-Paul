@@ -50,33 +50,29 @@ endwhile;
                 <?php //$this->cid(); ?><!--" title="已有 0 人点赞">0</span>-->
             </div>
         </div>
-
-
     </article>
-    <article class="comment-list">
-        <?php $this->need('show-comment.php') ?>
-    </article>
-    <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
-        <section class="post-form is-comment">
-            <h3><i class="fa fa-comments"></i>评论</h3>
-            <div class="note-comments">
-                <div id="note-m"></div>
-                <?php if ($this->allow('comment')): ?>
-                    <?php $this->need('comments.php'); ?>
-                <?php else: ?>
-                    <p>评论功能暂时关闭</p>
-                <?php endif; ?>
-            </div>
-        </section>
-    </form>
+    <?php $this->need('comments.php') ?>
     <script>
         const needComment = document.querySelector('.comment')
         needComment.onclick = () => {
             const isComment = document.querySelector('.post-form.is-comment')
             isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
-        }
+        };
+        (function () {
+            if (window.location.hash != '') {
+                const i = window.location.hash.indexOf('#comment');
+                const ii = window.location.hash.indexOf('#respond-post');
+                if (i != '-1' || ii != '-1') {
+                    document.querySelector('#comment-form > section > h3').innerHTML = '<i class="fa fa-comments"></i>回复';
+                    document.querySelector('#comment-form > section > div > p').innerHTML = document.querySelector('#comment-form > section > div > p').innerHTML + '<a href="#" onclick="window.history.back();">  取消回复</a>'
+                    const isComment = document.querySelector('.post-form.is-comment');
+                    isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
+                }
+            }
+        })()
     </script>
 </main>
 
+<?php $this->footer(); ?>
 <?php $this->need('footer.php'); ?>
 

@@ -65,14 +65,13 @@ endwhile;
                 </div>
             </section>
         <?php else: ?>
-        <script>
-            var willComment = document.querySelector('#cid-<?php $posts->cid();?> > div.note-action > span');
-            willComment.outerHTML = '<a href="<?php $posts->permalink();?>">' + willComment.outerHTML + '</a>'
-        </script>
+            <script>
+                var willComment = document.querySelector('#cid-<?php $posts->cid();?> > div.note-action > span');
+                willComment.outerHTML = '<a href="<?php $posts->permalink();?>">' + willComment.outerHTML + '</a>'
+            </script>
         <?php endif ?>
         <?php endwhile; ?>
-        <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2"
-                                           data-pjax-state="">下一页</a></section>
+        <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2">下一页</a></section>
         <script>
             var comment_btns = document.querySelectorAll('.comment');
             for (let comment_btn of comment_btns) {
