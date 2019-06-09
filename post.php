@@ -30,12 +30,12 @@ endwhile;
 
 
         <h1><?php echo date('Y-m-d'); ?>
-            <small>(<?php echo $this->date('l');?>)</small>
+            <small>(<?php echo $this->date('l'); ?>)</small>
         </h1>
         <div class="paul-note" id="<?php $this->cid() ?>">
             <div class="note-content">
                 <span style="text-align: center"><h1><?php $this->title() ?></h1></span>
-                <?php $this->content();?>
+                <?php $this->content(); ?>
 
             </div>
             <div class="note-inform">
@@ -53,14 +53,24 @@ endwhile;
 
 
     </article>
-    <!-- <section class="post-form is-comment">
-         <h3><i class="fa fa-comments"></i>评论</h3>
-         <div class="note-comments">
-             <div id="note-m"></div>
-             <p>评论功能暂时关闭</p>
-         </div>
-     </section>-->
-
+    <section class="post-form is-comment">
+        <h3><i class="fa fa-comments"></i>评论</h3>
+        <div class="note-comments">
+            <div id="note-m"></div>
+            <?php if ($this->allow('comment')): ?>
+                <?php $this->need('comments.php'); ?>
+            <?php else: ?>
+            <p>评论功能暂时关闭</p>
+            <?php endif; ?>
+        </div>
+    </section>
+    <script>
+        const needComment = document.querySelector('.comment')
+        needComment.onclick = () => {
+            const isComment = document.querySelector('.post-form.is-comment')
+            isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
+        }
+    </script>
 </main>
 
 <?php $this->need('footer.php'); ?>

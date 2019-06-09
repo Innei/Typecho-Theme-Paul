@@ -86,7 +86,7 @@ var paul = new function () {
         /*act.tog.onclick = function () {
             container.classList.toggle("active");
         };*/
-        act.music.onclick = function () {
+        /*act.music.onclick = function () {
             if (post.music.hasAttribute("hidden")) {
                 post.music.removeAttribute("hidden");
             } else {
@@ -94,14 +94,14 @@ var paul = new function () {
             }
         };
         post.music.onpaste = function (t) {
-            var m = t.clipboardData.getData("text/plain").match(/\?id=[0-9]*/);
+            var m = t.clipboardData.getData("text/plain").match(/\?id=[0-9]*!/);
             if (m !== null) {
                 setTimeout(function () {
                     post.music.value = m[0].substr(4);
                     console.log("转换地址完成");
                 }, 500);
             }
-        };
+        };*/
 
         function insertStr(source, str1, str2) {
             if (source.selectionStart === source.selectionEnd) {
@@ -112,7 +112,7 @@ var paul = new function () {
             }
         }
 
-        act.code.onclick = function () {
+      /*  act.code.onclick = function () {
             post.cont.value = insertStr(post.cont, "<code>", "</code>");
         };
         act.hidden.onclick = function () {
@@ -186,7 +186,7 @@ var paul = new function () {
                     ajax.note.comment.render('note-m');
                 }
             }
-        });
+        });*/
     };
     /*this.likes = function () {
         function check(id) {
@@ -259,12 +259,12 @@ var paul = new function () {
             }
         }
     }*/
-    this.notePage = function () {
-        /*this.likes();*/
+   /* this.notePage = function () {
+        this.likes();
         this.comments();
         this.sendNote();
         paul_music.setList();
-    };
+    };*/
     this.galleryPage = function () {
         ajax.gallery.page = 1;
         ajax.gallery.end = false;
@@ -364,10 +364,10 @@ var paul = new function () {
         if (!paul_music.isMobile()) document.addEventListener("scroll", scroll_fixed);
     };
     this.init = function () {
-        // if (ks.select(".paul-news")) this.indexPage();
-        if (ks.select(".paul-note")) this.notePage();
-        if (ks.select(".paul-gallery")) this.galleryPage();
-        if (ks.select(".paul-music")) this.musicPage();
+        /*// if (ks.select(".paul-news")) this.indexPage();
+      /!*  if (ks.select(".paul-note")) this.notePage();*!/
+     /!*   if (ks.select(".paul-gallery")) this.galleryPage();*!/
+        if (ks.select(".paul-music")) this.musicPage();*/
         if (ks.select("#comment")) this.staticPage();
         this.side();
         if (typeof _hmt !== 'undefined') _hmt.push(['_trackPageview', location.pathname + location.search]);

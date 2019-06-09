@@ -102,7 +102,7 @@ require_once 'functions.php';
                         <div class="col-6 col-m-3">
                             <a href="<?php $this->permalink() ?>" class="news-article"
                                target="_blank">
-                                <img src="<?php $this->options->themeUrl('src/img/' . random_int(0, 14) . '.jpg') ?>">
+                                <img src="<?php $this->options->themeUrl('src/img/' . rand(0, 14) . '.jpg') ?>">
                                 <h4><?php $this->title() ?></h4>
                             </a>
                         </div>
