@@ -53,17 +53,22 @@ endwhile;
 
 
     </article>
-    <section class="post-form is-comment">
-        <h3><i class="fa fa-comments"></i>评论</h3>
-        <div class="note-comments">
-            <div id="note-m"></div>
-            <?php if ($this->allow('comment')): ?>
-                <?php $this->need('comments.php'); ?>
-            <?php else: ?>
-            <p>评论功能暂时关闭</p>
-            <?php endif; ?>
-        </div>
-    </section>
+    <article class="comment-list">
+        <?php $this->need('show-comment.php') ?>
+    </article>
+    <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
+        <section class="post-form is-comment">
+            <h3><i class="fa fa-comments"></i>评论</h3>
+            <div class="note-comments">
+                <div id="note-m"></div>
+                <?php if ($this->allow('comment')): ?>
+                    <?php $this->need('comments.php'); ?>
+                <?php else: ?>
+                    <p>评论功能暂时关闭</p>
+                <?php endif; ?>
+            </div>
+        </section>
+    </form>
     <script>
         const needComment = document.querySelector('.comment')
         needComment.onclick = () => {

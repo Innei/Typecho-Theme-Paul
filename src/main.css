@@ -1,0 +1,58 @@
+/* 除 Kico Style 外的其他样式 */
+
+/* - 评论列表样式 */
+.comment-list {
+    margin-top: 3rem;
+}
+
+.comment-list ol {
+    list-style: none;
+}
+
+.comment-list li {
+    list-style: none;
+}
+
+.comment-list img.avatar {
+    position: absolute;
+    top: 50%;
+    left: -5rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    margin: .5rem 2rem 0 0;
+    height: 3rem;
+}
+
+.comment_main {
+    background-color: #f9f9f9;
+    border-radius: 3px;
+    padding: 10px;
+    transition: box-shadow .5s ease;
+}
+
+.comment_main:hover {
+    box-shadow: 0 0.625em 3.75em 0 #f4f4f4;
+}
+
+.comment-list::after {
+    content: '';
+    clear: both;
+}
+
+.comment-list [id*="li-comment-"]::after {
+    content: '';
+    clear: both;
+}
+
+.comment-list [id*="li-comment-"] {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+[id*="comment-"] .comment_meta span {
+    margin-right: 2rem;
+}
+
+[id*="comment-"] {
+    position: relative;
+}
