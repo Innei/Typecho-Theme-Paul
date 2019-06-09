@@ -5,7 +5,9 @@
  * 来源: paul.ren
  *
  * @package Paul Theme
- * @author Dreamer-Paul
+ * @author Dreamer-Paul & Innei
+ * @design Dreamer-Paul
+ * @deploy Innei
  * @version 0.1 insider
  * @link https://paul.ren
  */
@@ -19,18 +21,20 @@ require_once 'functions.php';
     <nav class="navigation">
         <a href="<?php $this->options->siteUrl(); ?>" class="active">首页</a>
         <?php $this->widget('Widget_Contents_Page_List')->to($pages);
-        global $index_about, $index_donate, $index_dream;
+        global $index_about, $index_donate, $index_dream, $index_works;
         while ($pages->next()):
             switch ($pages->slug) {
                 case 'about':
                     $index_about = $pages->permalink;
                     break;
-                case  'project':
-                    $index_project = $pages->permalink;
+                case  'donate':
+                    $index_donate = $pages->permalink;
                     break;
                 case 'dream':
                     $index_dream = $pages->permalink;
                     break;
+                case 'project':
+                    $index_works = $pages->text;
                 default:
                     break;
             }
@@ -42,7 +46,7 @@ require_once 'functions.php';
     </nav>
     <section class="me">
         <div class="my-avatar">
-            <img src="https://paul.ren/static/img/avatar.jpg">
+            <img src="<?php if ($this->options->avatar): $this->options->avatar(); else: $this->options->themeUrl('src/img/avatar.jpg');endif; ?>">
         </div>
         <div class="my-info">
             <h1><?php $this->user->name() ?></h1>
@@ -82,8 +86,9 @@ require_once 'functions.php';
                     </a>
                 <?php endif; ?>
 
-                <a href="<?php $this->options->feedUrl(); ?>" target="_blank" ks-tag="bottom" ks-text="RSS 订阅"><i class="fa fa-rss"
-                                                                                              style="color: #9c27b0"></i></a>
+                <a href="<?php $this->options->feedUrl(); ?>" target="_blank" ks-tag="bottom" ks-text="RSS 订阅"><i
+                            class="fa fa-rss"
+                            style="color: #9c27b0"></i></a>
             </div>
         </div>
     </section>
@@ -96,49 +101,55 @@ require_once 'functions.php';
                                 class="fa fa-chevron-right"></i></a>
                 </h3>
             </div>
-            <div class="news-body">
-                <div class="row s">
-                    <?php while ($this->next()): ?>
+            <?php if ($this->options->RSS): ?>
+                <div class="news-body">
+                    <div class="row s">
+                        <?php $rss = parse_RSS($this->options->RSS);
+                        // TODO 不要写死 以后有时间改
+                        echo $rss
+                        ?>
+                        <!--
+                    <?php /*while ($this->next()): */ ?>
                         <div class="col-6 col-m-3">
-                            <a href="<?php $this->permalink() ?>" class="news-article"
+                            <a href="<?php /*$this->permalink() */ ?>" class="news-article"
                                target="_blank">
-                                <img src="<?php $this->options->themeUrl('src/img/' . rand(0, 14) . '.jpg') ?>">
-                                <h4><?php $this->title() ?></h4>
+                                <img src="<?php /*$this->options->themeUrl('src/img/' . rand(0, 14) . '.jpg') */ ?>">
+                                <h4><?php /*$this->title() */ ?></h4>
                             </a>
                         </div>
-                    <?php endwhile; ?>
+                    <?php /*endwhile; */ ?>
+              -->
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
 
         <!--        TODO 代表作品移植-->
-        <!--        <div class="news-item">
-                    <div class="news-head grey">
-                        <h3 class="title"><i class="fa fa-leaf"></i>代表作品</h3>
-                        <h3 class="more"><a href="https://paul.ren/project" data-pjax-state=""><i
-                                    class="fa fa-chevron-right"></i></a></h3>
-                    </div>
-                    <div class="news-body">
-                        <div class="row s">
-                            <div class="col-4 col-m-2">
-                                <a href="/project/style" class="news-project" data-pjax-state="">
-                                    <img src="https://paul.ren/static/img/works/Kico.jpg">
-                                    <h4>奇趣框架</h4>
-                                </a>
-                            </div>
-                            <div class="col-4 col-m-2">
-                                <a href="/project/player" class="news-project" data-pjax-state="">
-                                    <img src="https://paul.ren/static/img/works/Kico.jpg">
-                                    <h4>奇趣播放器</h4>
-                                </a>
-                            </div>
+        <div class="news-item">
+            <div class="news-head grey">
+                <h3 class="title"><i class="fa fa-leaf"></i>代表作品</h3>
+                <h3 class="more"><a href="https://paul.ren/project" data-pjax-state=""><i
+                                class="fa fa-chevron-right"></i></a></h3>
+            </div>
+            <div class="news-body">
+                <div class="row s">
+                    <?php $projects_json = json_decode($index_works, true);
+                    foreach ($projects_json as $key => $value):?>
+                        <div class="col-4 col-m-2">
+                            <a href="<?php echo $value['url'] ?>" class="news-project" >
+                                <img src="<?php $value['img'] ? print_r($value['img']) : $this->options->themeUrl('src/img/Kico.jpg') ?>?>">
+                                <h4><?php echo $value['name'] ?></h4>
+                            </a>
                         </div>
-                    </div>
-                </div>-->
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
         <div class="news-item">
             <div class="news-head red">
                 <h3 class="title"><i class="fa fa-comments"></i>日记</h3>
-                <h3 class="more"><a href="https://paul.ren/note" data-pjax-state=""><i class="fa fa-chevron-right"></i></a>
+                <h3 class="more"><a href="https://paul.ren/note" data-pjax-state=""><i
+                                class="fa fa-chevron-right"></i></a>
                 </h3>
             </div>
             <div class="news-body">

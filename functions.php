@@ -4,10 +4,13 @@ function themeConfig($form)
 {
     // 自定义站点图标
     $favicon = new Typecho_Widget_Helper_Form_Element_Text('favicon', NULL, NULL, _t('站点图标'), _t('在这里填入一张 png 图片地址（<a>192x192px</a>），不填则使用默认图标'));
-    $form->addInput($favicon);
+    $form->addInput($favicon->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
     // 自定义背景图
     $background = new Typecho_Widget_Helper_Form_Element_Text('background', NULL, NULL, _t('站点背景'), _t('在这里填入一张图片地址，不填则显示纯色背景'));
-    $form->addInput($background);
+    $form->addInput($background->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
+    // 自定义头像
+    $avatar = new Typecho_Widget_Helper_Form_Element_Text('avatar', NULL, NULL, _t('头像'), _t('在这里填入一张 png 图片地址（<a>192x192px</a>），不填则使用默认图标'));
+    $form->addInput($avatar->addRule('xssCheck', _t('请不要在图片链接中使用特殊字符')));
     // Github Username
     $github_username = new Typecho_Widget_Helper_Form_Element_Text('github_username', NULL, NULL, _t('GitHub'), _t(''));
     $form->addInput($github_username);
@@ -20,18 +23,11 @@ function themeConfig($form)
     // BiliBili ID
     $bili_id = new Typecho_Widget_Helper_Form_Element_Text('bili_id', NULL, NULL, _t('BiliBili ID'), _t(''));
     $form->addInput($bili_id);
+    //RSS
+    $RSS = new Typecho_Widget_Helper_Form_Element_Text('RSS', NULL, NULL, _t('RSS地址'), _t('填写你的RSS地址  https:// 开头'));
+    $form->addInput($RSS);
 
-
-    $db_host = new Typecho_Widget_Helper_Form_Element_Text('db_host', NULL, 'localhost', _t('数据库地址'));
-    $form->addInput($db_host);
-
-    $db_uname = new Typecho_Widget_Helper_Form_Element_Text('db_uname', NULL, NULL, _t('数据库用户'));
-    $form->addInput($db_uname);
-
-    $db_passwd = new Typecho_Widget_Helper_Form_Element_Password('db_passwd', NULL, NULL, _t('数据库密码'));
-    $form->addInput($db_passwd);
-
-    $blog_url = new Typecho_Widget_Helper_Form_Element_Text('blog_url', NULL, NULL, _t('博客地址'), _t('填写你的博客地址 (不需要前缀)'));
+    $blog_url = new Typecho_Widget_Helper_Form_Element_Text('blog_url', NULL, NULL, _t('博客地址'), _t('填写你的博客地址  https:// 开头'));
     $form->addInput($blog_url);
     /*
         // 自定义社交链接
@@ -99,28 +95,23 @@ function themeConfig($form)
 }
 
 
-global $db_1;
-function replace_db($host, $user, $passwd)
+function parse_RSS($url)
 {
-    $db = new Typecho_Db('Pdo_Mysql', 'typecho_');
-    $db->addServer(array(
-        'host' => $host,
-        'user' => $user,
-        'password' => $passwd,
-        'charset' => 'utf8',
-        'port' => '3306',
-        'database' => 'typecho',
-        'engine' => 'MyISAM',
-    ), Typecho_Db::READ);
-    global $db_1;
-    $db_1 = Typecho_Db::get();
-    Typecho_Db::set($db);
+    $rss = simplexml_load_file($url);
+    $file = $rss->channel->item;
+    $link = $rss->channel->link;
+    global $body;
+    if (isset($file)) {
+        for ($i = 0; $i < 4; $i++) {
+
+            if ($file[$i]) {
+                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="usr/themes/Paul/src/img/' . rand(0, 14) . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
+            } else {
+                break;
+            }
+        }
+    } else {
+        echo "博客连接失败,请检查";
+    }
+    return $body;
 }
-
-function restore_db()
-{
-    global $db_1;
-    Typecho_Db::set($db_1);
-}
-
-
