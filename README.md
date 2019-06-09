@@ -29,6 +29,13 @@ Why.
 
 typecho 限制了我的想象力.
 
-## 版权
+## 版权 & 开源
 
 @Dreamer-Paul 所有, 开源遵循 MIT.
+
+## 鸣谢
+
+- @Dreamer-Paul
+- @moesoha
+
+

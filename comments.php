@@ -82,6 +82,37 @@ function threadedComments($comments, $options)
     <?php $this->comments()->to($comments); ?>
     <?php if ($comments->have()): ?>
         <h1><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h1>
+<!--    回复评论框-->
+        <form method="post" action="<?php $this->commentUrl() ?>" role="form" id="<?php $this -> respondId(); ?>" class="reply_form">
+                    <?php if ($this->allow('comment')): ?>
+                        <?php if ($this->user->hasLogin()): ?>
+                            <p><?php _e('登录身份: '); ?><a
+                                        href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>
+                                <a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?> &raquo;</a>
+                                <a href="#" class="cancel-comment-reply" style="display: none"><?php $comments->cancelReply();?></a>
+                            </p>
+                        <?php else: ?>
+                            <input type="text" name="author" id="author" placeholder="你叫什么~"
+                                   value="<?php $this->remember('author'); ?>"
+                                   required/>
+                            <input type="text" name="mail" id="mail" placeholder="邮箱~" value="<?php $this->remember('mail'); ?>"
+                                   required/>
+                            <input type="text" name="url" id="url" placeholder="网站~" value="<?php $this->remember('url'); ?>"
+                                   required/>
+                        <?php endif; ?>
+                        <textarea id="text" rows="8" cols="100" name="text" placeholder="内容："
+                                  required><?php $this->remember('text'); ?></textarea>
+                        <input type="hidden" name="parent" id="comment-parent" value="610">
+                        <div class="submit">
+                            <button class="btn yellow" id="submit"><i class="fa fa-paper-plane"></i> 提交</button>
+                        </div>
+                    <?php else: ?>
+                        <p>评论功能暂时关闭</p>
+                    <?php endif; ?>
+
+        <div id="comment-form-place-holder"></div>
+        </form>
+
         <?php $comments->listComments(); ?>
     <?php endif; ?>
 </article>

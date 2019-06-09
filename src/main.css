@@ -43,6 +43,7 @@
     content: '';
     clear: both;
 }
+
 .post-form.active {
     z-index: 1;
 }
@@ -58,4 +59,26 @@
 
 [id*="comment-"] {
     position: relative;
+}
+
+/* - 回复评论框样式*/
+.reply_form {
+    margin-top: .5rem;
+}
+.reply_form p:nth-child(1) a {
+    margin-right: 2rem;
+}
+.reply_form .submit {
+    position: relative;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+.reply_form .submit button {
+    float: right;
+}
+
+@media (max-width: 900px) {
+    .comment-list img.avatar {
+        display: none;
+    }
 }
