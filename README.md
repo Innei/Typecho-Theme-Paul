@@ -1,8 +1,10 @@
 # Paul 设计移植项目
 
-原地址 <https://paul.ren>
+设计出处 <https://paul.ren>
 
 计划移植到 typecho
+
+`进度 5/100`
 
 ## 功能实现
 
@@ -35,7 +37,7 @@ typecho 限制了我的想象力.
 
 ## 鸣谢
 
-- @Dreamer-Paul
-- @moesoha
+- [@Dreamer-Paul](https://github.com/Dreamer-Paul)
+- [@moesoha](https://github.com/moesoha)
 
 
