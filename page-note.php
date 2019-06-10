@@ -53,8 +53,8 @@ endwhile;
                     <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"
                           title="参与评论">评论 <?php $posts->commentsNum('%d '); ?></span>
                         <!--                    TODO 点赞实现 line 191 263 86 -->
-                        <!--                    <span class="like" data-cid="--><?php //$posts->cid();
-                        ?><!--" title="已有 0 人点赞">0</span>-->
+                        <span class="like" data-cid="--><?php //$posts->cid();
+                        ?>" title="已有 <?php get_like_num($posts) ?> 人点赞"><?php get_like_num($posts) ?></span>
                     </div>
                 </div>
             <?php if (!$posts->allow('comment')): ?>

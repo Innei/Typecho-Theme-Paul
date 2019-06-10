@@ -51,7 +51,7 @@ function themeConfig($form)
 }
 
 
-function parse_RSS($url,$site)
+function parse_RSS($url, $site)
 {
     $rss = simplexml_load_file($url);
     $file = $rss->channel->item;
@@ -61,7 +61,7 @@ function parse_RSS($url,$site)
         for ($i = 0; $i < 4; $i++) {
 
             if ($file[$i]) {
-                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="'.$site.'/src/img/' . rand(0, 14) . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
+                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="' . $site . '/src/img/' . rand(0, 14) . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
             } else {
                 break;
             }
@@ -70,4 +70,31 @@ function parse_RSS($url,$site)
         echo "博客连接失败,请检查";
     }
     return $body;
+}
+
+function get_like_num($archive)
+{
+    $cid = $archive->cid;
+    $db = Typecho_Db::get();
+    $prefix = $db->getPrefix();
+    if (!array_key_exists('likes', $db->fetchRow($db->select()->from('table.contents')))) {
+        $db->query('ALTER TABLE `' . $prefix . 'contents` ADD `likes` INT(10) DEFAULT 0;');
+        echo 0;
+        return;
+    }
+    $row = $db->fetchRow($db->select('likes')->from('table.contents')->where('cid = ?', $cid));
+    if ($archive->is('single')) {
+        $views = Typecho_Cookie::get('extend_contents_views');
+        if (empty($views)) {
+            $views = array();
+        } else {
+            $views = explode(',', $views);
+        }
+        if (!in_array($cid, $views)) {
+            array_push($views, $cid);
+            $views = implode(',', $views);
+            Typecho_Cookie::set('extend_contents_views', $views); //记录查看cookie
+        }
+    }
+    echo $row['likes'];
 }
