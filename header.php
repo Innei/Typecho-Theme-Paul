@@ -15,7 +15,7 @@
     <?php if ($this->options->favicon): ?>
         <link rel="icon" href="<?php $this->options->favicon(); ?>" sizes="192x192"/>
     <?php else: ?>
-        <link rel="icon" href="<?php $this->options->themeUrl('src/img/avatar.jpeg'); ?>" sizes="192x192"/>
+        <link rel="icon" href="<?php $this->options->themeUrl('src/img/avatar.png'); ?>" sizes="192x192"/>
     <?php endif; ?>
     <?php if ($this->options->background): ?>
         <style>body:before {
