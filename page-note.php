@@ -32,7 +32,7 @@ endwhile;
         </nav>
         <article>
             <?php
-            $this->widget('Widget_Contents_Post_Recent')->to($posts);
+            $this->options->note_nums ? $this->widget('Widget_Contents_Post_Recent', 'pageSize=' . $this->options->note_nums)->to($posts) : $this->widget('Widget_Contents_Post_Recent')->to($posts);
             while ($posts->next()):
                 ?>
                 <h1><?php echo date('Y-m-d', $posts->created); ?>
@@ -48,7 +48,7 @@ endwhile;
                     </div>
                     <div class="note-action">
                     <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"
-                          title="参与评论">评论</span>
+                          title="参与评论">评论 <?php $posts->commentsNum('%d '); ?></span>
                         <!--                    TODO 点赞实现 line 191 263 86 -->
                         <!--                    <span class="like" data-cid="--><?php //$posts->cid();
                         ?><!--" title="已有 0 人点赞">0</span>-->
@@ -70,7 +70,7 @@ endwhile;
             <?php endif ?>
             <?php endwhile; ?>
         </article>
-        <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2">下一页</a></section>
+<!--        <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2">下一页</a></section>-->
         <script>
             var comment_btns = document.querySelectorAll('.comment');
             for (let comment_btn of comment_btns) {

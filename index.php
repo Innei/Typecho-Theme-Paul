@@ -35,6 +35,10 @@ require_once 'functions.php';
                     break;
                 case 'project':
                     $index_works = $pages->text;
+                    break;
+                case 'note':
+                    $index_note = $pages->permalink;
+                    break;
                 default:
                     break;
             }
@@ -145,7 +149,7 @@ require_once 'functions.php';
         <div class="news-item">
             <div class="news-head red">
                 <h3 class="title"><i class="fa fa-comments"></i>日记</h3>
-                <h3 class="more"><a href="https://paul.ren/note"><i
+                <h3 class="more"><a href="<?php echo $index_note ?>"><i
                                 class="fa fa-chevron-right"></i></a>
                 </h3>
             </div>

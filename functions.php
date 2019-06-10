@@ -29,12 +29,16 @@ function themeConfig($form)
     // Blog URL
     $blog_url = new Typecho_Widget_Helper_Form_Element_Text('blog_url', NULL, NULL, _t('博客地址'), _t('填写你的博客地址  https:// 开头'));
     $form->addInput($blog_url);
+    // 自定义日记输出数量
+    $note_nums = new Typecho_Widget_Helper_Form_Element_Text('note_nums', NULL, NULL, _t('日记输出数量'), _t('在这里填入你需要在日记页面输出的日记数量'));
+    $form->addInput($note_nums);
     // 自定义样式表
     $custom_css = new Typecho_Widget_Helper_Form_Element_Textarea('custom_css', NULL, NULL, _t('自定义样式表'), _t('在这里填入你的自定义样式表，不填则不输出。'));
     $form->addInput($custom_css);
     // 自定义统计代码
     $custom_script = new Typecho_Widget_Helper_Form_Element_Textarea('custom_script', NULL, NULL, _t('统计代码'), _t('在这里填入你的统计代码，不填则不输出。需要 <a>&lt;script&gt;</a> 标签'));
     $form->addInput($custom_script);
+
     /*
         // 自定义社交链接
         $home_social = new Typecho_Widget_Helper_Form_Element_Textarea('home_social', NULL, NULL, _t('自定义社交链接'), _t('在这里填入你的自定义社交链接，不填则不输出。（格式请看<a href="https://github.com/Dreamer-Paul/Single/releases/tag/1.1" target="_blank">帮助信息</a>）'));
