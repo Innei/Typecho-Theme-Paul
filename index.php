@@ -49,7 +49,7 @@ require_once 'functions.php';
             <img src="<?php if ($this->options->avatar): $this->options->avatar(); else: $this->options->themeUrl('src/img/avatar.jpg');endif; ?>">
         </div>
         <div class="my-info">
-            <h1><?php $this->user->name() ?></h1>
+            <h1><?php $this->author() ?></h1>
             <p><?php $this->options->description() ?></p>
             <div class="social-icons">
                 <?php if ($this->options->github_username): ?>
@@ -123,8 +123,6 @@ require_once 'functions.php';
                 </div>
             <?php endif; ?>
         </div>
-
-        <!--        TODO 代表作品移植-->
         <div class="news-item">
             <div class="news-head grey">
                 <h3 class="title"><i class="fa fa-leaf"></i>代表作品</h3>

@@ -45,6 +45,55 @@ function threadedComments($comments, $options)
 <?php } ?>
 
 
+
+<?php $this->comments()->to($comments); ?>
+<article class="comment-list">
+    <h1><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h1>
+    <!--    回复评论框-->
+
+    <div class="reply" id="<?php $this->respondId(); ?>" style="display: none">
+        <form method="post" action="<?php $this->commentUrl() ?>" role="form"
+              class="reply_form">
+            <?php if ($this->allow('comment')): ?>
+                <?php if ($this->user->hasLogin()): ?>
+                    <p><?php _e('登录身份: '); ?><a
+                                href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>
+                        <a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?>
+                            &raquo;</a>
+                    </p>
+                <?php else: ?>
+                    <div class="col-3">
+                        <input type="text" name="author" id="author" placeholder="你叫什么~"
+                               value="<?php $this->remember('author'); ?>"
+                               required/>
+                        <input type="text" name="mail" id="mail" placeholder="邮箱~"
+                               value="<?php $this->remember('mail'); ?>"
+                               required/>
+                        <input type="text" name="url" id="url" placeholder="网站~"
+                               value="<?php $this->remember('url'); ?>"/>
+                    </div>
+                <?php endif; ?>
+                <textarea id="text" rows="8" cols="100" name="text" placeholder="回复内容 ☆´∀｀☆"
+                          required><?php $this->remember('text'); ?></textarea>
+
+                <div class="submit">
+                    <button class="btn yellow" id="submit"><i class="fa fa-paper-plane"></i> 提交</button>
+                    <span class="cancel-comment-reply">
+            <?php $comments->cancelReply(); ?>
+        </span>
+                </div>
+            <?php else: ?>
+                <p>评论功能暂时关闭</p>
+            <?php endif; ?>
+
+        </form>
+    </div>
+
+    <?php if ($comments->have()): ?>
+        <?php $comments->listComments(); ?>
+        <?php $comments->pageNav('&laquo;', '&raquo;'); ?>
+    <?php endif; ?>
+</article>
 <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
     <section class="post-form is-comment">
         <h3><i class="fa fa-comments"></i>评论</h3>
@@ -63,13 +112,14 @@ function threadedComments($comments, $options)
                            required/>
                     <input type="text" name="mail" id="mail" placeholder="邮箱~" value="<?php $this->remember('mail'); ?>"
                            required/>
-                    <input type="text" name="url" id="url" placeholder="网站~" value="<?php $this->remember('url'); ?>"
-                           required/>
+                    <input type="text" name="url" id="url" placeholder="网站~" value="<?php $this->remember('url'); ?>"/>
                 <?php endif; ?>
-                <textarea id="text" rows="8" name="text" placeholder="内容："
+                <textarea id="text" rows="8" name="text" placeholder="谢谢评论 ☆´∀｀☆"
                           required><?php $this->remember('text'); ?></textarea>
                 <div class="submit">
                     <button class="btn yellow" id="submit"><i class="fa fa-paper-plane"></i> 提交</button>
+                    <button class="btn red" id="cancel-commit" type="reset"><i class="fa fa-times-circle"></i> 取消
+                    </button>
                 </div>
 
             <?php else: ?>
@@ -78,41 +128,20 @@ function threadedComments($comments, $options)
         </div>
     </section>
 </form>
-<article class="comment-list">
-    <?php $this->comments()->to($comments); ?>
-    <?php if ($comments->have()): ?>
-        <h1><?php $this->commentsNum(_t('暂无评论'), _t('仅有一条评论'), _t('已有 %d 条评论')); ?></h1>
-<!--    回复评论框-->
-        <form method="post" action="<?php $this->commentUrl() ?>" role="form" id="<?php $this -> respondId(); ?>" class="reply_form">
-                    <?php if ($this->allow('comment')): ?>
-                        <?php if ($this->user->hasLogin()): ?>
-                            <p><?php _e('登录身份: '); ?><a
-                                        href="<?php $this->options->profileUrl(); ?>"><?php $this->user->screenName(); ?></a>
-                                <a href="<?php $this->options->logoutUrl(); ?>" title="Logout"><?php _e('退出'); ?> &raquo;</a>
-                                <a href="#" class="cancel-comment-reply" style="display: none"><?php $comments->cancelReply();?></a>
-                            </p>
-                        <?php else: ?>
-                            <input type="text" name="author" id="author" placeholder="你叫什么~"
-                                   value="<?php $this->remember('author'); ?>"
-                                   required/>
-                            <input type="text" name="mail" id="mail" placeholder="邮箱~" value="<?php $this->remember('mail'); ?>"
-                                   required/>
-                            <input type="text" name="url" id="url" placeholder="网站~" value="<?php $this->remember('url'); ?>"
-                                   required/>
-                        <?php endif; ?>
-                        <textarea id="text" rows="8" cols="100" name="text" placeholder="内容："
-                                  required><?php $this->remember('text'); ?></textarea>
-                        <input type="hidden" name="parent" id="comment-parent" value="610">
-                        <div class="submit">
-                            <button class="btn yellow" id="submit"><i class="fa fa-paper-plane"></i> 提交</button>
-                        </div>
-                    <?php else: ?>
-                        <p>评论功能暂时关闭</p>
-                    <?php endif; ?>
 
-        <div id="comment-form-place-holder"></div>
-        </form>
-
-        <?php $comments->listComments(); ?>
-    <?php endif; ?>
-</article>
+<script>
+    const commentsReply = document.querySelectorAll('span.comment_reply > a')
+    const replyForm = document.querySelector('.reply')
+    const isComment = document.querySelector('.post-form.is-comment')
+    for (let el of commentsReply) {
+        el.addEventListener('click', () => {
+            replyForm.removeAttribute('style')
+            if (isComment.classList.contains('active')) isComment.classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('cancel-comment-reply-link').addEventListener('click', () => {
+                    replyForm.style.display = 'none';
+                })
+            })
+        })
+    }
+</script>

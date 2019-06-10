@@ -37,7 +37,9 @@
 <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
 <script src="<?php $this->options->themeUrl('src/kico.js')?>"></script>
 <script src="<?php $this->options->themeUrl('src/paul.js')?>"></script>
+<script>
 
+</script>
 
 </body>
 </html>

@@ -65,14 +65,17 @@
 .reply_form {
     margin-top: .5rem;
 }
+
 .reply_form p:nth-child(1) a {
     margin-right: 2rem;
 }
+
 .reply_form .submit {
     position: relative;
     margin-top: 1rem;
     overflow: hidden;
 }
+
 .reply_form .submit button {
     float: right;
 }
@@ -82,3 +85,13 @@
         display: none;
     }
 }
+
+.reply_form div.col-3 {
+    column-count: 3;
+    margin-bottom: .5rem;
+}
+.reply_form div > input[type="text"] {
+    display: block;
+    width: 1000px;
+}
+

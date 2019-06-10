@@ -53,23 +53,70 @@ endwhile;
     </article>
     <?php $this->need('comments.php') ?>
     <script>
-        const needComment = document.querySelector('.comment')
-        needComment.onclick = () => {
-            const isComment = document.querySelector('.post-form.is-comment')
-            isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
-        };
         (function () {
-            if (window.location.hash != '') {
-                const i = window.location.hash.indexOf('#comment');
-                const ii = window.location.hash.indexOf('#respond-post');
-                if (i != '-1' || ii != '-1') {
-                    document.querySelector('#comment-form > section > h3').innerHTML = '<i class="fa fa-comments"></i>回复';
-                    document.querySelector('#comment-form > section > div > p').innerHTML = document.querySelector('#comment-form > section > div > p').innerHTML + '<a href="#" onclick="window.history.back();">  取消回复</a>'
-                    const isComment = document.querySelector('.post-form.is-comment');
-                    isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
+            const needComment = document.querySelector('.comment')
+            const isComment = document.querySelector('.post-form.is-comment')
+            needComment.onclick = () => {
+                isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
+            };
+            (function () {
+                document.getElementById('cancel-commit').onclick = e => {
+                    isComment.classList.remove('active')
                 }
+            })
+            (function () {
+                if (window.location.hash != '') {
+                    const i = window.location.hash.indexOf('#comment');
+                    const ii = window.location.hash.indexOf('#respond-post');
+                    if (ii != '-1') {
+                        document.querySelector('#comment-form > section > h3').innerHTML = '<i class="fa fa-comments"></i>回复';
+                        document.querySelector('#comment-form > section > div > p').innerHTML = document.querySelector('#comment-form > section > div > p').innerHTML + '<a href="#" onclick="window.history.back();">  取消回复</a>'
+                        const isComment = document.querySelector('.post-form.is-comment');
+                        isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
+                    } else if (i != '-1') {
+                        let commentLoaction = document.querySelector(window.location.hash)
+                        commentLoaction.querySelector('.comment_main').style.backgroundColor = '#bdc3c7'
+                        commentLoaction = getElementTop(commentLoaction)
+                        scrollSmoothTo(commentLoaction)
+                    }
+                }
+            })()
+
+            function getElementTop(element) {
+                let actualTop = element.offsetTop;
+                let current = element.offsetParent;
+                while (current !== null) {
+                    actualTop += current.offsetTop;
+                    current = current.offsetParent;
+                }
+                return actualTop;
             }
-        })()
+
+            function scrollSmoothTo(position) {
+                if (!window.requestAnimationFrame) {
+                    window.requestAnimationFrame = function (callback, element) {
+                        return setTimeout(callback, 17);
+                    };
+                }
+                // 当前滚动高度
+                let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                // 滚动step方法
+                const step = function () {
+                    // 距离目标滚动距离
+                    let distance = position - scrollTop;
+                    // 目标滚动位置
+                    scrollTop = scrollTop + distance / 5;
+                    if (Math.abs(distance) < 1) {
+                        window.scrollTo(0, position);
+                    } else {
+                        window.scrollTo(0, scrollTop);
+                        requestAnimationFrame(step);
+                    }
+                };
+                step();
+            }
+        }())
+
     </script>
 </main>
 
