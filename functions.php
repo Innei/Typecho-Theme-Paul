@@ -95,7 +95,7 @@ function themeConfig($form)
 }
 
 
-function parse_RSS($url)
+function parse_RSS($url,$site)
 {
     $rss = simplexml_load_file($url);
     $file = $rss->channel->item;
@@ -105,7 +105,7 @@ function parse_RSS($url)
         for ($i = 0; $i < 4; $i++) {
 
             if ($file[$i]) {
-                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="usr/themes/Paul/src/img/' . rand(0, 14) . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
+                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="'.$site.'/src/img/' . rand(0, 14) . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
             } else {
                 break;
             }

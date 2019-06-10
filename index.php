@@ -104,8 +104,7 @@ require_once 'functions.php';
             <?php if ($this->options->RSS): ?>
                 <div class="news-body">
                     <div class="row s">
-                        <?php $rss = parse_RSS($this->options->RSS);
-                        // TODO 不要写死 以后有时间改
+                        <?php $rss = parse_RSS($this->options->RSS, $this->options->themeUrl);
                         echo $rss
                         ?>
                         <!--
@@ -134,7 +133,7 @@ require_once 'functions.php';
                     <?php $projects_json = json_decode($index_works, true);
                     foreach ($projects_json as $key => $value):?>
                         <div class="col-4 col-m-2">
-                            <a href="<?php echo $value['url'] ?>" class="news-project" >
+                            <a href="<?php echo $value['url'] ?>" class="news-project">
                                 <img src="<?php $value['img'] ? print_r($value['img']) : $this->options->themeUrl('src/img/Kico.jpg') ?>?>">
                                 <h4><?php echo $value['name'] ?></h4>
                             </a>
