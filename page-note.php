@@ -35,8 +35,10 @@ endwhile;
             $this->options->note_nums ? $this->widget('Widget_Contents_Post_Recent', 'pageSize=' . $this->options->note_nums)->to($posts) : $this->widget('Widget_Contents_Post_Recent')->to($posts);
             while ($posts->next()):
                 ?>
-                <h1><?php echo date('Y-m-d', $posts->created); ?>
+                <h1 style="position: relative;"><a href="<?php $posts->permalink() ?>"
+                                                   style="color: #000"><?php echo date('Y-m-d', $posts->created); ?></a>
                     <small>(<?php echo date('l', $posts->created); ?>)</small>
+                    <div style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;text-align: center"><?php $posts->title() ?></div>
                 </h1>
                 <div class="paul-note" id="cid-<?php $posts->cid(); ?>">
                     <div class="note-content">
@@ -70,7 +72,7 @@ endwhile;
             <?php endif ?>
             <?php endwhile; ?>
         </article>
-<!--        <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2">下一页</a></section>-->
+        <!--        <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2">下一页</a></section>-->
         <script>
             var comment_btns = document.querySelectorAll('.comment');
             for (let comment_btn of comment_btns) {

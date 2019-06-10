@@ -27,14 +27,13 @@ endwhile;
         <a href="<?php echo $pages_say; ?>">语录</a>
     </nav>
     <article>
-        <h1><?php echo date('Y-m-d'); ?>
+        <h1 style="position: relative"><?php echo $this->date('Y-m-d'); ?>
             <small>(<?php echo $this->date('l'); ?>)</small>
+            <div style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;text-align: center"><?php $this->title() ?></div>
         </h1>
         <div class="paul-note" id="<?php $this->cid() ?>">
             <div class="note-content">
-                <span style="text-align: center"><h1><?php $this->title() ?></h1></span>
                 <?php $this->content(); ?>
-
             </div>
             <div class="note-inform">
                 <span class="user"><?php $this->author(); ?></span>
