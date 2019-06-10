@@ -34,6 +34,9 @@
     <?php $this->header('generator=&template=&pingback=&xmlrpc=&wlw='); ?>
     <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css" rel="stylesheet"
           type="text/css">
+    <style>
+        <?php $this->options->custom_css();?>
+    </style>
 </head>
 
 <body class="">
@@ -51,10 +54,10 @@
             <?php if ($pages->slug == 'note'): ?>
                 <a href="<?php $pages->permalink(); ?>"><i class="fa fa-book"></i><span>日记</span></a>
 
-            <?php elseif ($pages->slug == 'project'):?>
-        <a href="<?php $pages->permalink();?>"><i class="fa fa-flask"></i><span>项目</span></a>
+            <?php elseif ($pages->slug == 'project'): ?>
+                <a href="<?php $pages->permalink(); ?>"><i class="fa fa-flask"></i><span>项目</span></a>
 
-        <?php endif; endwhile; ?>
+            <?php endif; endwhile; ?>
 
         <!--        <a href="/music"><i class="fa fa-star"></i><span>收藏</span></a>-->
     </nav>

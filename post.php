@@ -63,24 +63,30 @@ endwhile;
                 document.getElementById('cancel-commit').onclick = e => {
                     isComment.classList.remove('active')
                 }
-            })
+            })();
             (function () {
-                if (window.location.hash != '') {
-                    const i = window.location.hash.indexOf('#comment');
-                    const ii = window.location.hash.indexOf('#respond-post');
-                    if (ii != '-1') {
-                        document.querySelector('#comment-form > section > h3').innerHTML = '<i class="fa fa-comments"></i>回复';
-                        document.querySelector('#comment-form > section > div > p').innerHTML = document.querySelector('#comment-form > section > div > p').innerHTML + '<a href="#" onclick="window.history.back();">  取消回复</a>'
-                        const isComment = document.querySelector('.post-form.is-comment');
-                        isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
-                    } else if (i != '-1') {
-                        let commentLoaction = document.querySelector(window.location.hash)
-                        commentLoaction.querySelector('.comment_main').style.backgroundColor = '#bdc3c7'
-                        commentLoaction = getElementTop(commentLoaction)
-                        scrollSmoothTo(commentLoaction)
+                // 设定延迟 因为 Pjax 导致无法及时获取到 hash 值
+                setTimeout(()=>{
+                    if (window.location.hash) {
+                        const comment = window.location.hash.indexOf('#comment');
+                        const respond_post = window.location.hash.indexOf('#respond-post');
+                        const want_comment = window.location.hash.indexOf('#want-comment');
+                        if (respond_post !== -1) {
+                            document.querySelector('#comment-form > section > h3').innerHTML = '<i class="fa fa-comments"></i>回复';
+                            document.querySelector('#comment-form > section > div > p').innerHTML = document.querySelector('#comment-form > section > div > p').innerHTML + '<a href="#" onclick="window.history.back();">  取消回复</a>'
+                            const isComment = document.querySelector('.post-form.is-comment');
+                            isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
+                        } else if (comment !== -1) {
+                            let commentLocation = document.querySelector(window.location.hash)
+                            commentLocation.querySelector('.comment_main').style.backgroundColor = '#bdc3c7'
+                            commentLocation = getElementTop(commentLocation)
+                            scrollSmoothTo(commentLocation)
+                        } else if (want_comment !== -1) {
+                            document.querySelector('#comment-form > section').classList.add('active')
+                        }
                     }
-                }
-            })()
+                },100)
+            })();
 
             function getElementTop(element) {
                 let actualTop = element.offsetTop;

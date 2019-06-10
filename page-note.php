@@ -34,43 +34,42 @@ endwhile;
             <?php
             $this->widget('Widget_Contents_Post_Recent')->to($posts);
             while ($posts->next()):
-            ?>
-            <h1><?php echo date('Y-m-d', $posts->created); ?>
-                <small>(<?php echo date('l', $posts->created); ?>)</small>
-            </h1>
-            <div class="paul-note" id="cid-<?php $posts->cid(); ?>">
-                <div class="note-content">
-                    <?php $posts->content(); ?>
-                </div>
-                <div class="note-inform">
-                    <span class="user"><?php $this->user->name(); ?></span>
-                    <span class="mood" title="好心情可以带来美好的一天">一般</span>
-                </div>
-                <div class="note-action">
+                ?>
+                <h1><?php echo date('Y-m-d', $posts->created); ?>
+                    <small>(<?php echo date('l', $posts->created); ?>)</small>
+                </h1>
+                <div class="paul-note" id="cid-<?php $posts->cid(); ?>">
+                    <div class="note-content">
+                        <?php $posts->content(); ?>
+                    </div>
+                    <div class="note-inform">
+                        <span class="user"><?php $this->user->name(); ?></span>
+                        <span class="mood" title="好心情可以带来美好的一天">一般</span>
+                    </div>
+                    <div class="note-action">
                     <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"
                           title="参与评论">评论</span>
-                    <!--                    TODO 点赞实现 line 191 263 86 -->
-                    <!--                    <span class="like" data-cid="--><?php //$posts->cid();
-                    ?><!--" title="已有 0 人点赞">0</span>-->
+                        <!--                    TODO 点赞实现 line 191 263 86 -->
+                        <!--                    <span class="like" data-cid="--><?php //$posts->cid();
+                        ?><!--" title="已有 0 人点赞">0</span>-->
+                    </div>
                 </div>
-            </div>
-
+            <?php if (!$posts->allow('comment')): ?>
+                <section class="post-form is-comment" id="com-<?php $posts->cid(); ?>">
+                    <h3><i class="fa fa-comments"></i>评论</h3>
+                    <div class="note-comments">
+                        <div id="note-m"></div>
+                        <p>评论功能暂时关闭</p>
+                    </div>
+                </section>
+            <?php else: ?>
+                <script>
+                    var willComment = document.querySelector('#cid-<?php $posts->cid();?> > div.note-action > span');
+                    willComment.outerHTML = '<a href="<?php $posts->permalink();?>#want-comment">' + willComment.outerHTML + '</a>'
+                </script>
+            <?php endif ?>
+            <?php endwhile; ?>
         </article>
-        <?php if (!$posts->allow('comment')): ?>
-            <section class="post-form is-comment" id="com-<?php $posts->cid(); ?>">
-                <h3><i class="fa fa-comments"></i>评论</h3>
-                <div class="note-comments">
-                    <div id="note-m"></div>
-                    <p>评论功能暂时关闭</p>
-                </div>
-            </section>
-        <?php else: ?>
-            <script>
-                var willComment = document.querySelector('#cid-<?php $posts->cid();?> > div.note-action > span');
-                willComment.outerHTML = '<a href="<?php $posts->permalink();?>">' + willComment.outerHTML + '</a>'
-            </script>
-        <?php endif ?>
-        <?php endwhile; ?>
         <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2">下一页</a></section>
         <script>
             var comment_btns = document.querySelectorAll('.comment');
@@ -83,7 +82,6 @@ endwhile;
                 }
             }
         </script>
-
     </main>
 
 <?php $this->need('footer.php'); ?>

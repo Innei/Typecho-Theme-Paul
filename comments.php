@@ -130,18 +130,22 @@ function threadedComments($comments, $options)
 </form>
 
 <script>
-    const commentsReply = document.querySelectorAll('span.comment_reply > a')
-    const replyForm = document.querySelector('.reply')
-    const isComment = document.querySelector('.post-form.is-comment')
-    for (let el of commentsReply) {
-        el.addEventListener('click', () => {
-            replyForm.removeAttribute('style')
-            if (isComment.classList.contains('active')) isComment.classList.remove('active');
-            setTimeout(() => {
-                document.getElementById('cancel-comment-reply-link').addEventListener('click', () => {
-                    replyForm.style.display = 'none';
+    (function () {
+        const commentsReply = document.querySelectorAll('span.comment_reply > a')
+        const replyForm = document.querySelector('.reply')
+        const isComment = document.querySelector('.post-form.is-comment')
+        for (let el of commentsReply) {
+            el.addEventListener('click', () => {
+                replyForm.removeAttribute('style')
+                if (isComment.classList.contains('active')) isComment.classList.remove('active');
+                setTimeout(() => {
+                    document.getElementById('cancel-comment-reply-link').addEventListener('click', () => {
+                        replyForm.style.display = 'none';
+                    })
                 })
             })
-        })
-    }
+        }
+    })();
+
+
 </script>

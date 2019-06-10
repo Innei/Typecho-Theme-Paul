@@ -393,7 +393,7 @@ var paul = new function () {
 };
 var paul_music = new function () {
     var that = this;
-    this.list = ["36271441"];
+    this.list = ["95438221"];
     this.action = {};
     var status = {playing: 0, lyric: [], lyric_index: 0};
     this.setList = function () {
