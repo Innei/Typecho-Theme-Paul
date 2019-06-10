@@ -107,3 +107,7 @@
         background-color: #f9f9f9;
     }
 }
+header svg {
+    width: 2rem;
+    height: 2rem;
+}

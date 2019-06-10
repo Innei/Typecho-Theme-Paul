@@ -35,6 +35,11 @@ endwhile;
             <div class="note-content">
                 <?php $this->content(); ?>
             </div>
+            <?php if ($this->options->author_text): ?>
+                <div class="note-content">
+                    <?php $this->options->author_text(); ?>
+                </div>
+            <?php endif; ?>
             <div class="note-inform">
                 <span class="user"><?php $this->author(); ?></span>
                 <span class="mood" title="好心情可以带来美好的一天">一般</span>

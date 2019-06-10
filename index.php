@@ -50,7 +50,7 @@ require_once 'functions.php';
     </nav>
     <section class="me">
         <div class="my-avatar">
-            <img src="<?php if ($this->options->avatar): $this->options->avatar(); else: $this->options->themeUrl('src/img/avatar.jpg');endif; ?>">
+            <img src="<?php if ($this->options->avatar): $this->options->avatar(); else: $this->options->themeUrl('src/img/avatar.jpeg');endif; ?>">
         </div>
         <div class="my-info">
             <h1><?php $this->author() ?></h1>
@@ -62,13 +62,11 @@ require_once 'functions.php';
                        ks-text="GitHub"><i
                                 class="fa fa-github" style="color: #44006f"></i></a>
                 <?php endif; ?>
-
                 <?php if ($this->options->weibo_id): ?>
                     <a href="https://weibo.com/<?php $this->options->weibo_id(); ?>" target="_blank" ks-tag="bottom"
                        ks-text="新浪微博"><i
                                 class="fa fa-weibo" style="color: #e6162d"></i></a>
                 <?php endif; ?>
-
                 <?php if ($this->options->netease_id): ?>
                     <a href="https://music.163.com/#/user/home?id=<?php $this->options->netease_id() ?>" target="_blank"
                        ks-tag="bottom"
@@ -79,7 +77,6 @@ require_once 'functions.php';
                         </svg>
                     </a>
                 <?php endif; ?>
-
                 <?php if ($this->options->bili_id): ?>
                     <a href="https://space.bilibili.com/<?php $this->options->bili_id(); ?>" target="_blank"
                        ks-tag="bottom" ks-text="哔哩哔哩">
@@ -89,10 +86,10 @@ require_once 'functions.php';
                         </svg>
                     </a>
                 <?php endif; ?>
-
                 <a href="<?php $this->options->feedUrl(); ?>" target="_blank" ks-tag="bottom" ks-text="RSS 订阅"><i
                             class="fa fa-rss"
                             style="color: #9c27b0"></i></a>
+                <?php $this->options->home_social() ?>
             </div>
         </div>
     </section>
