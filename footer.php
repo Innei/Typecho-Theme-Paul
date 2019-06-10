@@ -4,7 +4,7 @@
     <div class="player-left">
         <div class="player-cover">
             <div class="cover-img"
-                 style="background-image: url()"></div>
+                 style="background-image: url(<?php $this->options->themeUrl('src/img/9.jpg') ?>)"></div>
         </div>
         <div class="player-info">
             <span class="title">奇趣音乐盒</span>
@@ -32,14 +32,15 @@
 </action>
 <footer>
     <p>© <?php $this->date('Y') ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author() ?></a>.</p>
+    Design By Paul. Dev By yiny. Theme Paul.
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
-<script src="<?php $this->options->themeUrl('src/kico.js')?>"></script>
-<script src="<?php $this->options->themeUrl('src/paul.js')?>"></script>
+<script src="<?php $this->options->themeUrl('src/kico.js') ?>"></script>
+<script src="<?php $this->options->themeUrl('src/paul.js') ?>"></script>
 <script>
-<?php $this->options->custom_script();?>
+    <?php $this->options->custom_script();?>
 </script>
-
+<?php $this->footer(); ?>
 </body>
 </html>

@@ -3,6 +3,7 @@
 /**
  * 首页模板, 关于, 赞助, 心愿
  *
+ * @author innei
  * @package custom
  */
 $this->need('header.php');
@@ -38,8 +39,12 @@ endwhile;
             <?php if ($index_about): ?><a
                 href="<?php echo $index_about ?>" <?php $this->slug == 'about' ? print_r('class="active"') : print_r(''); ?> >
                     关于</a><?php endif ?>
-            <?php if ($index_donate): ?><a href="<?php echo $index_donate ?>" <?php $this->slug == 'donate' ? print_r('class="active"') : print_r(''); ?>>赞助</a> <?php endif; ?>
-            <?php if ($index_dream): ?><a href="<?php echo $index_dream ?>" <?php $this->slug == 'dream' ? print_r('class="active"') : print_r(''); ?>>心愿</a> <?php endif; ?>
+            <?php if ($index_donate): ?><a
+                href="<?php echo $index_donate ?>" <?php $this->slug == 'donate' ? print_r('class="active"') : print_r(''); ?>>
+                    赞助</a> <?php endif; ?>
+            <?php if ($index_dream): ?><a
+                href="<?php echo $index_dream ?>" <?php $this->slug == 'dream' ? print_r('class="active"') : print_r(''); ?>>
+                    心愿</a> <?php endif; ?>
         </nav>
         <article>
             <h1><?php $this->title(); ?></h1>

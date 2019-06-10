@@ -3,6 +3,7 @@
 /**
  * 作品页面
  *
+ * @author innei
  * @package custom
  */
 $this->need('header.php');

@@ -29,7 +29,7 @@ endwhile;
     <article>
         <h1 style="position: relative"><?php echo $this->date('Y-m-d'); ?>
             <small>(<?php echo $this->date('l'); ?>)</small>
-            <div style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;text-align: center"><?php $this->title() ?></div>
+            <div style="font-weight: 400;position: absolute;top: 0;left: 0;right: 0;bottom: 0;text-align: center"><?php $this->title() ?></div>
         </h1>
         <div class="paul-note" id="<?php $this->cid() ?>">
             <div class="note-content">

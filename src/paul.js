@@ -86,6 +86,7 @@ var paul = new function () {
         /*act.tog.onclick = function () {
             container.classList.toggle("active");
         };*/
+
         /*act.music.onclick = function () {
             if (post.music.hasAttribute("hidden")) {
                 post.music.removeAttribute("hidden");
@@ -112,81 +113,81 @@ var paul = new function () {
             }
         }
 
-      /*  act.code.onclick = function () {
-            post.cont.value = insertStr(post.cont, "<code>", "</code>");
-        };
-        act.hidden.onclick = function () {
-            post.cont.value = insertStr(post.cont, "<hidden>", "</hidden>");
-        };
-        post.submit.onclick = function () {
-            if ((!post.pwd || post.pwd.value !== "") && post.cont.value !== "") {
-                ks.notice("正在提交内容...", {color: "blue", time: 1500});
-                if (!post.pwd === true) {
-                    post.pwd = {};
-                    post.pwd.value = "no-pwd";
-                }
-                ks.ajax({
-                    method: "POST",
-                    data: {
-                        type: "note",
-                        mod: "newNote",
-                        pwd: post.pwd.value,
-                        mood: post.mood.value,
-                        content: post.cont.value,
-                        music: post.music.value,
-                        photo: post.photo.files[0]
-                    },
-                    header: [["X-Requested-With", "XMLHttpRequest"]],
-                    url: "https://paul.ren/post",
-                    success: function (req) {
-                        var result = JSON.parse(req.response);
-                        if (result.status === true) {
-                            ks.notice("提交新日记成功~", {color: "green", time: 1500});
-                            pjax.loadUrl("/note");
-                        } else if (result.info === "Password Check Failed!") {
-                            ks.notice("暗号不对呀！", {color: "red"});
-                        }
-                        container.classList.remove("active");
-                        console.log(result);
-                    },
-                    failed: function (req) {
-                        ks.notice("提交出错了！", {color: "red"});
-                    }
-                });
-            } else {
-                ks.notice("嘿，你还没有填完内容呢", {color: "yellow"});
-            }
-        }
-    };
-    this.comments = function () {
-        var cid, year;
-        var a = ks.select(".post-form.is-comment");
-        ks(".paul-note .comment").each(function (e) {
-            e.onclick = function (ev) {
-                cid = ev.target.dataset.cid;
-                year = ev.target.dataset.year;
-                if (a.dataset.cid === cid) {
-                    a.classList.toggle("active");
-                } else {
-                    a.dataset.cid = cid;
-                    a.classList.add("active");
-                    ks.select("#note-m").innerHTML = "";
-                    ajax.note.comment = new Gitalk({
-                        clientID: 'e3998ba0f995d10924e4',
-                        clientSecret: '2cbfa1f505728073122e3371b527be9e88da1b8b',
-                        repo: 'Comments',
-                        owner: 'Dreamer-Paul',
-                        admin: ['Dreamer-Paul'],
-                        labels: ["Note", year],
-                        createIssueManually: true,
-                        distractionFreeMode: false,
-                        id: "/note/" + year + "-" + cid + "/",
-                        title: year + " 年第 " + cid + " 篇日记"
-                    });
-                    ajax.note.comment.render('note-m');
-                }
-            }
-        });*/
+        /*  act.code.onclick = function () {
+              post.cont.value = insertStr(post.cont, "<code>", "</code>");
+          };
+          act.hidden.onclick = function () {
+              post.cont.value = insertStr(post.cont, "<hidden>", "</hidden>");
+          };
+          post.submit.onclick = function () {
+              if ((!post.pwd || post.pwd.value !== "") && post.cont.value !== "") {
+                  ks.notice("正在提交内容...", {color: "blue", time: 1500});
+                  if (!post.pwd === true) {
+                      post.pwd = {};
+                      post.pwd.value = "no-pwd";
+                  }
+                  ks.ajax({
+                      method: "POST",
+                      data: {
+                          type: "note",
+                          mod: "newNote",
+                          pwd: post.pwd.value,
+                          mood: post.mood.value,
+                          content: post.cont.value,
+                          music: post.music.value,
+                          photo: post.photo.files[0]
+                      },
+                      header: [["X-Requested-With", "XMLHttpRequest"]],
+                      url: "https://paul.ren/post",
+                      success: function (req) {
+                          var result = JSON.parse(req.response);
+                          if (result.status === true) {
+                              ks.notice("提交新日记成功~", {color: "green", time: 1500});
+                              pjax.loadUrl("/note");
+                          } else if (result.info === "Password Check Failed!") {
+                              ks.notice("暗号不对呀！", {color: "red"});
+                          }
+                          container.classList.remove("active");
+                          console.log(result);
+                      },
+                      failed: function (req) {
+                          ks.notice("提交出错了！", {color: "red"});
+                      }
+                  });
+              } else {
+                  ks.notice("嘿，你还没有填完内容呢", {color: "yellow"});
+              }
+          }
+      };
+      this.comments = function () {
+          var cid, year;
+          var a = ks.select(".post-form.is-comment");
+          ks(".paul-note .comment").each(function (e) {
+              e.onclick = function (ev) {
+                  cid = ev.target.dataset.cid;
+                  year = ev.target.dataset.year;
+                  if (a.dataset.cid === cid) {
+                      a.classList.toggle("active");
+                  } else {
+                      a.dataset.cid = cid;
+                      a.classList.add("active");
+                      ks.select("#note-m").innerHTML = "";
+                      ajax.note.comment = new Gitalk({
+                          clientID: 'e3998ba0f995d10924e4',
+                          clientSecret: '2cbfa1f505728073122e3371b527be9e88da1b8b',
+                          repo: 'Comments',
+                          owner: 'Dreamer-Paul',
+                          admin: ['Dreamer-Paul'],
+                          labels: ["Note", year],
+                          createIssueManually: true,
+                          distractionFreeMode: false,
+                          id: "/note/" + year + "-" + cid + "/",
+                          title: year + " 年第 " + cid + " 篇日记"
+                      });
+                      ajax.note.comment.render('note-m');
+                  }
+              }
+          });*/
     };
     /*this.likes = function () {
         function check(id) {
@@ -259,12 +260,12 @@ var paul = new function () {
             }
         }
     }*/
-   /* this.notePage = function () {
-        this.likes();
-        this.comments();
-        this.sendNote();
-        paul_music.setList();
-    };*/
+    /* this.notePage = function () {
+         this.likes();
+         this.comments();
+         this.sendNote();
+         paul_music.setList();
+     };*/
     this.galleryPage = function () {
         ajax.gallery.page = 1;
         ajax.gallery.end = false;
@@ -393,7 +394,7 @@ var paul = new function () {
 };
 var paul_music = new function () {
     var that = this;
-    this.list = ["95438221"];
+    this.list = ["520570570", "541432715"];
     this.action = {};
     var status = {playing: 0, lyric: [], lyric_index: 0};
     this.setList = function () {
