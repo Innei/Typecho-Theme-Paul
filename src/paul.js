@@ -32,84 +32,6 @@ var paul = new function () {
         }
     };
 
-    /*this.likes = function () {
-        function check(id) {
-            var a = localStorage.getItem("liked");
-        }
-
-        ks(".paul-note .like").each(function (e) {
-            var num = parseInt(e.innerText);
-            e.onclick = function () {
-                if (e.classList.contains("active") === false) {
-                    num++;
-                    e.innerHTML = num;
-                    e.classList.add("active");
-                    ks.ajax({
-                        method: "POST",
-                        data: {type: "note", mod: "likeNote", cid: e.dataset["cid"]},
-                        url: "https://paul.ren/post",
-                        success: function (req) {
-                            var result = JSON.parse(req.response);
-                            if (result.status === true) {
-                                ks.notice("感谢你的点赞~", {color: "green", time: 1500});
-                            } else {
-                                num--;
-                                e.innerHTML = num;
-                                ks.notice("你的爱我已经感受到了~", {color: "red", time: 1500});
-                            }
-                        },
-                        failed: function (req) {
-                            num--;
-                            e.innerHTML = num;
-                            ks.notice("FXXK！提交出错了！", {color: "red"});
-                        }
-                    });
-                } else {
-                    ks.notice("你的爱我已经感受到了！", {color: "yellow", time: 1500});
-                }
-            };
-        });
-    };*/
-    /*this.indexPage = function () {
-        var btn = ks.select(".do-you-like-me .heart");
-        var num = ks.select(".do-you-like-me .likes");
-        var e = parseInt(num.innerText);
-        btn.onclick = function () {
-            if (document.cookie.indexOf("like-paul=true") === -1) {
-                e++;
-                num.innerHTML = e;
-                ks.ajax({
-                    method: "POST",
-                    data: {type: "index", mod: "likeMe"},
-                    header: [["X-Requested-With", "XMLHttpRequest"]],
-                    url: "https://paul.ren/post",
-                    success: function (req) {
-                        var result = JSON.parse(req.response);
-                        if (result.status === true) {
-                            ks.notice("感谢你的支持~", {color: "green", time: 1500});
-                        } else if (result.info === "You had liked me before") {
-                            ks.notice("一天一次就够啦！", {color: "red"});
-                            e--;
-                            num.innerHTML = e;
-                        }
-                        document.cookie = "like-paul=true;" + "path=/;" + "max-age=21600";
-                    },
-                    failed: function (req) {
-                        ks.notice("提交出错了！", {color: "red"});
-                    }
-                });
-            } else {
-                ks.notice("一天一次就够啦！", {color: "red"});
-            }
-        }
-    }*/
-    /* this.notePage = function () {
-         this.likes();
-         this.comments();
-         this.sendNote();
-         paul_music.setList();
-     };*/
-
     this.staticPage = function () {
         var gitalk = new Gitalk({
             clientID: 'e3998ba0f995d10924e4',
@@ -151,10 +73,6 @@ var paul = new function () {
         if (!paul_music.isMobile()) document.addEventListener("scroll", scroll_fixed);
     };
     this.init = function () {
-        /*// if (ks.select(".paul-news")) this.indexPage();
-      /!*  if (ks.select(".paul-note")) this.notePage();*!/
-     /!*   if (ks.select(".paul-gallery")) this.galleryPage();*!/
-        if (ks.select(".paul-music")) this.musicPage();*/
         if (ks.select("#comment")) this.staticPage();
         this.side();
         if (typeof _hmt !== 'undefined') _hmt.push(['_trackPageview', location.pathname + location.search]);

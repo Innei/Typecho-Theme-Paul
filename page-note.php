@@ -73,6 +73,7 @@ endwhile;
                 </script>
             <?php endif ?>
             <?php endwhile; ?>
+            <section class="note-navigator"><h1>下面是我的小秘密啦～</h1></section>
         </article>
         <!--        <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2">下一页</a></section>-->
         <script>
@@ -106,12 +107,13 @@ endwhile;
                                 if (JSON.parse(res.responseText) === "success") {
                                     that.innerHTML = parseInt(that.innerHTML) + 1
                                     ks.notice("感谢你的点赞~", {color: "green", time: 1500});
-                                    that.onclick = null
+                                    that.onclick = function () {
+                                        ks.notice("你的爱我已经感受到了！", {color: "yellow", time: 1500});
+                                    }
                                 }
                             },
                             failed: function (res) {
-                                console.log("失败了");
-                                console.log(res);
+                                ks.notice("FXXK！提交出错了！", {color: "red"});
                             }
                         })
                     }
