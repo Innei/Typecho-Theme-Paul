@@ -12,6 +12,7 @@
     <link href="<?php $this->options->themeUrl('src/kico.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?php $this->options->themeUrl('src/paul.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?php $this->options->themeUrl('src/main.css') ?>" rel="stylesheet" type="text/css">
+    <script src="<?php $this->options->themeUrl('src/kico.js') ?>"></script>
     <?php if ($this->options->favicon): ?>
         <link rel="icon" href="<?php $this->options->favicon(); ?>" sizes="192x192"/>
     <?php else: ?>

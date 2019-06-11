@@ -53,8 +53,9 @@ endwhile;
                     <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"
                           title="参与评论">评论 <?php $posts->commentsNum('%d '); ?></span>
                         <!--                    TODO 点赞实现 line 191 263 86 -->
-                        <span class="like" data-cid="--><?php //$posts->cid();
+                        <span class="like" data-cid="<?php $posts->cid();
                         ?>" title="已有 <?php get_like_num($posts) ?> 人点赞"><?php get_like_num($posts) ?></span>
+                        <script>console.log(`<?php Typecho_Widget::widget('Zan_Action')->showZan($posts->cid); ?>`)</script>
                     </div>
                 </div>
             <?php if (!$posts->allow('comment')): ?>
@@ -75,15 +76,44 @@ endwhile;
         </article>
         <!--        <section class="note-navigator"><a class="btn black next" href="//paul.ren/note/2">下一页</a></section>-->
         <script>
-            var comment_btns = document.querySelectorAll('.comment');
-            for (let comment_btn of comment_btns) {
-                if (document.querySelector('#com-' + comment_btn.getAttribute('data-cid'))) {
-                    comment_btn.onclick = function () {
-                        const isComment = document.querySelector('#com-' + this.getAttribute('data-cid'));
-                        isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
+            (function () {
+                const comment_btns = document.querySelectorAll('.comment');
+                for (let comment_btn of comment_btns) {
+                    if (document.querySelector('#com-' + comment_btn.getAttribute('data-cid'))) {
+                        comment_btn.onclick = function () {
+                            const isComment = document.querySelector('#com-' + this.getAttribute('data-cid'));
+                            isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
+                        }
                     }
                 }
-            }
+
+                // 点赞实现 ajax
+
+                const Like_btn = document.querySelectorAll('.like')
+                for (let el of Like_btn) {
+                    el.onclick = function (e) {
+                        ks.ajax({
+                            method: "POST",
+                            data: {
+                                tpye: "like",
+                                cid: this.getAttribute('data-cid'),
+                                cookie: document.cookie,
+                                db: '',
+                            },
+                            url: "<?php Typecho_Widget::widget('Widget_Security')->getIndex('action/Zan') ?>",
+                            success: function (res){
+                                console.log("成功了");
+                                console.log(res);
+                            },
+                            failed: function (res){
+                                console.log("失败了");
+                                console.log(res);
+                            }
+                        })
+                    }
+                }
+            })();
+
         </script>
     </main>
 
