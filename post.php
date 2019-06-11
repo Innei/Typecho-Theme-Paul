@@ -42,7 +42,7 @@ endwhile;
             <?php endif; ?>
             <div class="note-inform">
                 <span class="user"><?php $this->author(); ?></span>
-                <span class="mood" title="好心情可以带来美好的一天">一般</span>
+                <span class="views" title="阅读次数"><i class="fa fa-leaf" aria-hidden="true"></i> <?php echo $this->views ?></span>
             </div>
             <div class="note-action">
                     <span class="comment" data-cid="<?php $this->cid(); ?>" data-year="<?php $this->year(); ?>"

@@ -47,7 +47,8 @@ endwhile;
                     </div>
                     <div class="note-inform">
                         <span class="user"><?php $this->user->name(); ?></span>
-                        <span class="mood" title="好心情可以带来美好的一天">一般</span>
+                        <span class="views" title="阅读次数"><i class="fa fa-leaf"
+                                                            aria-hidden="true"></i> <?php echo get_views_num($posts) ?></span>
                     </div>
                     <div class="note-action">
                     <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"
@@ -55,7 +56,6 @@ endwhile;
                         <!--                    TODO 点赞实现 line 191 263 86 -->
                         <span class="like" data-cid="<?php $posts->cid();
                         ?>" title="已有 <?php get_like_num($posts) ?> 人点赞"><?php get_like_num($posts) ?></span>
-                        <script>console.log(`<?php Typecho_Widget::widget('Zan_Action')->showZan($posts->cid); ?>`)</script>
                     </div>
                 </div>
             <?php if (!$posts->allow('comment')): ?>
@@ -92,20 +92,24 @@ endwhile;
                 const Like_btn = document.querySelectorAll('.like')
                 for (let el of Like_btn) {
                     el.onclick = function (e) {
+                        const that = this
                         ks.ajax({
                             method: "POST",
                             data: {
-                                tpye: "like",
+                                type: "up",
                                 cid: this.getAttribute('data-cid'),
                                 cookie: document.cookie,
-                                db: '',
+
                             },
-                            url: "<?php Typecho_Widget::widget('Widget_Security')->getIndex('action/Zan') ?>",
-                            success: function (res){
-                                console.log("成功了");
-                                console.log(res);
+                            url: "<?php $this->options->siteUrl(); ?>index.php/action/void_like?up",
+                            success: function (res) {
+                                if (JSON.parse(res.responseText) === "success") {
+                                    that.innerHTML = parseInt(that.innerHTML) + 1
+                                    ks.notice("感谢你的点赞~", {color: "green", time: 1500});
+                                    that.onclick = null
+                                }
                             },
-                            failed: function (res){
+                            failed: function (res) {
                                 console.log("失败了");
                                 console.log(res);
                             }
