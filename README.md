@@ -4,7 +4,7 @@ Design Prototype: <https://paul.ren>
 
 <a href="../master/README-CN.md">Chinese Document</a>
 
-Progress: 5/10
+Progress: 8/10
 
 ## Preview
 
@@ -12,17 +12,21 @@ Progress: 5/10
 
 You can also go to this url <https://paul.ren>, called Paul's Home ,to visit its prototype.
 
+## information
+
+See [Pual Typecho主题发布](https://shizuri.net/archives/131/).
+
 ## Feature
 
-- [x] note
-- [x] says
-- [x] home index page
-- [x] article page
-- [x] works page
-- [x] commit
-- [x] like (need VOID_Plugin)
-- [ ] player
-- [ ] others
+- [x] Write diary
+- [x] Exhibit says
+- [x] Nice home index page
+- [x] Awesome article page
+- [x] Beautiful Works page
+- [x] Commit
+- [x] Like plugin (need VOID_Plugin)
+- [ ] Player
+- [ ] Others
 
 ## Before Start
 
@@ -96,6 +100,33 @@ project information page: you can create a independent page which used `作品�
 "body": "<p>Kico Style 是一个简洁的前端样式框架，只提供页面布局等基础功能。代码轻量、不冗余，适合前端初学者和探索者。</p>" // content body.
 }
 ```
+
+To turn other music in the bottom of the player, you need open the file named `paul.js` in `src` directory. Find follow this.
+
+```js
+var paul_music = new function () {
+    var that = this;
+    this.list = ["520570570", "541432715"];  // replace your music id, the source of music id come from Netease Music
+    this.action = {};
+    var status = {playing: 0, lyric: [], lyric_index: 0};
+    this.setList = function () {
+        var newList = [];
+        ks("[data-sid]").each(function (item, key) {
+            newList.push(item.dataset["sid"]);
+            item.onclick = function (t) {
+                if (that.list !== newList) that.list = newList;
+                document.body.classList.add("has-player");
+                status.playing = key;
+                that.play();
+            }
+        });
+    };
+}
+```
+
+To like one article, based on VOID_Plugin, you should move the `VOID` directory to the `../plugins/`, and go to dashboard to enable it. '
+
+Enjoy.
 
 ## Copyright & Open Source
 
