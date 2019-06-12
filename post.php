@@ -24,7 +24,7 @@ endwhile;
         <a href="<?php echo $pages_note; ?>" class="active">日记</a>
         <?php if ($this->options->blog_url): ?> <a href="<?php $this->options->blog_url(); ?>" target="_blank">
                 博文</a><?php endif; ?>
-        <a href="<?php echo $pages_say; ?>">语录</a>
+        <?php if ($pages_say): ?><a href="<?php echo $pages_say; ?>">语录</a><?php endif; ?>
     </nav>
     <article>
         <h1 style="position: relative"><?php echo $this->date('Y-m-d'); ?>

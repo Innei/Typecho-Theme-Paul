@@ -57,8 +57,8 @@
                 <a href="<?php $pages->permalink(); ?>"><i class="fa fa-flask"></i><span>项目</span></a>
             <?php endif; endwhile; ?>
         <?php if ($this->user->hasLogin()): ?>
-            <a href="<?php $this->options->adminUrl() ?>"><i class="fa fa-unlock-alt"
-                                                             aria-hidden="true"></i><span>后台</span></a>
+            <a href="<?php $this->options->adminUrl() ?>" target="_blank"><i class="fa fa-unlock-alt"
+                                                                             aria-hidden="true"></i><span>后台</span></a>
         <?php endif; ?>
     </nav>
 </header>

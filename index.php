@@ -15,8 +15,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');
 require_once 'functions.php';
 ?>
-
-
 <main>
     <nav class="navigation">
         <a href="<?php $this->options->siteUrl(); ?>" class="active">首页</a>

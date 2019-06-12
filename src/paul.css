@@ -85,7 +85,7 @@ button {
     padding: 0;
     border: none;
     font: inherit;
-    outline: none;
+    outline: 0;
     cursor: pointer
 }
 
@@ -117,7 +117,7 @@ header a:hover {
     color: currentColor
 }
 
-header a:hover svg, header a:hover i {
+header a:hover i, header a:hover svg {
     transform: scale(1.2)
 }
 
@@ -444,7 +444,7 @@ body.loading main {
     transition: transform .5s
 }
 
-.news-article:hover img, .news-article:focus img, .news-project:hover img, .news-project:focus img {
+.news-article:focus img, .news-article:hover img, .news-project:focus img, .news-project:hover img {
     transform: scale(1.25) rotate(10deg)
 }
 
@@ -524,7 +524,7 @@ article > h1 small {
     }
 }
 
-.paul-note .note-inform, .paul-note .note-action {
+.paul-note .note-action, .paul-note .note-inform {
     color: #888;
     text-align: right;
     font-weight: lighter
@@ -549,7 +549,7 @@ article > h1 small {
     position: relative
 }
 
-.paul-note .note-inform span:before, .paul-note .note-action span:before {
+.paul-note .note-action span:before, .paul-note .note-inform span:before {
     margin-right: .5em;
     font-family: FontAwesome
 }
@@ -585,7 +585,7 @@ article > h1 small {
     content: "\f164";
     position: absolute;
     display: inline-block;
-    font: 1em/1 "FontAwesome";
+    font: 1em/1 FontAwesome;
     animation: likes 1s forwards
 }
 
@@ -686,7 +686,7 @@ article > h1 small {
     margin-right: .5em
 }
 
-.post-form textarea, .post-form input, .post-form select {
+.post-form input, .post-form select, .post-form textarea {
     width: 100%;
     border: none;
     padding: 1em;
@@ -895,7 +895,7 @@ article > h1 small {
     bottom: 0;
     max-width: 100%;
     position: absolute;
-    background: crimson
+    background: #dc143c
 }
 
 .paul-music {
@@ -1068,7 +1068,7 @@ player .artist {
     border-radius: 1em
 }
 
-.player-bar .played, .player-bar .loaded {
+.player-bar .loaded, .player-bar .played {
     width: 0;
     height: 100%;
     position: absolute

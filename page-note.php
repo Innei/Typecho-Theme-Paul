@@ -29,7 +29,7 @@ endwhile;
             <a href="<?php echo $pages_note; ?>" class="active">日记</a>
             <?php if ($this->options->blog_url): ?> <a href="<?php $this->options->blog_url(); ?>" target="_blank">
                     博文</a><?php endif; ?>
-            <a href="<?php echo $pages_say; ?>">语录</a>
+            <?php if ($pages_say): ?><a href="<?php echo $pages_say; ?>">语录</a><?php endif; ?>
         </nav>
         <article>
             <?php
@@ -39,7 +39,8 @@ endwhile;
                 <h1 style="position: relative;"><a href="<?php $posts->permalink() ?>"
                                                    style="color: #000"><?php echo date('Y-m-d', $posts->created); ?></a>
                     <small>(<?php echo date('l', $posts->created); ?>)</small>
-                    <div style="z-index: -1;font-weight: 400;position: absolute;top: 0;left: 0;right: 0;bottom: 0;text-align: center"><?php $posts->title() ?></div>
+                    <div
+                        style="z-index: -1;font-weight: 400;position: absolute;top: 0;left: 0;right: 0;bottom: 0;text-align: center"><?php $posts->title() ?></div>
                 </h1>
                 <div class="paul-note" id="cid-<?php $posts->cid(); ?>">
                     <div class="note-content">
@@ -111,8 +112,7 @@ endwhile;
                                     that.onclick = function () {
                                         ks.notice("你的爱我已经感受到了！", {color: "yellow", time: 1500});
                                     }
-                                }
-                                else if (JSON.parse(res.responseText)['status'] === 0){
+                                } else if (JSON.parse(res.responseText)['status'] === 0) {
                                     ks.notice("你的爱我已经感受到了！", {color: "yellow", time: 1500});
                                 }
                             },
