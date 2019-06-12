@@ -45,9 +45,8 @@ function themeConfig($form)
     $author_text = new Typecho_Widget_Helper_Form_Element_Textarea('author_text', NULL, NULL, _t('作者信息'), _t('显示在文章底部的作者信息，不填则不输出。'));
     $form->addInput($author_text);
     // SVG 路径
-    $svg_path = new Typecho_Widget_Helper_Form_Element_Textarea('svg_path', NULL, NULL, _t('SVG 路径'), _t('用于绘制导航栏头像, 不填则默认, 需要<svg></svg>'));
+    $svg_path = new Typecho_Widget_Helper_Form_Element_Textarea('svg_path', NULL, NULL, _t('SVG 路径'), _t('用于绘制导航栏头像, 不填则默认, 需要' . htmlspecialchars('<svg></svg>')));
     $form->addInput($svg_path);
-
 }
 
 
@@ -98,4 +97,13 @@ function get_views_num($archive)
     }
     $row = $db->fetchRow($db->select('views')->from('table.contents')->where('cid = ?', $cid));
     return $row['views'];
+}
+
+function get_words($archive)
+{
+    $db = Typecho_Db::get();
+    $row = $db->fetchRow($db->select('wordCount')
+        ->from('table.contents')
+        ->where('cid = ?', $archive->cid));
+    return $row['wordCount'];
 }

@@ -23,7 +23,7 @@
 - [x] 作品页
 - [x] 输出评论
 - [x] 输入评论
-- [x] 点赞 (接入VOID插件)
+- [x] 点赞, 字数统计, 浏览量 (接入VOID插件)
 - [ ] 播放器
 - [ ] 其他
 
@@ -120,7 +120,7 @@ var paul_music = new function () {
 
 ## 版权 & 开源
 
-@Dreamer-Paul 所有, 开源遵循 MIT.
+@Dreamer-Paul & @Innei 所有, 开源遵循 MIT.
 
 ### 使用的开源项目
 

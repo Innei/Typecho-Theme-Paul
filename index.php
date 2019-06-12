@@ -8,7 +8,7 @@
  * @author Dreamer-Paul & Innei
  * @design Dreamer-Paul
  * @deploy Innei
- * @version 0.8 preview
+ * @version 1.0 release
  * @link https://paul.ren
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
@@ -108,17 +108,6 @@ require_once 'functions.php';
                         <?php $rss = parse_RSS($this->options->RSS, $this->options->themeUrl);
                         echo $rss
                         ?>
-                        <!--
-                    <?php /*while ($this->next()): */ ?>
-                        <div class="col-6 col-m-3">
-                            <a href="<?php /*$this->permalink() */ ?>" class="news-article"
-                               target="_blank">
-                                <img src="<?php /*$this->options->themeUrl('src/img/' . rand(0, 14) . '.jpg') */ ?>">
-                                <h4><?php /*$this->title() */ ?></h4>
-                            </a>
-                        </div>
-                    <?php /*endwhile; */ ?>
-              -->
                     </div>
                 </div>
             <?php endif; ?>
@@ -163,11 +152,6 @@ require_once 'functions.php';
             </div>
         </div>
     </section>
-    <!--        TODO 点赞移植  229行 367行-->
-    <!--        <section class="do-you-like-me">-->
-    <!--            <div class="heart" title="为我点赞！"></div>-->
-    <!--            <h2 class="likes">1043</h2>-->
-    <!--        </section>-->
 </main>
 
 <?php $this->need('footer.php') ?>

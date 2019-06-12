@@ -24,7 +24,7 @@ See [Pual Typecho主题发布](https://shizuri.net/archives/131/).
 - [x] Awesome article page
 - [x] Beautiful Works page
 - [x] Commit
-- [x] Like plugin (need VOID_Plugin)
+- [x] Like, Views, Word Count (need VOID_Plugin)
 - [ ] Player
 - [ ] Others
 
@@ -130,7 +130,7 @@ Enjoy.
 
 ## Copyright & Open Source
 
-Belong to @Dreamer-Paul. MIT Licence.
+Belong to @Dreamer-Paul & @Innei. MIT Licence.
 
 ## Used Open Source
 

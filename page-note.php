@@ -47,13 +47,15 @@ endwhile;
                     </div>
                     <div class="note-inform">
                         <span class="user"><?php $posts->author(); ?></span>
-                        <span class="views" title="阅读次数"><i class="fa fa-leaf"
-                                                            aria-hidden="true"></i> <?php echo get_views_num($posts) ?></span>
+                        <span class="views" title="阅读次数 <?php echo get_views_num($posts) ?>"><i class="fa fa-leaf"
+                                                                                                aria-hidden="true"></i> <?php echo get_views_num($posts) ?></span>
+                        <span class="words" title="字数 <?php echo get_words($posts) ?>"><i class="fa fa-file-word-o"
+                                                                                          aria-hidden="true"></i> <?php echo get_words($posts) ?></span>
+
                     </div>
                     <div class="note-action">
                     <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"
                           title="参与评论">评论 <?php $posts->commentsNum('%d '); ?></span>
-                        <!--                    TODO 点赞实现 line 191 263 86 -->
                         <span class="like" data-cid="<?php $posts->cid();
                         ?>" title="已有 <?php get_like_num($posts) ?> 人点赞"><?php get_like_num($posts) ?></span>
                     </div>
