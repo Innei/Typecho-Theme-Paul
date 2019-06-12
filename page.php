@@ -30,11 +30,12 @@ endwhile;
     <main class="is-article">
         <nav class="navigation">
             <a href="<?php $this->options->siteUrl(); ?>">首页</a>
-            <?php if ($index_about): ?><a href="<?php echo $index_about ?>" class="active">关于</a><?php endif ?>
+            <?php if ($index_about): ?><a href="<?php echo $index_about ?>">关于</a><?php endif ?>
             <?php if ($index_donate): ?><a href="<?php echo $index_donate ?>">赞助</a> <?php endif; ?>
             <?php if ($index_dream): ?><a href="<?php echo $index_dream ?>">心愿</a> <?php endif; ?>
         </nav>
         <article>
+            <h1><?php $this->title() ?></h1>
             <?php $this->content() ?>
             <div class="paul-note">
                 <div class="note-action">

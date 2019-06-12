@@ -46,7 +46,7 @@ endwhile;
                         <?php $posts->content(); ?>
                     </div>
                     <div class="note-inform">
-                        <span class="user"><?php $this->user->name(); ?></span>
+                        <span class="user"><?php $posts->author(); ?></span>
                         <span class="views" title="阅读次数"><i class="fa fa-leaf"
                                                             aria-hidden="true"></i> <?php echo get_views_num($posts) ?></span>
                     </div>

@@ -26,7 +26,7 @@ You can also go to this url <https://paul.ren>, called Paul's Home ,to visit its
 
 ## Before Start
 
-This is a theme for typecho, which suit to write diary and display your home page.
+This is a theme for Typecho, which suit to write diary and display your home page.
 
 This theme stems from <https://paul.ren>, this is not perfect now, probably had more bugs. Cause of them, on the one hand, because of the Typecho's limit.On the other hand, time is in a hurry. 
 
@@ -52,7 +52,7 @@ recent blog articles parse according to RSS url which you fill out.
 
 recent diaries will exhibit four items, every items output about 50 words.
 
-works according to if it is exsits, and display them.
+works according to if it is exists, and display them.
 
 ## Diary Page
 
@@ -64,7 +64,7 @@ diary page: you should create independent page, select the `日记页面` templa
 
 works page: you should create independent page, select the `作品页面` template, slug must to fill `project`, and the content format should write like following.
 
-```json
+```json5
 [{
 "name": "project one",  // name
 "img": "",       // img url, if none, will display default img
@@ -84,11 +84,24 @@ says page: you should create independent page, select the `语录页面` templat
 生命的本质是苦难的。我不追求天赐荣华富贵，那会让我诚惶诚恐，消受不起，只是觉得，每天睁开眼睛发现自己还活着，没有缺胳膊少腿，还可以通过自己的努力和命运的黑色幽默较量搏斗，还可以勇敢的有尊严地与困难较量，这种感觉很踏实。———— 《愿你历经千帆，归来仍是少年》
 ```
 
-## Copyright & Opensource
+project information page: you can create a independent page which used `作品介绍页` template, this template will render page like <https://paul.ren/project/style>. And the format also used JSON.
+
+```json5
+{
+"info": "示例介绍", // information
+"project_img": "", // project image, if none, will used default image.
+"url": "https://works.paugram.com/style", // url
+"doc_url": "", // document url, if none, will not display it.
+"imgs": ["https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3344978418,213176529&fm=27&gp=0.jpg","https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3689685426,1442582010&fm=27&gp=0.jpg"],  // images
+"body": "<p>Kico Style 是一个简洁的前端样式框架，只提供页面布局等基础功能。代码轻量、不冗余，适合前端初学者和探索者。</p>" // content body.
+}
+```
+
+## Copyright & Open Source
 
 Belong to @Dreamer-Paul. MIT Licence.
 
-## Used Opensource
+## Used Open Source
 
 - fontawesome 4
 - Kico Style
