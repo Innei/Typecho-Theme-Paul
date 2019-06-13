@@ -8,20 +8,21 @@
  * @author Dreamer-Paul & Innei
  * @design Dreamer-Paul
  * @deploy Innei
- * @version 1.0 release
+ * @version 1.1 release
  * @link https://paul.ren
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');
 require_once 'functions.php';
+require_once 'Pual.php';
 require_once 'pages.php';
 ?>
 <main>
     <nav class="navigation">
         <a href="<?php $this->options->siteUrl(); ?>" class="active">首页</a>
-            <?php foreach ($GLOBALS['stack'] as $key => $item):
+        <?php foreach ($GLOBALS['stack'] as $key => $item):
             if ($item['template'] == 'page-index.php')
-                echo '<a href="'.$item['permalink'].'">'.$item['title'].'</a>';
+                echo '<a href="' . $item['permalink'] . '">' . $item['title'] . '</a>';
             ?>
         <?php endforeach; ?>
     </nav>
@@ -128,6 +129,36 @@ require_once 'pages.php';
                                 <p><span class="date"><?php $this->date(); ?></span></p></div>
                         </div>
                     <?php endwhile; ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-head green">
+                <h3 class="title"><i class="fa fa-comments"></i>语录</h3>
+                <h3 class="more"><a href="<?php echo $GLOBALS['say'] ?>"><i
+                                class="fa fa-chevron-right"></i></a>
+                </h3>
+            </div>
+            <div class="news-body green">
+                <div class="row s">
+                    <?php $says = Paul::parse_says($GLOBALS['say_text']);
+                    // 输出数量
+                    $num = 0;
+                    foreach ($says as $text => $avatar) {
+                        if ($num < 4):
+                        echo '<div class="col-m-6">
+                            <div class="boxed"><p>' . $avatar . '</p>
+                                <p><span class="avatar">' . $text . '</span></p></div>
+                            </div>
+                        ';
+                        $num++;
+                        else:
+                            break;
+                        endif;
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>

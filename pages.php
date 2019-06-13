@@ -18,6 +18,7 @@ while ($pages->next()):
             break;
         case 'page-say.php':
             $GLOBALS['say'] = $pages->permalink;
+            $GLOBALS['say_text'] = $pages->content;
             break;
         case 'page-index.php':
             $index_pages[] = $pages->permalink;

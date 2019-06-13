@@ -108,3 +108,9 @@ header svg {
     width: 2rem;
     height: 2rem
 }
+
+/* -- index 颜色标签 */
+
+.news-head.green h3, .news-body.green .boxed  {
+    background: #51d3ad;
+}
