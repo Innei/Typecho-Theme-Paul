@@ -20,12 +20,7 @@ require_once 'Pual.php';
         <div class="row">
            <?php Paul::bangumi() ?>
         </div>
-
     </section>
-    <script>
-        const bangumi = document.querySelector('.bangumi')
-
-    </script>
 </main>
 
 <?php $this->need('footer.php') ?>

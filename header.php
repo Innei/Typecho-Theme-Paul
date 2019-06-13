@@ -1,4 +1,20 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php $this->widget('Widget_Contents_Page_List')->to($pages);
+global $note, $collection, $project;
+while ($pages->next()):
+    switch ($pages->template):
+        case 'page-note.php':
+            $note = $pages->permalink;
+            break;
+        case 'page-works.php':
+            $project = $pages->permalink;
+            break;
+        case 'page-bangumi.php':
+            $collection = $pages->permalink;
+            break;
+    endswitch;
+endwhile;
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +28,7 @@
     <link href="<?php $this->options->themeUrl('src/kico.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?php $this->options->themeUrl('src/paul.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?php $this->options->themeUrl('src/main.css') ?>" rel="stylesheet" type="text/css">
-    <meta name="referrer" content="no-referrer" />
+    <meta name="referrer" content="no-referrer"/>
     <script src="<?php $this->options->themeUrl('src/kico.js') ?>"></script>
     <?php if ($this->options->favicon): ?>
         <link rel="icon" href="<?php $this->options->favicon(); ?>" sizes="192x192"/>
@@ -50,13 +66,11 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
             <?php endif; ?>
             <span><?php $this->user->name() ?></span></a>
-        <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
-        <?php while ($pages->next()): ?>
-            <?php if ($pages->slug == 'note'): ?>
-                <a href="<?php $pages->permalink(); ?>"><i class="fa fa-book"></i><span>日记</span></a>
-            <?php elseif ($pages->slug == 'project'): ?>
-                <a href="<?php $pages->permalink(); ?>"><i class="fa fa-flask"></i><span>项目</span></a>
-            <?php endif; endwhile; ?>
+        <?php
+        $note ? print_r('<a href="' . $note . '"><i class="fa fa-book"></i><span>日记</span></a>') : print_r('');
+        $project ? print_r('<a href="' . $project . '"><i class="fa fa-flask"></i><span>项目</span></a>') : print_r('');
+        $collection ? print_r('<a href="' . $collection . '"><i class="fa fa-star"></i><span>爱好</span></a>') : print_r('');
+        ?>
         <?php if ($this->user->hasLogin()): ?>
             <a href="<?php $this->options->adminUrl() ?>" target="_blank"><i class="fa fa-unlock-alt"
                                                                              aria-hidden="true"></i><span>后台</span></a>

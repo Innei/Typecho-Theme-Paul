@@ -4,7 +4,7 @@ Design Prototype: <https://paul.ren>
 
 <a href="../master/README-CN.md">Chinese Document</a>
 
-Progress: 8/10
+More Star, More Demands, More Upgrade.
 
 ## Preview
 
@@ -25,8 +25,8 @@ See [Pual Typecho主题发布](https://shizuri.net/archives/131/).
 - [x] Beautiful Works page
 - [x] Commit
 - [x] Like, Views, Word Count (need VOID_Plugin)
-- [ ] Player
-- [ ] Others
+- [x] Player
+- [x] Others
 
 ## Before Start
 
@@ -124,7 +124,7 @@ var paul_music = new function () {
 }
 ```
 
-To like one article, based on VOID_Plugin, you should move the `VOID` directory to the `../plugins/`, and go to dashboard to enable it. '
+To like one article, you should use VOID_Plugin, because this demand based on VOID_Plugin, you should move the `VOID` directory to the `../plugins/`, and go to dashboard to enable it. '
 
 Enjoy.
 

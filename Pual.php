@@ -30,6 +30,6 @@ class Paul
                 </a>
             </div>';
         }
-
+        return array($titles,$covers,$total_count);
     }
 }
