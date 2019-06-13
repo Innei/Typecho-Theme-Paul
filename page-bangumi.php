@@ -9,12 +9,13 @@
 
 $this->need('header.php');
 require_once 'Pual.php';
+require_once 'pages.php';
 ?>
 
 <main>
     <nav class="navigation">
         <a href="<?php $this->options->siteUrl(); ?>">首页</a>
-        <a href="#" class="active">追番</a>
+        <a href="<?php $GLOBALS['bangumi'] ?>" class="active">追番</a>
     </nav>
     <section class="paul-bangumi">
         <div class="row">

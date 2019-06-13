@@ -14,37 +14,16 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $this->need('header.php');
 require_once 'functions.php';
+require_once 'pages.php';
 ?>
 <main>
     <nav class="navigation">
         <a href="<?php $this->options->siteUrl(); ?>" class="active">首页</a>
-        <?php $this->widget('Widget_Contents_Page_List')->to($pages);
-        global $index_about, $index_donate, $index_dream, $index_works;
-        while ($pages->next()):
-            switch ($pages->slug) {
-                case 'about':
-                    $index_about = $pages->permalink;
-                    break;
-                case  'donate':
-                    $index_donate = $pages->permalink;
-                    break;
-                case 'dream':
-                    $index_dream = $pages->permalink;
-                    break;
-                case 'project':
-                    $index_works = $pages->text;
-                    break;
-                case 'note':
-                    $index_note = $pages->permalink;
-                    break;
-                default:
-                    break;
-            }
-        endwhile; ?>
-
-        <?php if ($index_about): ?><a href="<?php echo $index_about ?>">关于</a><?php endif ?>
-        <?php if ($index_donate): ?><a href="<?php echo $index_donate ?>">赞助</a> <?php endif; ?>
-        <?php if ($index_dream): ?><a href="<?php echo $index_dream ?>">心愿</a> <?php endif; ?>
+            <?php foreach ($GLOBALS['stack'] as $key => $item):
+            if ($item['template'] == 'page-index.php')
+                echo '<a href="'.$item['permalink'].'">'.$item['title'].'</a>';
+            ?>
+        <?php endforeach; ?>
     </nav>
     <section class="me">
         <div class="my-avatar">
@@ -92,7 +71,6 @@ require_once 'functions.php';
         </div>
     </section>
     <section class="paul-news">
-        <!--        TODO 是否显示-->
         <div class="news-item">
             <div class="news-head">
                 <h3 class="title"><i class="fa fa-book"></i>最新博文</h3>
@@ -118,15 +96,19 @@ require_once 'functions.php';
             </div>
             <div class="news-body">
                 <div class="row s">
-                    <?php $projects_json = json_decode($index_works, true);
-                    foreach ($projects_json as $key => $value):?>
-                        <div class="col-4 col-m-2">
-                            <a href="<?php echo $value['url'] ?>" class="news-project">
-                                <img src="<?php $value['img'] ? print_r($value['img']) : $this->options->themeUrl('src/img/Kico.jpg') ?>?>">
-                                <h4><?php echo $value['name'] ?></h4>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
+                    <?php foreach ($GLOBALS['stack'] as $work) {
+                        if ($work['template'] == 'page-works_info.php'):
+                            // 解析介绍页 JSON 格式
+                            $JSON = json_decode($work['text'], true);
+                            $img = $JSON['project_img'] ? $JSON['project_img'] : $this->options->themeUrl . '/src/img/Kico.jpg';
+                            echo '<div class="col-4 col-m-2" >
+                        <a href="' . $work['permalink'] . '" class="news-project">
+                            <img src="' . $img . '">
+                            <h4>' . $work['title'] . '</h4>
+                        </a>
+                    </div>';
+                        endif;
+                    } ?>
                 </div>
             </div>
         </div>

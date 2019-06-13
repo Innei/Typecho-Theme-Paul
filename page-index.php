@@ -8,43 +8,17 @@
  */
 $this->need('header.php');
 require_once 'functions.php';
-$this->widget('Widget_Contents_Page_List')->to($pages);
-global $index_about, $index_donate, $index_dream, $index_works;
-while ($pages->next()):
-    switch ($pages->slug) {
-        case 'about':
-            $index_about = $pages->permalink;
-            break;
-        case  'donate':
-            $index_donate = $pages->permalink;
-            break;
-        case 'dream':
-            $index_dream = $pages->permalink;
-            break;
-        case 'project':
-            $index_works = $pages->text;
-            break;
-        case 'note':
-            $index_note = $pages->permalink;
-            break;
-        default:
-            break;
-    }
-endwhile;
+require_once 'pages.php';
 ?>
 
     <main class="is-article">
         <nav class="navigation">
             <a href="<?php $this->options->siteUrl(); ?>">首页</a>
-            <?php if ($index_about): ?><a
-                href="<?php echo $index_about ?>" <?php $this->slug == 'about' ? print_r('class="active"') : print_r(''); ?> >
-                    关于</a><?php endif ?>
-            <?php if ($index_donate): ?><a
-                href="<?php echo $index_donate ?>" <?php $this->slug == 'donate' ? print_r('class="active"') : print_r(''); ?>>
-                    赞助</a> <?php endif; ?>
-            <?php if ($index_dream): ?><a
-                href="<?php echo $index_dream ?>" <?php $this->slug == 'dream' ? print_r('class="active"') : print_r(''); ?>>
-                    心愿</a> <?php endif; ?>
+            <?php foreach ($GLOBALS['stack'] as $key => $item):
+                if ($item['template'] == 'page-index.php')
+                    $item['permalink'] == $this->permalink ? print_r('<a href="' . $item['permalink'] . '" class="active">' . $item['title'] . '</a>') : print_r('<a href="' . $item['permalink'] . '">' . $item['title'] . '</a>');
+                ?>
+            <?php endforeach; ?>
         </nav>
         <article>
             <h1><?php $this->title(); ?></h1>

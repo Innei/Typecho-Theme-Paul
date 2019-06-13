@@ -8,28 +8,15 @@
  */
 $this->need('header.php');
 require_once 'functions.php';
-$this->widget('Widget_Contents_Page_List')->to($pages);
-global $pages_note, $pages_say;
-while ($pages->next()):
-    switch ($pages->slug) {
-        case 'note':
-            $pages_note = $pages->permalink;
-            break;
-        case 'saying':
-            $pages_say = $pages->permalink;
-            break;
-        default:
-            break;
-    }
-endwhile;
+require_once 'pages.php';
 ?>
 
     <main class="is-article">
         <nav class="navigation">
-            <a href="<?php echo $pages_note; ?>" class="active">日记</a>
+            <a href="<?php echo $GLOBALS['note']; ?>" class="active">日记</a>
             <?php if ($this->options->blog_url): ?> <a href="<?php $this->options->blog_url(); ?>" target="_blank">
                     博文</a><?php endif; ?>
-            <?php if ($pages_say): ?><a href="<?php echo $pages_say; ?>">语录</a><?php endif; ?>
+            <?php if ($GLOBALS['say']): ?><a href="<?php echo $GLOBALS['say']; ?>">语录</a><?php endif; ?>
         </nav>
         <article>
             <?php

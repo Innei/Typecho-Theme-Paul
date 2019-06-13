@@ -8,31 +8,46 @@
  */
 $this->need('header.php');
 require_once 'functions.php';
+require_once 'pages.php';
 $projects_text = $this->text;
 $projects_json = json_decode($projects_text, true);
 ?>
 
 
-<main>
-    <nav class="navigation">
-        <a href="#" class="active">精选</a>
-        <!-- <a href="/project/web">网站</a>
-         <a href="/project/music">音乐</a>-->
-    </nav>
-    <section class="page">
-        <section class="project-list">
-            <div class="row multi">
-                <?php foreach ($projects_json as $key => $value): ?>
-                    <div class="col-4 col-s-3 col-m-2">
-                        <a href="<?php echo $value['url'] ?>">
-                            <img src="<?php $value['img'] ? print_r($value['img']) : $this->options->themeUrl('src/img/Kico.jpg') ?>?>">
-                            <h4><?php echo $value['name'] ?></h4>
+    <main>
+        <nav class="navigation">
+            <a href="<?php $GLOBALS['project'] ?>" class="active">精选</a>
+            <!-- <a href="/project/web">网站</a>
+             <a href="/project/music">音乐</a>-->
+        </nav>
+        <section class="page">
+            <section class="project-list">
+                <div class="row multi">
+                    <?php foreach ($GLOBALS['stack'] as $work) {
+                        if ($work['template'] == 'page-works_info.php'):
+                            // 解析介绍页 JSON 格式
+                            $JSON = json_decode($work['text'], true);
+                            $img = $JSON['project_img'] ? $JSON['project_img'] : $this->options->themeUrl . '/src/img/Kico.jpg';
+                            echo '<div class="col-4 col-s-3 col-m-2">
+                        <a href="' . $work['permalink'] . '">
+                            <img src="' . $img . '">
+                            <h4>' . $work['title'] . '</h4>
                         </a>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                    </div>';
+                        endif;
+                    } ?>
+
+                    <?php foreach ($projects_json as $key => $value): ?>
+                        <div class="col-4 col-s-3 col-m-2">
+                            <a href="<?php echo $value['url'] ?>">
+                                <img src="<?php $value['img'] ? print_r($value['img']) : $this->options->themeUrl('src/img/Kico.jpg') ?>?>">
+                                <h4><?php echo $value['name'] ?></h4>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </section>
         </section>
-    </section>
-</main>
+    </main>
 
 <?php $this->need('footer.php') ?>

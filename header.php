@@ -1,6 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages);
-global $note, $collection, $project;
+/*global $note, $collection, $project;
 while ($pages->next()):
     switch ($pages->template):
         case 'page-note.php':
@@ -13,7 +13,8 @@ while ($pages->next()):
             $collection = $pages->permalink;
             break;
     endswitch;
-endwhile;
+endwhile;*/
+require_once 'pages.php';
 ?>
 
 <head>
@@ -67,9 +68,10 @@ endwhile;
             <?php endif; ?>
             <span><?php $this->user->name() ?></span></a>
         <?php
-        $note ? print_r('<a href="' . $note . '"><i class="fa fa-book"></i><span>日记</span></a>') : print_r('');
-        $project ? print_r('<a href="' . $project . '"><i class="fa fa-flask"></i><span>项目</span></a>') : print_r('');
-        $collection ? print_r('<a href="' . $collection . '"><i class="fa fa-star"></i><span>爱好</span></a>') : print_r('');
+
+        $GLOBALS['note'] ? print_r('<a href="' . $GLOBALS['note'] . '"><i class="fa fa-book"></i><span>日记</span></a>') : print_r('');
+        $GLOBALS['project'] ? print_r('<a href="' . $GLOBALS['project'] . '"><i class="fa fa-flask"></i><span>项目</span></a>') : print_r('');
+        $GLOBALS['collection'] ? print_r('<a href="' . $GLOBALS['collection'] . '"><i class="fa fa-star"></i><span>爱好</span></a>') : print_r('');
         ?>
         <?php if ($this->user->hasLogin()): ?>
             <a href="<?php $this->options->adminUrl() ?>" target="_blank"><i class="fa fa-unlock-alt"
