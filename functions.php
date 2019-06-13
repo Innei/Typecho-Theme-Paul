@@ -32,6 +32,9 @@ function themeConfig($form)
     // 自定义日记输出数量
     $note_nums = new Typecho_Widget_Helper_Form_Element_Text('note_nums', NULL, NULL, _t('日记输出数量'), _t('在这里填入你需要在日记页面输出的日记数量'));
     $form->addInput($note_nums);
+    // 自定义追番输出数量
+    $display_bgm_num = new Typecho_Widget_Helper_Form_Element_Text('display_bgm_num', NULL, NULL, _t('追番输出数量'), _t('在这里填入你需要在追番页面输出的追番数量'));
+    $form->addInput($display_bgm_num);
     // 自定义样式表
     $custom_css = new Typecho_Widget_Helper_Form_Element_Textarea('custom_css', NULL, NULL, _t('自定义样式表'), _t('在这里填入你的自定义样式表，不填则不输出。'));
     $form->addInput($custom_css);
