@@ -8,7 +8,21 @@ More Star, More Demands, More Upgrade.
 
 ## Preview
 
-![Xnip2019-06-11_19-01-55.png](https://i.loli.net/2019/06/11/5cff8a35163e519776.png)
+![image](https://user-images.githubusercontent.com/41265413/59440844-2ca08a00-8e2a-11e9-95bf-3acc5a2acc6d.png)
+
+![image](https://user-images.githubusercontent.com/41265413/59444149-e9e1b080-8e2f-11e9-94b8-2e45c59fcf8b.png)
+
+![image](https://user-images.githubusercontent.com/41265413/59440870-39bd7900-8e2a-11e9-879b-04e7a792235c.png)
+
+![image](https://user-images.githubusercontent.com/41265413/59440890-40e48700-8e2a-11e9-8b71-3d1b4c5479b9.png)
+
+![image](https://user-images.githubusercontent.com/41265413/59440935-55288400-8e2a-11e9-8dc2-84a42e61343a.png)
+
+![image](https://user-images.githubusercontent.com/41265413/59440958-5eb1ec00-8e2a-11e9-8176-42e60bff4164.png)
+
+![image](https://user-images.githubusercontent.com/41265413/59441089-99b41f80-8e2a-11e9-9a97-bd0c19946756.png)
+
+![image](https://user-images.githubusercontent.com/41265413/59441120-a9cbff00-8e2a-11e9-87ef-241ff0edccdc.png)
 
 You can also go to this url <https://paul.ren>, called Paul's Home ,to visit its prototype.
 
@@ -42,11 +56,11 @@ Clone this repo, and go to dashboard -- theme -- Paul, enable it. In the this th
 
 On the index page, you will see four of nav button on the top of the window, Index, about, donate and dream. It will display according to your create the necessary pages. It will display `index` button , if your don't do anything, it is default. So you should do like following.
 
-about page: you should create independent page, select the `首页模板` template, slug must to fill `about`, and you can write any content you like.
+about page: you should create independent page, select the `首页模板` template, and you can write any content you like.
 
-dream page: you should create independent page, select the `首页模板` template, slug must to fill `dream`, and you can write any content you like.
+dream page: you should create independent page, select the `首页模板` template, and you can write any content you like.
 
-donate page: you should create independent page, select the `首页模板` template, slug must to fill `donate`, and you can write any content you like.
+donate page: you should create independent page, select the `首页模板` template, and you can write any content you like.
 
 index page had four columns, personal information, recent articles, recent diaries, projects.
 
@@ -62,11 +76,11 @@ works according to if it is exists, and display them.
 
 diary page is the most important page in this theme. It is the core. So you must be create it necessary and correctly.
 
-diary page: you should create independent page, select the `日记页面` template, slug must to fill `note`, and you can write any content you like, because it will ingore you content which you worte. How many diary will display according to your setting in the theme config. But, because of the limit of the typecho, other articles also can access by enter the permanent link.
+diary page: you should create independent page, select the `日记页面` template, and you can write any content you like, because it will ingore you content which you worte. How many diary will display according to your setting in the theme config. But, because of the limit of the typecho, other articles also can access by enter the permanent link.
 
 ## Other Page [Option]
 
-works page: you should create independent page, select the `作品页面` template, slug must to fill `project`, and the content format should write like following.
+works page: you should create independent page, select the `作品页面` template, and the content format should write like following.
 
 ```json5
 [{
@@ -80,7 +94,7 @@ works page: you should create independent page, select the `作品页面` templa
 }]
 ```
 
-says page: you should create independent page, select the `语录页面` template, slug must to fill `saying`, and the content format should write like following. (says body --- say's avatar, every says should have a blank line)
+says page: you should create independent page, select the `语录页面` template, and the content format should write like following. (says body --- say's avatar, every says should have a blank line)
 
 ```
 可能，是命运的安排，让我们自愿走上了这条艰难的道路，然后，在这条布满荆棘的曲折小路上慢慢去寻找人生的乐趣。然而，此时，我才发现，真正美妙而有意义的人生，大概就从我坚定不移地追求自己梦想的时候，才正式开始。———— 《愿你历经千帆，归来仍是少年》
