@@ -1,7 +1,6 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->widget('Widget_Contents_Page_List')->to($pages);
-//global $note, $collection, $project, $works, $say, $index_pages;
-$works = $index_pages = array();
+$works = $index_pages = $collection = array();
 while ($pages->next()):
     switch ($pages->template):
         case 'page-note.php':
@@ -11,10 +10,13 @@ while ($pages->next()):
             $GLOBALS['project'] = $pages->permalink;
             break;
         case 'page-bangumi.php':
-            $GLOBALS['collection'] = $pages->permalink;
+            $GLOBALS['bangumi'] = $pages->permalink;
             break;
         case 'page-works_info.php':
             $works[] = $pages->permalink;
+            break;
+        case 'page-music.php':
+            $GLOBALS['music'] = $pages->permalink;
             break;
         case 'page-say.php':
             $GLOBALS['say'] = $pages->permalink;

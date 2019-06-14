@@ -16,6 +16,7 @@ require_once 'pages.php';
     <nav class="navigation">
         <a href="<?php $this->options->siteUrl(); ?>">首页</a>
         <a href="<?php $GLOBALS['bangumi'] ?>" class="active">追番</a>
+        <?php if ($GLOBALS['music']): ?><a href="<?php echo $GLOBALS['music'] ?>">音乐</a><?php endif; ?>
     </nav>
     <section class="paul-bangumi">
         <div class="row">

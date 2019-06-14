@@ -206,7 +206,7 @@ main {
     max-width: 75em;
     padding: 1.5em 2em;
     transition: transform .3s, opacity .3s;
-    min-height: calc(100vh - 10vw - 3.25em)
+    min-height: calc(100vh - 10vw - 4.75em)
 }
 
 main.is-article {
