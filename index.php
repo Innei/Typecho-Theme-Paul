@@ -89,30 +89,32 @@ require_once 'pages.php';
                 </div>
             <?php endif; ?>
         </div>
-        <div class="news-item">
-            <div class="news-head grey">
-                <h3 class="title"><i class="fa fa-leaf"></i>代表作品</h3>
-                <h3 class="more"><a href="https://paul.ren/project"><i
-                                class="fa fa-chevron-right"></i></a></h3>
-            </div>
-            <div class="news-body">
-                <div class="row s">
-                    <?php foreach ($GLOBALS['stack'] as $work) {
-                        if ($work['template'] == 'page-works_info.php'):
-                            // 解析介绍页 JSON 格式
-                            $JSON = json_decode($work['text'], true);
-                            $img = $JSON['project_img'] ? $JSON['project_img'] : $this->options->themeUrl . '/src/img/Kico.jpg';
-                            echo '<div class="col-4 col-m-2" >
+        <?php if ($GLOBALS['project']): ?>
+            <div class="news-item">
+                <div class="news-head grey">
+                    <h3 class="title"><i class="fa fa-leaf"></i>代表作品</h3>
+                    <h3 class="more"><a href="https://paul.ren/project"><i
+                                    class="fa fa-chevron-right"></i></a></h3>
+                </div>
+                <div class="news-body">
+                    <div class="row s">
+                        <?php foreach ($GLOBALS['stack'] as $work) {
+                            if ($work['template'] == 'page-works_info.php'):
+                                // 解析介绍页 JSON 格式
+                                $JSON = json_decode($work['text'], true);
+                                $img = $JSON['project_img'] ? $JSON['project_img'] : $this->options->themeUrl . '/src/img/Kico.jpg';
+                                echo '<div class="col-4 col-m-2" >
                         <a href="' . $work['permalink'] . '" class="news-project">
                             <img src="' . $img . '">
                             <h4>' . $work['title'] . '</h4>
                         </a>
                     </div>';
-                        endif;
-                    } ?>
+                            endif;
+                        } ?>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
         <div class="news-item">
             <div class="news-head red">
                 <h3 class="title"><i class="fa fa-comments"></i>日记</h3>
@@ -147,12 +149,12 @@ require_once 'pages.php';
                     $num = 0;
                     foreach ($says as $text => $avatar) {
                         if ($num < 4):
-                        echo '<div class="col-m-6">
+                            echo '<div class="col-m-6">
                             <div class="boxed"><p>' . $avatar . '</p>
                                 <p><span class="avatar">' . $text . '</span></p></div>
                             </div>
                         ';
-                        $num++;
+                            $num++;
                         else:
                             break;
                         endif;
