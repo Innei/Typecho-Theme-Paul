@@ -35,6 +35,9 @@ function themeConfig($form)
     // 自定义追番输出数量
     $display_bgm_num = new Typecho_Widget_Helper_Form_Element_Text('display_bgm_num', NULL, NULL, _t('追番输出数量'), _t('在这里填入你需要在追番页面输出的追番数量'));
     $form->addInput($display_bgm_num);
+    // 日记预览页是否全文输出
+    $is_display_all_content = new Typecho_Widget_Helper_Form_Element_Radio('is_display_all_content', array('0' => _t('全文输出'), '1' => _t('部分输出')), _t('日记预览页输出设置'), _t('日记预览页是否全文输出'));
+    $form->addInput($is_display_all_content);
     // 自定义样式表
     $custom_css = new Typecho_Widget_Helper_Form_Element_Textarea('custom_css', NULL, NULL, _t('自定义样式表'), _t('在这里填入你的自定义样式表，不填则不输出。'));
     $form->addInput($custom_css);

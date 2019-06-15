@@ -288,3 +288,9 @@ pre code {
 .namespace {
     opacity: .7
 }
+
+/* -- 日记页 */
+
+.note-content .btn {
+    border-radius: 4rem
+}
