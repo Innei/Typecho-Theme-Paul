@@ -162,7 +162,7 @@ header svg {
 }
 
 .post-content h2 {
-    border-left: #f29dce;
+    border-left: #9de5f2;
     border-width: 0 0 0 4px;
     border-style: solid;
     padding-left: 0.5em;
@@ -190,4 +190,101 @@ header svg {
     .note-title {
         display: none;
     }
+    .paul-say {
+        columns: 1;
+    }
+}
+
+/* -- code  */
+
+pre>code {
+    color: #fff;
+    padding: 1em;
+    display: block;
+    overflow-x: auto;
+    word-break: normal;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #333;
+    transition: border .3s, background .3s;
+    word-wrap: normal;
+    font-family: consolas, courier new, monospace;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+pre code {
+    color: inherit;
+    border: 1px solid #ddd;
+    background: linear-gradient(rgba(18, 18, 18, .05) 50%, transparent 0);
+    background-size: auto 3em;
+    background-origin: content-box;
+}
+
+:not(pre)>code {
+    color: #ffa5a5;
+    background: rgba(255, 255, 255, .2);
+}
+
+:not(pre)>code[class*="lang"] {
+    position: relative;
+    padding: .2em;
+    border-radius: 0.3em;
+    color: #c92c2c;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: inline;
+    white-space: normal;
+}
+
+.token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
+    color: #7D8B99
+}
+
+.token.punctuation {
+    color: #5F6364
+}
+
+.token.property, .token.tag, .token.boolean, .token.number, .token.function-name, .token.constant, .token.symbol, .token.deleted {
+    color: #c92c2c
+}
+
+.token.selector, .token.attr-name, .token.string, .token.char, .token.function, .token.builtin, .token.inserted {
+    color: #2f9c0a
+}
+
+.token.operator, .token.entity, .token.url, .token.variable {
+    color: #a67f59
+}
+
+.token.atrule, .token.attr-value, .token.keyword, .token.class-name {
+    color: #1990b8
+}
+
+.token.regex, .token.important {
+    color: #e90
+}
+
+.language-css .token.string, .style .token.string {
+    color: #a67f59;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.token.bold {
+    font-weight: bold
+}
+
+.token.italic {
+    font-style: italic
+}
+
+.token.entity {
+    cursor: help
+}
+
+.token.important {
+    font-weight: normal
+}
+
+.namespace {
+    opacity: .7
 }

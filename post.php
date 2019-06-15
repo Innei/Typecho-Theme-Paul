@@ -88,6 +88,7 @@ require_once 'pages.php';
             }
         }())
     </script>
+    <script src="<?php $this->options->themeUrl('src/prism.js') ?>"></script>
 </main>
 
 <?php $this->footer(); ?>
