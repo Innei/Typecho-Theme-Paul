@@ -87,7 +87,7 @@
     margin-bottom: .5rem
 }
 
-.reply_form div > input[type=text] {
+.reply_form div>input[type=text] {
     display: block;
     width: 1000px
 }
@@ -111,6 +111,83 @@ header svg {
 
 /* -- index 颜色标签 */
 
-.news-head.green h3, .news-body.green .boxed  {
+.news-head.green h3, .news-body.green .boxed {
     background: #51d3ad;
+}
+
+.note-title {
+    z-index: -1;
+    font-weight: 400;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center
+}
+
+.note-content .post-title {
+    text-align: center;
+    margin: 0!important;
+}
+
+.paul-note {
+    margin-top: -1.5rem;
+}
+
+/* -- post ???? */
+
+.note-content h1 {
+    font-size: 1.75em;
+}
+
+.note-content h2 {
+    font-size: 1.5em;
+}
+
+.note-content h3 {
+    font-size: 1.35em;
+}
+
+.note-content h4 {
+    font-size: 1.1em;
+}
+
+.note-content h5 {
+    font-size: 0.9em;
+}
+
+.note-content h6 {
+    font-size: 0.7em;
+}
+
+.post-content h2 {
+    border-left: #f29dce;
+    border-width: 0 0 0 4px;
+    border-style: solid;
+    padding-left: 0.5em;
+}
+
+.post-content h3:before {
+    content: "#";
+    margin-right: 5px;
+    color: #4caf50;
+    font-weight: 400;
+}
+
+.post-content h4 {
+    color: #546e7a;
+}
+
+.post-content h4:before {
+    content: "&";
+    margin-right: 5px;
+    color: #546e7a;
+    font-weight: 400;
+}
+
+@media (max-width: 500px) {
+    .note-title {
+        display: none;
+    }
 }

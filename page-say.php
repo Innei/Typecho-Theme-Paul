@@ -8,20 +8,7 @@
 $this->need('header.php');
 require_once 'pages.php';
 require_once 'Pual.php';
-/*$this->widget('Widget_Contents_Page_List')->to($pages);
-global $pages_note, $pages_say;
-while ($pages->next()):
-    switch ($pages->slug) {
-        case 'note':
-            $pages_note = $pages->permalink;
-            break;
-        case 'saying':
-            $pages_say = $pages->permalink;
-            break;
-        default:
-            break;
-    }
-endwhile;*/
+
 ?>
 
 

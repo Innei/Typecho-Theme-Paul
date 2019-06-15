@@ -66,7 +66,7 @@ require_once 'pages.php';
             <?php if ($this->options->svg_path): $this->options->svg_path(); else: ?>
                 <i class="fa fa-user" aria-hidden="true"></i>
             <?php endif; ?>
-            <span><?php $this->user->name() ?></span></a>
+            <span><?php $this->author() ?></span></a>
         <?php
 
         $GLOBALS['note'] ? print_r('<a href="' . $GLOBALS['note'] . '"><i class="fa fa-book"></i><span>日记</span></a>') : print_r('');

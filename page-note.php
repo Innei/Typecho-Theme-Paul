@@ -27,7 +27,7 @@ require_once 'pages.php';
                                                    style="color: #000"><?php echo date('Y-m-d', $posts->created); ?></a>
                     <small>(<?php echo date('l', $posts->created); ?>)</small>
                     <div
-                        style="z-index: -1;font-weight: 400;position: absolute;top: 0;left: 0;right: 0;bottom: 0;text-align: center"><?php $posts->title() ?></div>
+                        class="note-title"><?php $posts->title() ?></div>
                 </h1>
                 <div class="paul-note" id="cid-<?php $posts->cid(); ?>">
                     <div class="note-content">
