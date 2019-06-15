@@ -42,7 +42,7 @@ require_once 'pages.php';
                         echo '<div>'.$content.'</div>';
                         print_r('<section class="note-navigator"><a class="btn yellow" href="' . $posts->permalink . '">继续阅读</a></section>');
                     } else {
-                        $this->content();
+                        $posts->content();
                     }
                     ?>
                 </div>
