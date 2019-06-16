@@ -172,6 +172,10 @@ var paul_music = new function () {
 
 - [x] 根据分类制定独立页面, 不同输出
 
+## 注意事项
+
+除了在 post 页面, 其他页面中都是不带 referrer 信息的, 可能会影响到你的统计代码.
+
 ## 版权 & 开源
 
 @Dreamer-Paul & @Innei 所有, 开源遵循 MIT.

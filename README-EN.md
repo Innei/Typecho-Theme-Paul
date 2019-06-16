@@ -1,4 +1,4 @@
-# Paul Theme Typecho Introduction
+# Typecho Theme Paul Introduction
 
 Design Prototype: <https://paul.ren>
 
@@ -164,6 +164,10 @@ Notice: Due to Netease Music Api's limitation, you will get `token` `key` `cooki
 ```
 
 Enjoy.
+
+## Notice
+
+Unless in `Post` page, other pages will not had referrer meta head, it will affect your analysis code.
 
 ## Copyright & Open Source
 
