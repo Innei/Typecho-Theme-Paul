@@ -1,19 +1,4 @@
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->widget('Widget_Contents_Page_List')->to($pages);
-/*global $note, $collection, $project;
-while ($pages->next()):
-    switch ($pages->template):
-        case 'page-note.php':
-            $note = $pages->permalink;
-            break;
-        case 'page-works.php':
-            $project = $pages->permalink;
-            break;
-        case 'page-bangumi.php':
-            $collection = $pages->permalink;
-            break;
-    endswitch;
-endwhile;*/
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 require_once 'pages.php';
 ?>
 
@@ -71,7 +56,7 @@ require_once 'pages.php';
 
         $GLOBALS['note'] ? print_r('<a href="' . $GLOBALS['note'] . '"><i class="fa fa-book"></i><span>日记</span></a>') : print_r('');
         $GLOBALS['project'] ? print_r('<a href="' . $GLOBALS['project'] . '"><i class="fa fa-flask"></i><span>项目</span></a>') : print_r('');
-        $GLOBALS['bangumi'] ? print_r('<a href="' . $GLOBALS['bangumi'] . '"><i class="fa fa-star"></i><span>爱好</span></a>') : $GLOBALS['music'] ? print_r('<a href="' . $GLOBALS['music'] . '"><i class="fa fa-star"></i><span>爱好</span></a>') : print_r('');
+        $GLOBALS['bangumi'] ? print_r('<a href="' . $GLOBALS['bangumi'] . '"><i class="fa fa-star"></i><span>爱好</span></a>') : ($GLOBALS['music'] ? print_r('<a href="' . $GLOBALS['music'] . '"><i class="fa fa-star"></i><span>爱好</span></a>') : print_r(''));
         ?>
         <?php if ($this->user->hasLogin()): ?>
             <a href="<?php $this->options->adminUrl() ?>" target="_blank"><i class="fa fa-unlock-alt"
