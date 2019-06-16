@@ -89,6 +89,17 @@ require_once 'pages.php';
         }())
     </script>
     <script src="<?php $this->options->themeUrl('src/prism.js') ?>"></script>
+    <script>
+        (function () {
+            const commentFunction = document.querySelector('head').querySelector('script[type]')
+            const innerHTML = commentFunction.innerHTML
+            if (innerHTML.match(/this.dom\('respond-.*?'\)/ig)) {
+                const after = innerHTML.replace(/this.dom\('respond-.*?'\)/ig, "this.dom('respond-post-<?php $this->cid() ?>')")
+                eval(after)
+            }
+
+        })()
+    </script>
 </main>
 
 <?php $this->footer(); ?>

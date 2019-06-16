@@ -70,7 +70,7 @@ var paul = new function () {
     };
     var pjax = new Pjax({
         elements: "a[href]:not([target=_blank]):not([onclick])",
-        selectors: ["title", "meta[name=description]", "meta[property]", "main", "action"],
+        selectors: ["title", "meta[name=description]", "meta[property]", "main", "action", "meta[name=referrer]"],
         timeout: 10000,
         cacheBust: false
     });
@@ -81,9 +81,6 @@ var paul = new function () {
     document.addEventListener('pjax:complete', function () {
         document.body.classList.remove("loading");
         paul.init();
-    });
-    document.addEventListener('pjax:error', function () {
-        ks.notice("网络连接异常！", {color: "red"});
     });
 };
 var paul_music = new function () {

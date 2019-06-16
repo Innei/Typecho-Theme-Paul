@@ -14,7 +14,11 @@ require_once 'pages.php';
     <link href="<?php $this->options->themeUrl('src/kico.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?php $this->options->themeUrl('src/paul.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?php $this->options->themeUrl('src/main.css') ?>" rel="stylesheet" type="text/css">
-    <meta name="referrer" content="no-referrer"/>
+    <?php if ($this->is('page')): ?>
+        <meta name="referrer" content="no-referrer"/>
+    <?php else: ?>
+        <meta name="referrer" content="origin-when-cross-origin"/>
+    <?php endif; ?>
     <script src="<?php $this->options->themeUrl('src/kico.js') ?>"></script>
     <?php if ($this->options->favicon): ?>
         <link rel="icon" href="<?php $this->options->favicon(); ?>" sizes="192x192"/>
