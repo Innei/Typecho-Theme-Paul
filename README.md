@@ -2,6 +2,8 @@
 
 设计原型 <https://paul.ren>
 
+Demo 地址: <https://null.innei.ml>
+
 <a href="../master/README-EN.md">English Document</a>
 
 如果你喜欢，请我一个 Star, 谢谢～
@@ -45,6 +47,8 @@
 - [x] 播放器
 - [x] 音乐页
 - [x] 其他
+- [x] ajax 加载更多文章
+- [x] 全站无刷新体验
 
 ## 开始之前
 

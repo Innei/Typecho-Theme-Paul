@@ -2,6 +2,8 @@
 
 Design Prototype: <https://paul.ren>
 
+Demo: <https://null.innei.ml>
+
 <a href="../master/README-EN.md">Chinese Document</a>
 
 More Star, More Demands, More Upgrade.
@@ -41,6 +43,8 @@ See [Pual Typecho主题发布](https://shizuri.net/archives/131/).
 - [x] Like, Views, Word Count (need VOID_Plugin)
 - [x] Player
 - [x] Others
+- [x] No-refresh Full Website
+- [x] Load more with ajax
 
 ## Before Start
 
