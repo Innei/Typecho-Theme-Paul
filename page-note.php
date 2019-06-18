@@ -11,12 +11,11 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
         $postnum = $postnum['allpostnum'];
         return (int)$postnum;
     }
-
-    var_dump(allpostnum($this->author->uid));
     if (allpostnum($this->author->uid) < $_GET['index']):http_response_code(422);
         return;endif;
-    for ($i = 0; $i < $_GET['index'] && $posts->next(); $i++) {
+    for ($i = 0; $i < $_GET['index']; $i++) {
         // 跳过代码
+        $posts->next();
     }
     for ($i = 0; $i < 5 && $posts->next(); $i++):
         ?>
@@ -229,7 +228,6 @@ require_once 'pages.php';
                 const doc = function (str) {
                     return parser.parseFromString(str, 'text/html')
                 }
-
                 function load_more() {
                     ks.notice("稍等哈 φ(>ω<*) ", {
                         time: 1000,
@@ -241,6 +239,7 @@ require_once 'pages.php';
                         success: res => {
                             noteNavigator.remove()
                             const strToDOM = doc(res.responseText)
+                            window.pjax.refresh(strToDOM)
                             article_body.appendChild(strToDOM.querySelector('article'))
                             article_body.appendChild(noteNavigator)
                             current_index += 5
@@ -249,7 +248,7 @@ require_once 'pages.php';
                             if (res.status === 422) {
                                 noteNavigator.remove()
                                 ks.notice("没了哦!~(｀・ω・´)", {
-                                    color: 'yellow',
+                                    color: 'red',
                                     time: 1500
                                 })
                             }

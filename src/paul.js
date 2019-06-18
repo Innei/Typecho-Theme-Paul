@@ -68,20 +68,6 @@ var paul = new function () {
         if (typeof _hmt !== 'undefined') _hmt.push(['_trackPageview', location.pathname + location.search]);
         ks.image("article img, .paul-say img, .project-screenshot img, .gallery-item");
     };
-    var pjax = new Pjax({
-        elements: "a[href]:not([target=_blank]):not([onclick])",
-        selectors: ["title", "meta[name=description]", "meta[property]", "main", "action", "meta[name=referrer]"],
-        timeout: 10000,
-        cacheBust: false
-    });
-    document.addEventListener('pjax:send', function () {
-        document.body.classList.add("loading");
-        head.wrap.classList.remove("active");
-    });
-    document.addEventListener('pjax:complete', function () {
-        document.body.classList.remove("loading");
-        paul.init();
-    });
 };
 var paul_music = new function () {
     var that = this;

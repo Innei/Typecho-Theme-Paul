@@ -36,6 +36,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+<script src="<?php $this->options->themeUrl('src/pjax.js') ?>"></script>
 <script src="<?php $this->options->themeUrl('src/paul.js') ?>"></script>
 <script>
     console.log("%c Innei %c https://shizuri.net ","color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;");
