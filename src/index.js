@@ -27,7 +27,9 @@
                     commentLocation = getElementTop(commentLocation)
                     scrollSmoothTo(commentLocation)
                 } else if (want_comment !== -1) {
-                    document.querySelector('#comment-form > section').classList.add('active')
+                    setTimeout(() => {
+                        document.querySelector('#comment-form > section').classList.add('active')
+                    }, 100)
                 }
             }
         }, 100)
