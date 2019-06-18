@@ -87,7 +87,7 @@
     margin-bottom: .5rem
 }
 
-.reply_form div>input[type=text] {
+.reply_form div > input[type=text] {
     display: block;
     width: 1000px
 }
@@ -128,7 +128,7 @@ header svg {
 
 .note-content .post-title {
     text-align: center;
-    margin: 0!important;
+    margin: 0 !important;
 }
 
 .paul-note {
@@ -190,6 +190,7 @@ header svg {
     .note-title {
         display: none;
     }
+
     .paul-say {
         columns: 1;
     }
@@ -197,7 +198,7 @@ header svg {
 
 /* -- code  */
 
-pre>code {
+pre > code {
     color: #fff;
     padding: 1em;
     display: block;
@@ -221,12 +222,12 @@ pre code {
     background-origin: content-box;
 }
 
-:not(pre)>code {
+:not(pre) > code {
     color: #ffa5a5;
     background: rgba(255, 255, 255, .2);
 }
 
-:not(pre)>code[class*="lang"] {
+:not(pre) > code[class*="lang"] {
     position: relative;
     padding: .2em;
     border-radius: 0.3em;
@@ -292,5 +293,27 @@ pre code {
 /* -- 日记页 */
 
 .note-content .btn {
-    border-radius: 4rem
+    border-radius: 4rem;
+    padding: .5rem 1rem;
+    line-height: 1.5;
+}
+
+/* -- 加载按钮 */
+
+#load-more-btn {
+    padding: .5rem 1rem;
+    outline: 0;
+    color: #fff;
+    border-radius: 4rem;
+    animation: gradual-change infinite 3s ease both;
+}
+
+@keyframes gradual-change {
+    0%, 100% {
+        background: rgba(230, 126, 34, 1.0)
+    }
+    50% {
+        background: rgba(241, 196, 15, .8);
+    }
+
 }
