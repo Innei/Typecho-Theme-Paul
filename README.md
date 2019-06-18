@@ -10,6 +10,23 @@ Demo 地址: <https://null.innei.ml>
 
 开发不易，让我们向所有开发者致敬！
 
+## 特点和实现
+
+- [x] 日记
+- [x] 语录
+- [x] 主页
+- [x] 文章页
+- [x] 作品页
+- [x] 输出评论
+- [x] 输入评论
+- [x] 点赞, 字数统计, 浏览量 (接入VOID插件)
+- [x] 播放器
+- [x] 音乐页
+- [x] 其他
+- [x] ajax 加载更多文章
+- [x] 全站无刷新体验
+- [x] 评论 ajax 提交
+
 ## 预览
 
 ![image](https://user-images.githubusercontent.com/41265413/59440844-2ca08a00-8e2a-11e9-95bf-3acc5a2acc6d.png)
@@ -33,22 +50,6 @@ Demo 地址: <https://null.innei.ml>
 ## 故事
 
 前往 [Pual Typecho主题发布](https://shizuri.net/archives/131/).
-
-## 功能实现
-
-- [x] 日记
-- [x] 语录
-- [x] 主页
-- [x] 文章页
-- [x] 作品页
-- [x] 输出评论
-- [x] 输入评论
-- [x] 点赞, 字数统计, 浏览量 (接入VOID插件)
-- [x] 播放器
-- [x] 音乐页
-- [x] 其他
-- [x] ajax 加载更多文章
-- [x] 全站无刷新体验
 
 ## 开始之前
 
