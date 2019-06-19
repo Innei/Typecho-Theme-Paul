@@ -102,4 +102,24 @@ class Paul
         return [$week_data, $all_data];
     }
 
+  static function parse_Flink($link_string)
+  {
+    $arr = explode("\n", $link_string);
+    $arr = array_filter($arr);
+    $parse_link = function ($array) {
+      $link = $name = array();
+      for ($i = 0; $i < count($array); $i += 2) {
+        $link[] = $array[$i];
+        $name[] = $array[$i + 1];
+      }
+      $total = array_map(function ($i1, $i2) {
+        return '<li><a href="' . $i1 . '" target="_blank">' . $i2 . '</a></li>';
+      }, $name, $link);
+      return $total;
+    };
+    $s = $parse_link($arr);
+    foreach ($s as $item) {
+      echo $item;
+    }
+  }
 }

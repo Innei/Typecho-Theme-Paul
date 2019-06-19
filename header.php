@@ -20,6 +20,7 @@ require_once 'pages.php';
         <meta name="referrer" content="origin-when-cross-origin"/>
     <?php endif; ?>
     <script src="<?php $this->options->themeUrl('src/kico.js') ?>"></script>
+  <script src="<?php $this->options->themeUrl('src/pre.js') ?>"></script>
     <?php if ($this->options->favicon): ?>
         <link rel="icon" href="<?php $this->options->favicon(); ?>" sizes="192x192"/>
     <?php else: ?>
@@ -61,6 +62,7 @@ require_once 'pages.php';
         $GLOBALS['note'] ? print_r('<a href="' . $GLOBALS['note'] . '"><i class="fa fa-book"></i><span>日记</span></a>') : print_r('');
         $GLOBALS['project'] ? print_r('<a href="' . $GLOBALS['project'] . '"><i class="fa fa-flask"></i><span>项目</span></a>') : print_r('');
         $GLOBALS['bangumi'] ? print_r('<a href="' . $GLOBALS['bangumi'] . '"><i class="fa fa-star"></i><span>爱好</span></a>') : ($GLOBALS['music'] ? print_r('<a href="' . $GLOBALS['music'] . '"><i class="fa fa-star"></i><span>爱好</span></a>') : print_r(''));
+        $GLOBALS['link'] ? print_r('<a href="' . $GLOBALS['link'] . '"><i class="fa fa-link"></i><span>朋友们</span></a>') : print_r('');
         ?>
         <?php if ($this->user->hasLogin()): ?>
             <a href="<?php $this->options->adminUrl() ?>" target="_blank"><i class="fa fa-unlock-alt"

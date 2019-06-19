@@ -3,12 +3,8 @@ ul {
     list-style: none;
 }
 
-li::before {
-    content: '\f061';
-    font-family: FontAwesome;
-    margin-right: .4rem;
-    font-size: 10px;
-    color: currentColor;
+li {
+    list-style: none;
 }
 
 .comment-list {
@@ -414,8 +410,21 @@ pre code {
     display: block;
 }
 
+article:not(.comment-list) li::before, .torTree li::before {
+    content: '\f061';
+    font-family: FontAwesome;
+    margin-right: .4rem;
+    font-size: 10px;
+    color: currentColor;
+}
+
 @media (min-width: 1350px) {
     .torTree {
         display: flex;
     }
+}
+
+.link-warp {
+    columns: 2;
+    margin-top: 5rem
 }

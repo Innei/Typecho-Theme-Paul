@@ -32,7 +32,8 @@
 </action>
 <footer>
     <p>© <?php $this->date('Y') ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author() ?></a>.</p>
-    Design By Paul. Dev By yiny. Theme Paul.
+  Design By <a href="https://paul.ren" target="_blank">Paul</a>. Dev By <a href="https://shizuri.net" target="_blank">yiny</a>.
+  Theme <a href="https://github.com/Innei/Typecho-Theme-Paul" target="_blank">Paul</a>.
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>

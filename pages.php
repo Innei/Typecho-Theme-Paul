@@ -25,6 +25,9 @@ while ($pages->next()):
         case 'page-index.php':
             $index_pages[] = $pages->permalink;
             break;
+      case 'page-link.php':
+        $GLOBALS['link'] = $pages->permalink;
+        break;
     endswitch;
 endwhile;
 $GLOBALS['works'] = $works;
