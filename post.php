@@ -13,7 +13,11 @@ require_once 'pages.php';
                 博文</a><?php endif; ?>
         <?php if ($GLOBALS['say']) : ?><a href="<?php echo $GLOBALS['say']; ?>" >语录</a> <?php endif; ?>
     </nav>
-    <article>
+  <div class="torTree">
+    <div class="torTree-wrap" id="torTree-wrap" style="opacity: 0">
+    </div>
+  </div>
+  <article>
         <h1 style="position: relative"><?php echo $this->date('Y-m-d'); ?>
             <small>(<?php echo $this->date('l'); ?>)</small>
         </h1>
@@ -89,6 +93,29 @@ require_once 'pages.php';
         }())
     </script>
     <script src="<?php $this->options->themeUrl('src/prism.js') ?>"></script>
+  <script>
+    (() => {// 为小标题加上锚点
+      const postContent = ks.select('.post-content')
+      const titleArr = []
+      for (let i = 1; i < 5; i++) {
+        [...postContent.querySelectorAll('h' + i)].forEach((item, index) => {
+
+          titleArr.push({tier: i, name: item.innerText, top: window.getElementTop(item)})
+        })
+      }
+      const torTreeWrap = ks.select('#torTree-wrap')
+      if (titleArr.length === 1) {
+        return
+      }
+      let torTreeHTML = ` <div class="torTree-title"><a href="javascript:window.scrollSmoothTo(${titleArr[0].top})">${titleArr.shift().name}</a></div><ul>`
+      for (let item of titleArr) {
+        torTreeHTML = torTreeHTML + `<a href="javascript:window.scrollSmoothTo(${item.top})"><li class="tier-${item.tier}">${item.name}</li></a>`
+      }
+      torTreeHTML += `</ul>`
+      torTreeWrap.innerHTML = torTreeHTML
+      torTreeWrap.removeAttribute('style')
+    })()
+  </script>
     <script>
         (function () {
             const commentFunction = document.querySelector('head').querySelector('script[type]')

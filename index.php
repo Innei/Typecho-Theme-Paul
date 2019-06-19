@@ -8,7 +8,7 @@
  * @author Dreamer-Paul & Innei
  * @design Dreamer-Paul
  * @deploy Innei
- * @version 1.3 release
+ * @version 1.4 release
  * @link https://paul.ren
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;

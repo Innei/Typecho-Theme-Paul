@@ -34,7 +34,7 @@
             }
         }, 100)
     })();
-
+    window.getElementTop = getElementTop
     function getElementTop(element) {
         let actualTop = element.offsetTop;
         let current = element.offsetParent;

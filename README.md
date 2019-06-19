@@ -29,7 +29,7 @@ Demo 地址: <https://null.innei.ml>
 
 ## 预览
 
-![image](https://user-images.githubusercontent.com/41265413/59440844-2ca08a00-8e2a-11e9-95bf-3acc5a2acc6d.png)
+![image](../master/screenshot.png)
 
 ![image](https://user-images.githubusercontent.com/41265413/59444149-e9e1b080-8e2f-11e9-94b8-2e45c59fcf8b.png)
 

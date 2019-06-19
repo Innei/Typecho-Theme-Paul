@@ -1,3 +1,16 @@
+/* -- 全局样式重置 */
+ul {
+    list-style: none;
+}
+
+li::before {
+    content: '\f061';
+    font-family: FontAwesome;
+    margin-right: .4rem;
+    font-size: 10px;
+    color: currentColor;
+}
+
 .comment-list {
     margin-top: 3rem
 }
@@ -128,7 +141,7 @@ header svg {
 
 .note-content .post-title {
     text-align: center;
-    margin: 0 !important;
+    margin: 1rem !important;
 }
 
 .paul-note {
@@ -315,5 +328,94 @@ pre code {
     50% {
         background: rgba(241, 196, 15, .8);
     }
+}
 
+/* -- 重写文章页样式 */
+.note-content {
+    white-space: normal;
+}
+
+[id*="cid"] .note-content {
+    white-space: pre-line;
+}
+
+.note-content p {
+    margin-bottom: 1.5rem;
+}
+
+.torTree {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 10rem;
+    right: 5%;
+    align-items: center;
+    justify-content: center;
+    font-size: .5rem;
+}
+
+.torTree-wrap {
+    position: absolute;
+    left: 5%;
+    transition: opacity .5s
+}
+
+.torTree-wrap::before {
+    content: '';
+    position: absolute;
+    margin: -1rem;
+    z-index: -1;
+    border-radius: .5rem;
+    background-color: rgba(236, 240, 241, .5);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.torTree ul {
+    margin-left: 0;
+}
+
+.torTree li {
+    margin-bottom: .3rem;
+}
+
+.tier-2 {
+    margin-left: .2rem;
+}
+
+.tier-3 {
+    margin-left: .4rem;
+}
+
+.tier-4 {
+    margin-left: .6rem;
+}
+
+.tier-5 {
+    margin-left: .7rem;
+}
+
+.tier-6 {
+    margin-left: .8rem;
+}
+
+.torTree-title {
+    color: #4d5556;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.torTree-title a {
+    text-align: center;
+    display: block;
+}
+
+@media (min-width: 1350px) {
+    .torTree {
+        display: flex;
+    }
 }
