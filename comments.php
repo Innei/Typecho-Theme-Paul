@@ -153,12 +153,6 @@ function threadedComments($comments, $options)
           })
         })
       }
-
-
-      const comment_reply_btns = document.querySelectorAll('.commtent_reply > a')
-      for (let item of comment_reply_btns) {
-
-      }
     }
   }
 
@@ -182,32 +176,46 @@ function threadedComments($comments, $options)
 
   // ajax 提交
   function post_by_ajax(e, sel, reply = false) {
-
+    const isComment = document.querySelector('.post-form.is-comment')
     const commentForm = document.querySelector(sel)
     const post_url = e.target.getAttribute('action')
     const cookie = document.cookie
     const referer = window.location.href
     const domParser = new DOMParser()
     const dom = str => domParser.parseFromString(str, 'text/html')
+
     // 如果是管理员登陆
     if (!document.querySelector('#comment-form #author')) {
       const text = commentForm.querySelector('#text').value
-      const data = {
-        text
-      }
+      let data = null
 
+      if (reply) {
+        data = {
+          text, parent: window.parentId
+        }
+      } else {
+        data = {
+          text
+        }
+      }
       ks.ajax({
         url: post_url,
         method: 'POST',
         data,
         success(res) {
           const responseDOM = dom(res.responseText)
+
           try {
+            isComment.classList.contains('active') ? isComment.classList.remove('active') : false
             const needPartten = responseDOM.querySelector('.comment-list').innerHTML
             needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice("请等待审核哦 φ(>ω<*) ", {
               color: "green",
               time: 1000
-            }) : (document.querySelector('.comment-list').innerHTML = needPartten)
+            }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice("评论成功了 (〃'▽'〃)", {
+              color: "green",
+              time: 1000
+            }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
+
           } catch (e) {
             ks.notice(responseDOM.querySelector('.container').innerText, {
               color: "red",
@@ -239,16 +247,23 @@ function threadedComments($comments, $options)
           author, mail, url, text,
         }
       }
-      console.log(data);
+
       ks.ajax({
         method: "POST",
         url: post_url,
         data,
         success(res) {
           const responseDOM = dom(res.responseText)
+          isComment.classList.contains('active') ? isComment.classList.remove('active') : false
           try {
             const needPartten = responseDOM.querySelector('.comment-list').innerHTML
-            document.querySelector('.comment-list').innerHTML = needPartten
+            needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice("请等待审核哦 φ(>ω<*) ", {
+              color: "green",
+              time: 1000
+            }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice("评论成功了 (〃'▽'〃)", {
+              color: "green",
+              time: 1000
+            }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
             Comment.comment_init()
           } catch (e) {
             ks.notice(responseDOM.querySelector('.container').innerText, {

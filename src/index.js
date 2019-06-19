@@ -45,6 +45,7 @@
         return actualTop;
     }
 
+    window.scrollSmoothTo = scrollSmoothTo
     function scrollSmoothTo(position) {
         if (!window.requestAnimationFrame) {
             window.requestAnimationFrame = function (callback, element) {
