@@ -130,11 +130,11 @@ function threadedComments($comments, $options)
     </div>
   </section>
 </form>
-
 <script>
-  class Comment {
 
-    static comment_init() {
+  (function () {
+    // 初始化评论按钮
+    function comment_init() {
       const commentsReply = document.querySelectorAll('span.comment_reply > a')
       const replyForm = document.querySelector('.reply')
       const isComment = document.querySelector('.post-form.is-comment')
@@ -154,138 +154,132 @@ function threadedComments($comments, $options)
         })
       }
     }
-  }
 
-  Comment.comment_init()
+    comment_init()
 
-  // ajax 提交评论实现方法
+    // ajax 提交评论实现方法
 
-  // 阻止默认事件
-  const form = document.getElementById('comment-form')
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    post_by_ajax(e, '#comment-form')
-  });
+    // 阻止默认事件
+    const form = document.getElementById('comment-form')
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      post_by_ajax(e, '#comment-form')
+    });
 
-  const reply_form = document.querySelector('.reply_form')
-  reply_form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    post_by_ajax(e, '.reply_form', true)
-  });
+    const reply_form = document.querySelector('.reply_form')
+    reply_form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      post_by_ajax(e, '.reply_form', true)
+    });
 
+    // ajax 提交
+    function post_by_ajax(e, sel, reply = false) {
+      const isComment = document.querySelector('.post-form.is-comment')
+      const commentForm = document.querySelector(sel)
+      const post_url = e.target.getAttribute('action')
+      const cookie = document.cookie
+      const referer = window.location.href
+      const domParser = new DOMParser()
+      const dom = str => domParser.parseFromString(str, 'text/html')
 
-  // ajax 提交
-  function post_by_ajax(e, sel, reply = false) {
-    const isComment = document.querySelector('.post-form.is-comment')
-    const commentForm = document.querySelector(sel)
-    const post_url = e.target.getAttribute('action')
-    const cookie = document.cookie
-    const referer = window.location.href
-    const domParser = new DOMParser()
-    const dom = str => domParser.parseFromString(str, 'text/html')
+      // 如果是管理员登陆
+      if (!document.querySelector('#comment-form #author')) {
+        const text = commentForm.querySelector('#text').value
+        let data = null
 
-    // 如果是管理员登陆
-    if (!document.querySelector('#comment-form #author')) {
-      const text = commentForm.querySelector('#text').value
-      let data = null
-
-      if (reply) {
-        data = {
-          text, parent: window.parentId
+        if (reply) {
+          data = {
+            text, parent: window.parentId
+          }
+        } else {
+          data = {
+            text
+          }
         }
+        ks.ajax({
+          url: post_url,
+          method: 'POST',
+          data,
+          success(res) {
+            const responseDOM = dom(res.responseText)
+
+            try {
+              isComment.classList.contains('active') ? isComment.classList.remove('active') : false
+              const needPartten = responseDOM.querySelector('.comment-list').innerHTML
+              needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice("请等待审核哦 φ(>ω<*) ", {
+                color: "green",
+                time: 1000
+              }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice("评论成功了 (〃'▽'〃)", {
+                color: "green",
+                time: 1000
+              }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
+
+            } catch (e) {
+              ks.notice(responseDOM.querySelector('.container').innerText, {
+                color: "red",
+                time: 1500
+              })
+            }
+            comment_init()
+          },
+          failed(res) {
+            console.log(res)
+            ks.notice("(；´д｀)ゞ 失败了", {
+              color: 'red',
+              time: 1500
+            })
+          }
+        })
       } else {
-        data = {
-          text
-        }
-      }
-      ks.ajax({
-        url: post_url,
-        method: 'POST',
-        data,
-        success(res) {
-          const responseDOM = dom(res.responseText)
+        const author = commentForm.querySelector('#author').value
+        const mail = commentForm.querySelector('#mail').value
+        const url = commentForm.querySelector('#url').value
+        const text = commentForm.querySelector('#text').value
 
-          try {
+        if (reply) {
+          data = {
+            author, mail, url, text, parent: window.parentId
+          }
+        } else {
+          data = {
+            author, mail, url, text,
+          }
+        }
+
+        ks.ajax({
+          method: "POST",
+          url: post_url,
+          data,
+          success(res) {
+            const responseDOM = dom(res.responseText)
             isComment.classList.contains('active') ? isComment.classList.remove('active') : false
-            const needPartten = responseDOM.querySelector('.comment-list').innerHTML
-            needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice("请等待审核哦 φ(>ω<*) ", {
-              color: "green",
-              time: 1000
-            }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice("评论成功了 (〃'▽'〃)", {
-              color: "green",
-              time: 1000
-            }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
-
-          } catch (e) {
-            ks.notice(responseDOM.querySelector('.container').innerText, {
-              color: "red",
+            try {
+              const needPartten = responseDOM.querySelector('.comment-list').innerHTML
+              needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice("请等待审核哦 φ(>ω<*) ", {
+                color: "green",
+                time: 1000
+              }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice("评论成功了 (〃'▽'〃)", {
+                color: "green",
+                time: 1000
+              }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
+              comment_init()
+            } catch (e) {
+              ks.notice(responseDOM.querySelector('.container').innerText, {
+                color: "red",
+                time: 1500
+              })
+            }
+          },
+          failed(res) {
+            console.log(res)
+            ks.notice("(；´д｀)ゞ 失败了", {
+              color: 'red',
               time: 1500
             })
           }
-          Comment.comment_init()
-        },
-        failed(res) {
-          console.log(res)
-          ks.notice("(；´д｀)ゞ 失败了", {
-            color: 'red',
-            time: 1500
-          })
-        }
-      })
-    } else {
-      const author = commentForm.querySelector('#author').value
-      const mail = commentForm.querySelector('#mail').value
-      const url = commentForm.querySelector('#url').value
-      const text = commentForm.querySelector('#text').value
-
-      if (reply) {
-        data = {
-          author, mail, url, text, parent: window.parentId
-        }
-      } else {
-        data = {
-          author, mail, url, text,
-        }
+        })
       }
-
-      ks.ajax({
-        method: "POST",
-        url: post_url,
-        data,
-        success(res) {
-          const responseDOM = dom(res.responseText)
-          isComment.classList.contains('active') ? isComment.classList.remove('active') : false
-          try {
-            const needPartten = responseDOM.querySelector('.comment-list').innerHTML
-            needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice("请等待审核哦 φ(>ω<*) ", {
-              color: "green",
-              time: 1000
-            }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice("评论成功了 (〃'▽'〃)", {
-              color: "green",
-              time: 1000
-            }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
-            Comment.comment_init()
-          } catch (e) {
-            ks.notice(responseDOM.querySelector('.container').innerText, {
-              color: "red",
-              time: 1500
-            })
-          }
-
-        }
-        ,
-        failed(res) {
-          console.log(res)
-          ks.notice("(；´д｀)ゞ 失败了", {
-            color: 'red',
-            time: 1500
-          })
-        }
-      })
-
+      return false
     }
-    return false
-  }
-
-
+  })()
 </script>
