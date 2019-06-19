@@ -24,7 +24,7 @@
                 } else if (comment !== -1) {
                     let commentLocation = document.querySelector(window.location.hash)
                     commentLocation.querySelector('.comment_main').style.animation = `highlight 1s 1.5s both`
-                    commentLocation = getElementTop(commentLocation)
+                    commentLocation = window.getElementTop(commentLocation)
                     scrollSmoothTo(commentLocation)
                 } else if (want_comment !== -1) {
                     setTimeout(() => {
@@ -34,16 +34,6 @@
             }
         }, 100)
     })();
-    window.getElementTop = getElementTop
-    function getElementTop(element) {
-        let actualTop = element.offsetTop;
-        let current = element.offsetParent;
-        while (current !== null) {
-            actualTop += current.offsetTop;
-            current = current.offsetParent;
-        }
-        return actualTop;
-    }
 
     window.scrollSmoothTo = scrollSmoothTo
     function scrollSmoothTo(position) {
