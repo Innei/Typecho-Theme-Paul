@@ -133,8 +133,6 @@ function threadedComments($comments, $options)
 <script>
 
   (function () {
-    comment_init()
-
     // ajax 提交评论实现方法
 
     // 阻止默认事件
@@ -150,7 +148,10 @@ function threadedComments($comments, $options)
         post_by_ajax(e, '.reply_form', true)
       }
     }
+
+    comment_init()
     ajax_init()
+
     // ajax 提交
     function post_by_ajax(e, sel, reply = false) {
       const isComment = document.querySelector('.post-form.is-comment')
@@ -263,69 +264,27 @@ function threadedComments($comments, $options)
     }
   })();
 
-  (
-    function () {
-      const reply = function (cid, coid) {
-        var comment = this.dom(cid), parent = comment.parentNode,
-          <?php if($this->is('post')): ?>
-          response = this.dom('respond-post-<?php $this->cid() ?>'), input = this.dom('comment-parent'),
-          <?php elseif ($this->is('page')): ?>
-          response = this.dom('respond-page-<?php $this->cid() ?>'), input = this.dom('comment-parent'),
-          <?php endif; ?>
-          form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
-          textarea = response.getElementsByTagName('textarea')[0];
-        if (null == input) {
-          input = this.create('input', {
-            'type': 'hidden',
-            'name': 'parent',
-            'id': 'comment-parent'
-          });
-          form.appendChild(input);
-        }
-        input.setAttribute('value', coid);
-        if (null == this.dom('comment-form-place-holder')) {
-          var holder = this.create('div', {
-            'id': 'comment-form-place-holder'
-          });
-          response.parentNode.insertBefore(holder, response);
-        }
-        comment.appendChild(response);
-        this.dom('cancel-comment-reply-link').style.display = '';
-        if (null != textarea && 'text' == textarea.name) {
-          textarea.focus();
-        }
-        return false;
-      }
-      const cancelReply = function () {
-        <?php if ($this->is('post')): ?>
-        var response = this.dom('respond-post-<?php $this->cid() ?>'),
-          <?php elseif ($this->is('page')): ?>
-        var
-        response = this.dom('respond-page-<?php $this->cid() ?>'),
-        <?php endif ?>
-          holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
-        if (null != input) {
-          input.parentNode.removeChild(input);
-        }
-        if (null == holder) {
-          return true;
-        }
-        this.dom('cancel-comment-reply-link').style.display = 'none';
-        holder.parentNode.insertBefore(response, holder);
-        return false;
-      }
-      if (window.TypechoComment) {
-        window.TypechoComment.reply = reply
-        window.TypechoComment.cancelReply = cancelReply
-      } else {
-        (() => {
-          window.TypechoComment = {
-            dom: function (id) {
-              return document.getElementById(id);
-            },
-            create: function (tag, attr) {
-              var el = document.createElement(tag);
-              for (var key in attr) {
+  (function () {
+    const commentFunction = document.head.querySelector('script[type]')
+    const innerHTML = commentFunction.innerHTML
+    if (innerHTML.match(/this.dom\('respond-.*?'\)/ig)) {
+      const after = innerHTML.replace(/this.dom\('respond-.*?'\)/ig, "this.dom('respond-post-<?php $this->cid() ?>')")
+      setTimeout(() => {
+        eval(after)
+      })
+    } else {
+      const script = document.createElement('script')
+      script.innerHTML = `
+(function () {
+    window.TypechoComment = {
+        dom : function (id) {
+            return document.getElementById(id);
+        },
+
+        create : function (tag, attr) {
+            var el = document.createElement(tag);
+
+            for (var key in attr) {
                 el.setAttribute(key, attr[key]);
               }
               return el;
@@ -372,9 +331,19 @@ function threadedComments($comments, $options)
               this.dom('cancel-comment-reply-link').style.display = 'none';
               holder.parentNode.insertBefore(response, holder);
               return false;
-            }
-          };
-        })();
-      }
-    })();
+}
+
+            this.dom('cancel-comment-reply-link').style.display = 'none';
+            holder.parentNode.insertBefore(response, holder);
+            return false;
+        }
+    };
+})();
+`
+      document.head.insertBefore(script, commentFunction)
+      setTimeout(() => {
+        eval(script.innerHTML)
+      })
+    }
+  })()
 </script>
