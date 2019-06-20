@@ -14,7 +14,7 @@ require_once 'pages.php';
     <link href="<?php $this->options->themeUrl('src/kico.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?php $this->options->themeUrl('src/paul.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?php $this->options->themeUrl('src/main.css') ?>" rel="stylesheet" type="text/css">
-  <?php if ($this->is('page') && ($this->template == "page-bangumi.php" || $this->template == "page-music.php")): ?>
+    <?php if ($this->is('page') && ($this->template == "page-bangumi.php" || $this->template == "page-music.php")): ?>
         <meta name="referrer" content="no-referrer"/>
     <?php else: ?>
         <meta name="referrer" content="origin-when-cross-origin"/>

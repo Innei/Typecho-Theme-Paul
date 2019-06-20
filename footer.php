@@ -29,6 +29,7 @@
 <action>
     <button class="top"><i class="fa fa-arrow-up"></i></button>
     <button class="player"><i class="fa fa-headphones"></i></button>
+    <button class="post-new"><i class="fa fa-plus"></i></button>
 </action>
 <footer>
     <p>© <?php $this->date('Y') ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author() ?></a>.</p>
@@ -40,6 +41,23 @@
 <script src="<?php $this->options->themeUrl('src/pjax.js') ?>"></script>
 <script src="<?php $this->options->themeUrl('src/paul.js') ?>"></script>
 <script>
+    <?php if($this->user->hasLogin()): ?>
+    (()=> {
+      // TODO ajax 提交文章
+      ks.select('.post-new').onclick = () => {
+        window.open('<?php $this->options->adminUrl() ?>write-post.php')
+      }
+    })();
+    <?php else: ?>
+    (()=> {
+      ks.select('.post-new').onclick = () => {
+        ks.notice("请先登录 ❥(ゝω・✿ฺ)", {
+          color: "green",
+            time: 1000
+        })
+      }
+    })();
+    <?php endif; ?>
     console.log("%c Innei %c https://shizuri.net ","color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;");
     <?php $this->options->custom_script();?>
 </script>

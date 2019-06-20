@@ -152,6 +152,7 @@ header svg {
 
 .note-content h2 {
     font-size: 1.5em;
+    font-weight: lighter;
 }
 
 .note-content h3 {
@@ -170,11 +171,10 @@ header svg {
     font-size: 0.7em;
 }
 
-.post-content h2 {
-    border-left: #9de5f2;
-    border-width: 0 0 0 4px;
-    border-style: solid;
-    padding-left: 0.5em;
+.post-content h2::before {
+    content: '';
+    padding-left: .75em;
+    border-left: 2px solid #9de5f2;
 }
 
 .post-content h3:before {
@@ -205,6 +205,9 @@ header svg {
     }
 }
 
+.note-action span {
+    display: inline-block;
+}
 /* -- code  */
 
 pre > code {
