@@ -133,28 +133,6 @@ function threadedComments($comments, $options)
 <script>
 
   (function () {
-    // 初始化评论按钮
-    function comment_init() {
-      const commentsReply = document.querySelectorAll('span.comment_reply > a')
-      const replyForm = document.querySelector('.reply')
-      const isComment = document.querySelector('.post-form.is-comment')
-      for (let el of commentsReply) {
-        el.addEventListener('click', e => {
-          // 给恢复按钮绑定事件 获取parent-id
-          const href = e.target.getAttribute('href')
-          window.parentId = href.match(/replyTo=(\d+)/)[1]
-          // 弹出回复框
-          replyForm.removeAttribute('style')
-          if (isComment.classList.contains('active')) isComment.classList.remove('active');
-          setTimeout(() => {
-            document.getElementById('cancel-comment-reply-link').addEventListener('click', () => {
-              replyForm.style.display = 'none';
-            })
-          })
-        })
-      }
-    }
-
     comment_init()
 
     // ajax 提交评论实现方法
@@ -283,89 +261,118 @@ function threadedComments($comments, $options)
     }
   })();
 
-  (function () {
-    const commentFunction = document.querySelector('head').querySelector('script[type]')
-    const innerHTML = commentFunction.innerHTML
-    if (innerHTML.match(/this.dom\('respond-.*?'\)/ig)) {
-      const after = innerHTML.replace(/this.dom\('respond-.*?'\)/ig, "this.dom('respond-post-<?php $this->cid() ?>')")
-      eval(after)
-    } else {
-      const script = document.createElement('script')
-      script.innerHTML = `
-(function () {
-    window.TypechoComment = {
-        dom : function (id) {
-            return document.getElementById(id);
-        },
-
-        create : function (tag, attr) {
-            var el = document.createElement(tag);
-
-            for (var key in attr) {
+  (
+    function () {
+      const reply = function (cid, coid) {
+        var comment = this.dom(cid), parent = comment.parentNode,
+          <?php if($this->is('post')): ?>
+          response = this.dom('respond-post-<?php $this->cid() ?>'), input = this.dom('comment-parent'),
+          <?php elseif ($this->is('page')): ?>
+          response = this.dom('respond-page-<?php $this->cid() ?>'), input = this.dom('comment-parent'),
+          <?php endif; ?>
+          form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+          textarea = response.getElementsByTagName('textarea')[0];
+        if (null == input) {
+          input = this.create('input', {
+            'type': 'hidden',
+            'name': 'parent',
+            'id': 'comment-parent'
+          });
+          form.appendChild(input);
+        }
+        input.setAttribute('value', coid);
+        if (null == this.dom('comment-form-place-holder')) {
+          var holder = this.create('div', {
+            'id': 'comment-form-place-holder'
+          });
+          response.parentNode.insertBefore(holder, response);
+        }
+        comment.appendChild(response);
+        this.dom('cancel-comment-reply-link').style.display = '';
+        if (null != textarea && 'text' == textarea.name) {
+          textarea.focus();
+        }
+        return false;
+      }
+      const cancelReply = function () {
+        <?php if ($this->is('post')): ?>
+        var response = this.dom('respond-post-<?php $this->cid() ?>'),
+          <?php elseif ($this->is('page')): ?>
+        var
+        response = this.dom('respond-page-<?php $this->cid() ?>'),
+        <?php endif ?>
+          holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
+        if (null != input) {
+          input.parentNode.removeChild(input);
+        }
+        if (null == holder) {
+          return true;
+        }
+        this.dom('cancel-comment-reply-link').style.display = 'none';
+        holder.parentNode.insertBefore(response, holder);
+        return false;
+      }
+      if (window.TypechoComment) {
+        window.TypechoComment.reply = reply
+        window.TypechoComment.cancelReply = cancelReply
+      } else {
+        (() => {
+          window.TypechoComment = {
+            dom: function (id) {
+              return document.getElementById(id);
+            },
+            create: function (tag, attr) {
+              var el = document.createElement(tag);
+              for (var key in attr) {
                 el.setAttribute(key, attr[key]);
-            }
-
-            return el;
-        },
-
-        reply : function (cid, coid) {
-            var comment = this.dom(cid), parent = comment.parentNode,
+              }
+              return el;
+            },
+            reply: function (cid, coid) {
+              var comment = this.dom(cid), parent = comment.parentNode,
                 response = this.dom('respond-post-<?php $this->cid() ?>'), input = this.dom('comment-parent'),
                 form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
                 textarea = response.getElementsByTagName('textarea')[0];
 
-            if (null == input) {
+              if (null == input) {
                 input = this.create('input', {
-                    'type' : 'hidden',
-                    'name' : 'parent',
-                    'id'   : 'comment-parent'
+                  'type': 'hidden',
+                  'name': 'parent',
+                  'id': 'comment-parent'
                 });
 
                 form.appendChild(input);
-            }
-
-            input.setAttribute('value', coid);
-
-            if (null == this.dom('comment-form-place-holder')) {
+              }
+              input.setAttribute('value', coid);
+              if (null == this.dom('comment-form-place-holder')) {
                 var holder = this.create('div', {
-                    'id' : 'comment-form-place-holder'
+                  'id': 'comment-form-place-holder'
                 });
-
                 response.parentNode.insertBefore(holder, response);
-            }
+              }
+              comment.appendChild(response);
+              this.dom('cancel-comment-reply-link').style.display = '';
 
-            comment.appendChild(response);
-            this.dom('cancel-comment-reply-link').style.display = '';
-
-            if (null != textarea && 'text' == textarea.name) {
+              if (null != textarea && 'text' == textarea.name) {
                 textarea.focus();
-            }
-
-            return false;
-        },
-
-        cancelReply : function () {
-            var response = this.dom('respond-post-<?php $this->cid() ?>'),
-            holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
-
-            if (null != input) {
+              }
+              return false;
+            },
+            cancelReply: function () {
+              var response = this.dom('respond-post-<?php $this->cid() ?>'),
+                holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
+              if (null != input) {
                 input.parentNode.removeChild(input);
-            }
-
-            if (null == holder) {
+              }
+              if (null == holder) {
                 return true;
+              }
+              this.dom('cancel-comment-reply-link').style.display = 'none';
+              holder.parentNode.insertBefore(response, holder);
+              return false;
             }
-
-            this.dom('cancel-comment-reply-link').style.display = 'none';
-            holder.parentNode.insertBefore(response, holder);
-            return false;
-        }
-    };
-})();
-`
-      document.head.insertBefore(script, commentFunction)
-      eval(script.innerHTML)
-    }
-
-  })()
+          };
+        })();
+      }
+    })()
 </script>
