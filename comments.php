@@ -138,18 +138,19 @@ function threadedComments($comments, $options)
     // ajax 提交评论实现方法
 
     // 阻止默认事件
-    const form = document.getElementById('comment-form')
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      post_by_ajax(e, '#comment-form')
-    });
-
-    const reply_form = document.querySelector('.reply_form')
-    reply_form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      post_by_ajax(e, '.reply_form', true)
-    });
-
+    const ajax_init = () => {
+      const form = document.getElementById('comment-form')
+      form.onsubmit = e => {
+        e.preventDefault();
+        post_by_ajax(e, '#comment-form')
+      }
+      const reply_form = document.querySelector('.reply_form')
+      reply_form.onsubmit = e => {
+        e.preventDefault();
+        post_by_ajax(e, '.reply_form', true)
+      }
+    }
+    ajax_init()
     // ajax 提交
     function post_by_ajax(e, sel, reply = false) {
       const isComment = document.querySelector('.post-form.is-comment')
@@ -191,14 +192,14 @@ function threadedComments($comments, $options)
                 color: "green",
                 time: 1000
               }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
-
+              comment_init()
+              ajax_init()
             } catch (e) {
               ks.notice(responseDOM.querySelector('.container').innerText, {
                 color: "red",
                 time: 1500
               })
             }
-            comment_init()
           },
           failed(res) {
             console.log(res)
@@ -241,12 +242,14 @@ function threadedComments($comments, $options)
                 time: 1000
               }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
               comment_init()
+              ajax_init()
             } catch (e) {
               ks.notice(responseDOM.querySelector('.container').innerText, {
                 color: "red",
                 time: 1500
               })
             }
+
           },
           failed(res) {
             console.log(res)
@@ -257,7 +260,6 @@ function threadedComments($comments, $options)
           }
         })
       }
-      return false
     }
   })();
 
@@ -374,5 +376,5 @@ function threadedComments($comments, $options)
           };
         })();
       }
-    })()
+    })();
 </script>
