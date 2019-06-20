@@ -133,44 +133,24 @@ function threadedComments($comments, $options)
 <script>
 
   (function () {
-    // 初始化评论按钮
-    function comment_init() {
-      const commentsReply = document.querySelectorAll('span.comment_reply > a')
-      const replyForm = document.querySelector('.reply')
-      const isComment = document.querySelector('.post-form.is-comment')
-      for (let el of commentsReply) {
-        el.addEventListener('click', e => {
-          // 给恢复按钮绑定事件 获取parent-id
-          const href = e.target.getAttribute('href')
-          window.parentId = href.match(/replyTo=(\d+)/)[1]
-          // 弹出回复框
-          replyForm.removeAttribute('style')
-          if (isComment.classList.contains('active')) isComment.classList.remove('active');
-          setTimeout(() => {
-            document.getElementById('cancel-comment-reply-link').addEventListener('click', () => {
-              replyForm.style.display = 'none';
-            })
-          })
-        })
+    // ajax 提交评论实现方法
+
+    // 阻止默认事件
+    const ajax_init = () => {
+      const form = document.getElementById('comment-form')
+      form.onsubmit = e => {
+        e.preventDefault();
+        post_by_ajax(e, '#comment-form')
+      }
+      const reply_form = document.querySelector('.reply_form')
+      reply_form.onsubmit = e => {
+        e.preventDefault();
+        post_by_ajax(e, '.reply_form', true)
       }
     }
 
     comment_init()
-
-    // ajax 提交评论实现方法
-
-    // 阻止默认事件
-    const form = document.getElementById('comment-form')
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      post_by_ajax(e, '#comment-form')
-    });
-
-    const reply_form = document.querySelector('.reply_form')
-    reply_form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      post_by_ajax(e, '.reply_form', true)
-    });
+    ajax_init()
 
     // ajax 提交
     function post_by_ajax(e, sel, reply = false) {
@@ -213,14 +193,15 @@ function threadedComments($comments, $options)
                 color: "green",
                 time: 1000
               }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
-
+              comment_init()
+              ajax_init()
             } catch (e) {
               ks.notice(responseDOM.querySelector('.container').innerText, {
                 color: "red",
                 time: 1500
               })
             }
-            comment_init()
+
           },
           failed(res) {
             console.log(res)
@@ -263,6 +244,7 @@ function threadedComments($comments, $options)
                 time: 1000
               }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
               comment_init()
+              ajax_init()
             } catch (e) {
               ks.notice(responseDOM.querySelector('.container').innerText, {
                 color: "red",
@@ -284,11 +266,13 @@ function threadedComments($comments, $options)
   })();
 
   (function () {
-    const commentFunction = document.querySelector('head').querySelector('script[type]')
+    const commentFunction = document.head.querySelector('script[type]')
     const innerHTML = commentFunction.innerHTML
     if (innerHTML.match(/this.dom\('respond-.*?'\)/ig)) {
       const after = innerHTML.replace(/this.dom\('respond-.*?'\)/ig, "this.dom('respond-post-<?php $this->cid() ?>')")
-      eval(after)
+      setTimeout(() => {
+        eval(after)
+      })
     } else {
       const script = document.createElement('script')
       script.innerHTML = `
@@ -364,8 +348,9 @@ function threadedComments($comments, $options)
 })();
 `
       document.head.insertBefore(script, commentFunction)
-      eval(script.innerHTML)
+      setTimeout(() => {
+        eval(script.innerHTML)
+      })
     }
-
   })()
 </script>
