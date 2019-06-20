@@ -201,7 +201,6 @@ function threadedComments($comments, $options)
                 time: 1500
               })
             }
-
           },
           failed(res) {
             console.log(res)
@@ -251,6 +250,7 @@ function threadedComments($comments, $options)
                 time: 1500
               })
             }
+
           },
           failed(res) {
             console.log(res)
@@ -261,7 +261,6 @@ function threadedComments($comments, $options)
           }
         })
       }
-      return false
     }
   })();
 
@@ -287,58 +286,52 @@ function threadedComments($comments, $options)
 
             for (var key in attr) {
                 el.setAttribute(key, attr[key]);
-            }
-
-            return el;
-        },
-
-        reply : function (cid, coid) {
-            var comment = this.dom(cid), parent = comment.parentNode,
+              }
+              return el;
+            },
+            reply: function (cid, coid) {
+              var comment = this.dom(cid), parent = comment.parentNode,
                 response = this.dom('respond-post-<?php $this->cid() ?>'), input = this.dom('comment-parent'),
                 form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
                 textarea = response.getElementsByTagName('textarea')[0];
 
-            if (null == input) {
+              if (null == input) {
                 input = this.create('input', {
-                    'type' : 'hidden',
-                    'name' : 'parent',
-                    'id'   : 'comment-parent'
+                  'type': 'hidden',
+                  'name': 'parent',
+                  'id': 'comment-parent'
                 });
 
                 form.appendChild(input);
-            }
-
-            input.setAttribute('value', coid);
-
-            if (null == this.dom('comment-form-place-holder')) {
+              }
+              input.setAttribute('value', coid);
+              if (null == this.dom('comment-form-place-holder')) {
                 var holder = this.create('div', {
-                    'id' : 'comment-form-place-holder'
+                  'id': 'comment-form-place-holder'
                 });
-
                 response.parentNode.insertBefore(holder, response);
-            }
+              }
+              comment.appendChild(response);
+              this.dom('cancel-comment-reply-link').style.display = '';
 
-            comment.appendChild(response);
-            this.dom('cancel-comment-reply-link').style.display = '';
-
-            if (null != textarea && 'text' == textarea.name) {
+              if (null != textarea && 'text' == textarea.name) {
                 textarea.focus();
-            }
-
-            return false;
-        },
-
-        cancelReply : function () {
-            var response = this.dom('respond-post-<?php $this->cid() ?>'),
-            holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
-
-            if (null != input) {
+              }
+              return false;
+            },
+            cancelReply: function () {
+              var response = this.dom('respond-post-<?php $this->cid() ?>'),
+                holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
+              if (null != input) {
                 input.parentNode.removeChild(input);
-            }
-
-            if (null == holder) {
+              }
+              if (null == holder) {
                 return true;
-            }
+              }
+              this.dom('cancel-comment-reply-link').style.display = 'none';
+              holder.parentNode.insertBefore(response, holder);
+              return false;
+}
 
             this.dom('cancel-comment-reply-link').style.display = 'none';
             holder.parentNode.insertBefore(response, holder);

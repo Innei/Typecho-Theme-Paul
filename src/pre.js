@@ -33,6 +33,7 @@
         step();
     };
     // 初始化评论按钮
+
     window.comment_init = function () {
         const commentsReply = document.querySelectorAll('span.comment_reply > a')
         const replyForm = document.querySelector('.reply')
@@ -53,6 +54,4 @@
             })
         }
     }
-
-
 })()
