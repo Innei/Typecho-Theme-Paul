@@ -42,22 +42,24 @@
 <script src="<?php $this->options->themeUrl('src/paul.js') ?>"></script>
 <script>
     <?php if($this->user->hasLogin()): ?>
-    (()=> {
+    window.writeNew = () => {
       // TODO ajax 提交文章
       ks.select('.post-new').onclick = () => {
         window.open('<?php $this->options->adminUrl() ?>write-post.php')
       }
-    })();
+    }
     <?php else: ?>
-    (()=> {
+    window.writeNew = () => {
       ks.select('.post-new').onclick = () => {
         ks.notice("请先登录 ❥(ゝω・✿ฺ)", {
           color: "green",
-            time: 1000
+          time: 1000
         })
       }
-    })();
+    }
     <?php endif; ?>
+    window.writeNew()
+    document.addEventListener('pjax:complete', window.writeNew)
     console.log("%c Innei %c https://shizuri.net ","color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;");
     <?php $this->options->custom_script();?>
 </script>
