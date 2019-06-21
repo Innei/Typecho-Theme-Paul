@@ -28,6 +28,9 @@ while ($pages->next()):
       case 'page-link.php':
         $GLOBALS['link'] = $pages->permalink;
         break;
+      case 'page-archive.php':
+        $GLOBALS['archive'] = $pages->permalink;
+        break;
     endswitch;
 endwhile;
 $GLOBALS['works'] = $works;

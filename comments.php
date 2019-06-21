@@ -158,7 +158,6 @@ function threadedComments($comments, $options)
       const commentForm = document.querySelector(sel)
       const post_url = e.target.getAttribute('action')
       const cookie = document.cookie
-      const referer = window.location.href
       const domParser = new DOMParser()
       const dom = str => domParser.parseFromString(str, 'text/html')
 

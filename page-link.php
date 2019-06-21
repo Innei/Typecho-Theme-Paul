@@ -2,7 +2,7 @@
 <?php
 /**
  * 友链页面
- *
+ * @author Innei
  * @package custom
  */
 $this->need('header.php');

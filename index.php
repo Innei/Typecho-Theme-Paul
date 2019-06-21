@@ -72,6 +72,7 @@ require_once 'pages.php';
         </div>
     </section>
     <section class="paul-news">
+      <?php if($this->options->blog_url):  ?>
         <div class="news-item">
             <div class="news-head">
                 <h3 class="title"><i class="fa fa-book"></i>最新博文</h3>
@@ -89,6 +90,7 @@ require_once 'pages.php';
                 </div>
             <?php endif; ?>
         </div>
+        <?php endif; ?>
         <?php if ($GLOBALS['project']): ?>
             <div class="news-item">
                 <div class="news-head grey">

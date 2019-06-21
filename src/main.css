@@ -144,42 +144,43 @@ header svg {
     margin-top: -1.5rem;
 }
 
-/* -- post ???? */
+/* -- post 样式 */
 
 .note-content h1 {
-    font-size: 1.75em;
-}
-
-.note-content h2 {
     font-size: 1.5em;
     font-weight: lighter;
 }
 
+.note-content h2 {
+    font-size: 1.2rem;
+    font-weight: lighter;
+}
+
 .note-content h3 {
-    font-size: 1.35em;
+    font-size: 1.15rem;
 }
 
 .note-content h4 {
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 .note-content h5 {
-    font-size: 0.9em;
+    font-size: 1rem;
 }
 
 .note-content h6 {
-    font-size: 0.7em;
+    font-size: .8rem;
 }
 
 .post-content h2::before {
     content: '';
     padding-left: .75em;
-    border-left: 2px solid #9de5f2;
+    border-left: 2px solid #66BAB7;
 }
 
 .post-content h3:before {
     content: "#";
-    margin-right: 5px;
+    margin-right: .5rem;
     color: #4caf50;
     font-weight: 400;
 }
@@ -190,24 +191,15 @@ header svg {
 
 .post-content h4:before {
     content: "&";
-    margin-right: 5px;
+    margin-right: .5rem;
     color: #546e7a;
     font-weight: 400;
-}
-
-@media (max-width: 500px) {
-    .note-title {
-        display: none;
-    }
-
-    .paul-say {
-        columns: 1;
-    }
 }
 
 .note-action span {
     display: inline-block;
 }
+
 /* -- code  */
 
 pre > code {
@@ -430,4 +422,109 @@ article:not(.comment-list) li::before, .torTree li::before {
 .link-warp {
     columns: 2;
     margin-top: 5rem
+}
+
+/* -- 归档页 */
+
+.post-category {
+    margin: 3rem auto;
+    overflow: hidden;
+}
+
+.post-category li {
+    float: left;
+    width: 50%;
+    margin-bottom: 2rem;
+}
+
+.post-category li > a:nth-child(1) {
+    display: inline-block;
+    margin-left: 0;
+}
+
+.post-category li a {
+    display: block;
+    margin-left: 1.5rem;
+}
+
+.category-wrap {
+    min-height: 12rem;
+    position: relative;
+}
+
+.archive-wrap li {
+    overflow: hidden;
+}
+.archive-wrap li::before {
+    display: none;
+}
+
+.more-category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+
+@media (max-width: 500px) {
+    .note-title {
+        display: none;
+    }
+
+    .paul-say {
+        columns: 1;
+    }
+
+    .post-category li {
+        width: 100%;
+    }
+}
+
+.page-navigator {
+    position: relative;
+    display: inline-block;
+    top: 5rem;
+}
+
+.page-navigator li::before {
+    display: none;
+}
+
+.page-navigator li {
+    display: inline-block;
+    color: #fff;
+    border-radius: 3em;
+    transition: color .3s, background .3s;
+    -o-transition: color .3s, background .3s;
+    -moz-transition: color .3s, background .3s;
+    -webkit-transition: color .3s, background .3s;
+    outline: 0;
+    font: inherit;
+    cursor: pointer;
+    user-select: none;
+    padding: .5em 2em;
+    margin-right: 1rem;
+    border: 1px solid transparent;
+}
+
+.page-navigator li > a {
+    color: #000;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.float-50 {
+    float: left;
+    width: 50%;
+    position: relative;
+}
+
+@media (max-width: 700px) {
+    .float-50 {
+        width: 100%;
+    }
 }
