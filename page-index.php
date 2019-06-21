@@ -20,7 +20,7 @@ require_once 'pages.php';
                 ?>
             <?php endforeach; ?>
         </nav>
-        <article>
+        <article class="post-content note-content">
             <h1><?php $this->title(); ?></h1>
             <?php $this->content() ?>
             <div class="paul-note">
