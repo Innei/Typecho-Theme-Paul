@@ -459,6 +459,7 @@ article:not(.comment-list) li::before, .torTree li::before {
 .archive-wrap li {
     overflow: hidden;
 }
+
 .archive-wrap li::before {
     display: none;
 }
@@ -530,5 +531,62 @@ article:not(.comment-list) li::before, .torTree li::before {
 @media (max-width: 700px) {
     .float-50 {
         width: 100%;
+    }
+}
+
+/* -- 加载样式 */
+
+#loading {
+    opacity: 0;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 30rem;
+    width: 30rem;
+    transition: opacity .5s;
+}
+
+body.loading #loading {
+    opacity: 1;
+    z-index: 50;
+}
+/* - 样式一 */
+.loading-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5rem;
+    width: 5rem;
+    margin: auto;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    border-top: 4px solid #795548;
+    animation: loading infinite 1s both linear;
+}
+
+#loading img {
+    transform: translateY(50%);
+}
+
+@keyframes loading {
+    0% {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    to {
+        -webkit-transform: rotate(405deg);
+        -moz-transform: rotate(405deg);
+        -ms-transform: rotate(405deg);
+        -o-transform: rotate(405deg);
+        transform: rotate(405deg);
     }
 }

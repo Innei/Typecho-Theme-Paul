@@ -167,21 +167,11 @@ require_once 'pages.php';
         </article>
         <script>
             (function () {
-                ks.lazy("img");
+
                 notes_init()
 
                 function notes_init() {
 
-                    /* const comment_btns = document.querySelectorAll('.comment');
-                     for (let comment_btn of comment_btns) {
-                         if (document.querySelector('#com-' + comment_btn.getAttribute('data-cid'))) {
-                             comment_btn.onclick = function () {
-                                 const isComment = document.querySelector('#com-' + this.getAttribute('data-cid'));
-                                 isComment.classList.contains('active') ? isComment.classList.remove('active') : isComment.classList.add('active');
-                             }
-                         }
-                     }
- */
                     // 点赞实现 ajax
                     const Like_btn = document.querySelectorAll('.like')
                     for (let el of Like_btn) {
