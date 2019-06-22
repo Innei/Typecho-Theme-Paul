@@ -14,4 +14,9 @@ window.onload = () => {
         document.body.classList.remove("loading");
         paul.init();
     });
+    document.addEventListener('pjax:error', function() {
+        ks.notice("网络连接异常！", {
+            color: "red"
+        });
+    });
 }

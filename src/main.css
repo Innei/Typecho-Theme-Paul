@@ -200,6 +200,10 @@ header svg {
     display: inline-block;
 }
 
+article dl, article ol, article ul {
+    margin-bottom: 1rem;
+}
+
 /* -- code  */
 
 pre > code {

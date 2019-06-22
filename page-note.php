@@ -16,7 +16,8 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
         return;endif;
     for ($i = 0; $i < $_GET['index']; $i++) {
         // 跳过代码
-        $posts->next();
+      if (!$posts->next()): http_response_code(422);
+        return; endif;
     }
     ?>
     <article>

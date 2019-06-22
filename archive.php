@@ -1,7 +1,7 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php
 /**
- * 归档页面
+ * 归档（预留）
  * @author Innei
  * @package custom
  */

@@ -51,7 +51,7 @@
     <?php else: ?>
     window.writeNew = () => {
       ks.select('.post-new').onclick = () => {
-        ks.notice("请先登录 ❥(ゝω・✿ฺ)", {
+        ks.notice("我无法确定你的是我的主人呐 ❥(ゝω・✿ฺ)", {
           color: "green",
           time: 1000
         })
