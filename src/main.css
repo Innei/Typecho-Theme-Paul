@@ -590,3 +590,55 @@ body.loading #loading {
         transform: rotate(405deg);
     }
 }
+
+/* -- 霓虹灯效果 */
+.text{
+    font-size: 2rem;
+    font-weight: lighter;
+    fill: none;
+    stroke-width: 2px;
+    stroke-dasharray: 90, 310;
+    animation: stroke 6s infinite linear;
+}
+.text-1{
+    stroke: #7DB9DE;
+    text-shadow: 0 0 5px #7DB9DE;
+    animation-delay: -1.5s;
+}
+.text-2{
+    stroke: #F05E1C;
+    text-shadow: 0 0 5px #F05E1C;
+    animation-delay: -3s;
+}
+.text-3{
+    stroke: #E03C8A;
+    text-shadow: 0 0 5px #E03C8A;
+    animation-delay: -4.5s;
+}
+.text-4{
+    stroke: #49c7af;
+    text-shadow: 0 0 5px #49c7af;
+    animation-delay: -6s;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: -400;
+    }
+}
+
+.my-info h1:nth-child(1) {
+    position: relative;
+    user-select: none;
+}
+.my-info h1:nth-child(1) > span:hover ~ svg {
+    opacity: 1;
+}
+.my-info h1:nth-child(1) > svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity .5s;
+}

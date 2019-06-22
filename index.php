@@ -30,9 +30,24 @@ require_once 'pages.php';
         <div class="my-avatar">
             <img src="<?php if ($this->options->avatar): $this->options->avatar(); else: $this->options->themeUrl('src/img/avatar.jpeg');endif; ?>">
         </div>
-        <div class="my-info">
-            <h1><?php $this->author() ?></h1>
-            <p><?php $this->options->description() ?></p>
+      <div class="my-info">
+        <h1><span><?php $this->author() ?></span>
+          <svg width="100%" height="3.5rem">
+            <text text-anchor="start" x="0" y="2.2rem" class="text text-1">
+              <?php $this->author() ?>
+            </text>
+            <text text-anchor="start" x="0" y="2.2rem" class="text text-2">
+              <?php $this->author() ?>
+            </text>
+            <text text-anchor="start" x="0" y="2.2rem" class="text text-3">
+              <?php $this->author() ?>
+            </text>
+            <text text-anchor="start" x="0" y="2.2rem" class="text text-4">
+              <?php $this->author() ?>
+            </text>
+          </svg>
+        </h1>
+        <p><?php $this->options->description() ?></p>
             <div class="social-icons">
                 <?php if ($this->options->github_username): ?>
                     <a href="https://github.com/<?php $this->options->github_username(); ?>" target="_blank"
