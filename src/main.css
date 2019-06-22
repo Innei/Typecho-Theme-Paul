@@ -1,10 +1,22 @@
 /* -- 全局样式重置 */
+* {
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
 ul {
     list-style: none;
 }
 
 li {
     list-style: none;
+}
+
+::selection {
+}
+
+::selection {
+    background-color: rgba(134, 166, 151, .5);
+    color: #000;
 }
 
 .comment-list {
@@ -554,6 +566,7 @@ body.loading #loading {
     opacity: 1;
     z-index: 50;
 }
+
 /* - 样式一 */
 .loading-circle {
     position: absolute;
@@ -592,7 +605,7 @@ body.loading #loading {
 }
 
 /* -- 霓虹灯效果 */
-.text{
+.text {
     font-size: 2rem;
     font-weight: lighter;
     fill: none;
@@ -600,22 +613,26 @@ body.loading #loading {
     stroke-dasharray: 90, 310;
     animation: stroke 6s infinite linear;
 }
-.text-1{
+
+.text-1 {
     stroke: #7DB9DE;
     text-shadow: 0 0 5px #7DB9DE;
     animation-delay: -1.5s;
 }
-.text-2{
+
+.text-2 {
     stroke: #F05E1C;
     text-shadow: 0 0 5px #F05E1C;
     animation-delay: -3s;
 }
-.text-3{
+
+.text-3 {
     stroke: #E03C8A;
     text-shadow: 0 0 5px #E03C8A;
     animation-delay: -4.5s;
 }
-.text-4{
+
+.text-4 {
     stroke: #49c7af;
     text-shadow: 0 0 5px #49c7af;
     animation-delay: -6s;
@@ -631,9 +648,11 @@ body.loading #loading {
     position: relative;
     user-select: none;
 }
+
 .my-info h1:nth-child(1) > span:hover ~ svg {
     opacity: 1;
 }
+
 .my-info h1:nth-child(1) > svg {
     position: absolute;
     top: 0;
