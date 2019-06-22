@@ -73,12 +73,12 @@ function parse_RSS($url, $site)
     $file = $rss->channel->item;
     $link = $rss->channel->link;
     global $body;
+
     if (isset($file)) {
         $rand_arr = get_randoms(1,14, 4);
         for ($i = 0; $i < 4; $i++) {
-
             if ($file[$i]) {
-                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="' . $site . '/src/img/' . $rand_arr[0] . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
+                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="' . $site . '/src/img/' . $rand_arr[$i] . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
             } else {
                 break;
             }
