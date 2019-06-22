@@ -369,7 +369,7 @@ body.loading main {
 .news-article, .news-project {
     color: #fff;
     display: block;
-    min-height: 8em;
+    min-height: 13rem;
     overflow: hidden;
     border-radius: 1em;
     background: #bbb
