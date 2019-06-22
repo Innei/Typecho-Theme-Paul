@@ -2,7 +2,7 @@
 
 Design Prototype: <https://paul.ren>
 
-Demo: <https://null.innei.ml>
+Demo: <https://shizuri.net>
 
 <a href="../master/README-EN.md">Chinese Document</a>
 
@@ -55,6 +55,12 @@ This theme stems from <https://paul.ren>, this is not perfect now, probably had 
 ## Quickly Start
 
 Clone this repo, and go to dashboard -- theme -- Paul, enable it. In the this theme's setting, you should fill out form.
+
+**Important!** please copy or move `VOID` into `plugins` directory.
+
+```bash
+cp ./VIOD ../../plugins
+```
 
 ## Index Page
 

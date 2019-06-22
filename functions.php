@@ -79,7 +79,6 @@ function parse_RSS($url, $site)
         for ($i = 0; $i < 4; $i++) {
             if ($file[$i]) {
                 $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="' . $site . '/src/img/' . array_pop($rand_arr) . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
-                var_dump($rand_arr[$i]);
             } else {
                 break;
             }

@@ -2,7 +2,7 @@
 
 设计原型 <https://paul.ren>
 
-Demo 地址: <https://null.innei.ml>
+Demo 地址: <https://shizuri.net>
 
 <a href="../master/README-EN.md">English Document</a>
 
@@ -61,6 +61,12 @@ Demo 地址: <https://null.innei.ml>
 
 Clone 此项目，在 设置 中使用此主题。在设置主题中填写相关字段。
 
+复制或移动 `VIOD` 到 `Plugins` 目录。
+
+```bash
+cp ./VIOD ../../plugins
+```
+
 ## 使用方法
 
 ### 首页
@@ -117,7 +123,10 @@ Clone 此项目，在 设置 中使用此主题。在设置主题中填写相关
 {
 "project_img": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560445631540&di=73e3469b88d6fae728aae976e3bf0a53&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic3%2Fcover%2F02%2F39%2F53%2F59c2b016635b3_610.jpg",  // 作品图标
 "body": "一个简单的主题", // 介绍正文
-"imgs": ["https://user-images.githubusercontent.com/41265413/59440870-39bd7900-8e2a-11e9-879b-04e7a792235c.png","https://user-images.githubusercontent.com/41265413/59440890-40e48700-8e2a-11e9-8b71-3d1b4c5479b9.png"] // 作品图片, 可多个
+"imgs": ["https://user-images.githubusercontent.com/41265413/59440870-39bd7900-8e2a-11e9-879b-04e7a792235c.png","https://user-images.githubusercontent.com/41265413/59440890-40e48700-8e2a-11e9-8b71-3d1b4c5479b9.png"], // 作品图片, 可多个
+"info": "this is a simple theme",
+"url": "//shizuri.net", // preview website
+"doc_url": "//github.com/Innei/typecho-theme-paul" // document url
 }
 ```
 
