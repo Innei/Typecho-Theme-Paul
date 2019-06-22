@@ -83,8 +83,7 @@ require_once 'pages.php';
             <?php if ($this->options->RSS): ?>
                 <div class="news-body">
                     <div class="row s">
-                        <?php $rss = parse_RSS($this->options->RSS, $this->options->themeUrl);
-                        echo $rss
+                        <?php echo parse_RSS($this->options->RSS, $this->options->themeUrl);
                         ?>
                     </div>
                 </div>

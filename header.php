@@ -51,6 +51,10 @@ require_once 'pages.php';
 <body>
 <header>
     <toggle></toggle>
+    <div id="loading">
+<!--      <div class="loading-circle"></div>-->
+      <img src="<?php $this->options->themeUrl('src/img/loading.gif') ?>" id="loading-img"/>
+    </div>
     <nav>
         <a href="<?php $this->options->siteUrl(); ?>">
             <?php if ($this->options->svg_path): $this->options->svg_path(); else: ?>

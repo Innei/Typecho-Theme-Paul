@@ -61,6 +61,12 @@ var paul = new function () {
         if (!paul_music.isMobile()) document.addEventListener("scroll", scroll_fixed);
     };
     this.init = function () {
+        const imgs = [...ks.selectAll("article img:not(#loading-img)")]
+        imgs.forEach((item, index) => {
+            item.setAttribute('ks-original', item.getAttribute('src'))
+            item.setAttribute('src', 'https://i.loli.net/2019/06/22/5d0da0324990294723.gif')
+        })
+        ks.lazy('article img');
         if (ks.select("#comment")) this.staticPage();
         if (ks.select(".paul-music"))
             this.musicPage();

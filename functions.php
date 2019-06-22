@@ -55,6 +55,17 @@ function themeConfig($form)
     $form->addInput($svg_path);
 }
 
+function get_randoms($min, $max, $num)
+{
+    $count = 0;
+    $res = array();
+    while ($count < $num) {
+      $res[] = rand($min, $max);
+      $res = array_flip(array_flip($res));
+      $count = count($res);
+    }
+    return $res;
+}
 
 function parse_RSS($url, $site)
 {
@@ -62,17 +73,18 @@ function parse_RSS($url, $site)
     $file = $rss->channel->item;
     $link = $rss->channel->link;
     global $body;
-    if (isset($file)) {
-        for ($i = 0; $i < 4; $i++) {
 
+    if (isset($file)) {
+        $rand_arr = get_randoms(1,14, 4);
+        for ($i = 0; $i < 4; $i++) {
             if ($file[$i]) {
-                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="' . $site . '/src/img/' . rand(0, 14) . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
+                $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="' . $site . '/src/img/' . $rand_arr[$i] . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
             } else {
                 break;
             }
         }
     } else {
-        echo "博客连接失败,请检查";
+        echo "博客连接失败啦，一请检查是否开启 OpenSSL 支持，二请检查地址是否正确。";
     }
     return $body;
 }
