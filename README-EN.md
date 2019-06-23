@@ -80,7 +80,7 @@ works according to if it is exists, and display them.
 
 diary page is the most important page in this theme. It is the core. So you must be create it necessary and correctly.
 
-diary page: you should create independent page, select the `日记页面` template, and you can write any content you like, because it will ingore you content which you worte. How many diary will display according to your setting in the theme config. But, because of the limit of the typecho, other articles also can access by enter the permanent link.
+diary page: you should create independent page, select the `日记页面` template, and you can write any content you like, because it will ingore you content which you wrote. How many diary will display according to your setting in the theme config. The others will loading by using ajax. And you also can set a secret key to prohibit user to access.
 
 ## Other Page [Option]
 

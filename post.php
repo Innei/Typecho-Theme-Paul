@@ -35,7 +35,7 @@ require_once 'pages.php';
       $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($posts);
       $index = $this->options->note_nums ? $this->options->note_nums : 5;
       $cid_arr = array();
-      for ($i = 0; $i < 5 && $posts->next(); $i++):
+      for ($i = 0; $i < $index && $posts->next(); $i++):
       $cid_arr[] = $posts->cid;
       endfor;
           if (!in_array($this->cid, $cid_arr) and empty(Typecho_Cookie::get('__post_'.$this->options->secret)) and !$this->user->hasLogin()) {
