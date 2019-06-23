@@ -20,7 +20,7 @@ var paul = new function () {
             if ('scrollBehavior' in document.documentElement.style) {
                 window.scrollTo({top: 0, behavior: "smooth"})
             } else {
-                window.scrollTo(0, 0);
+                window.scrollSmoothTo(0)
             }
         };
         window.onscroll = function () {

@@ -158,3 +158,12 @@ function themeInit($archive) {
         $db->query('ALTER TABLE `' . $prefix . 'contents` ADD COLUMN `likes` INT(10) DEFAULT 0;');
     }
 }
+
+function themeFields($layout) {
+    if ($_SERVER['SCRIPT_NAME'] == "/admin/write-page.php") {
+        $title = new Typecho_Widget_Helper_Form_Element_Text('title', NULL, NULL, _t('标题'), _t('首页模板功能'));
+        $layout->addItem($title);
+        $intro = new Typecho_Widget_Helper_Form_Element_Text('intro', NULL, NULL, _t('介绍'), _t('首页模板功能'));
+        $layout->addItem($intro);
+    }
+}

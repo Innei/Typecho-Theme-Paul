@@ -335,6 +335,34 @@ pre code {
     }
 }
 
+/* -- 重写首页模板样式 */
+.paul-post h1, .paul-post h2, .paul-post h3, .paul-post h4, .paul-post h5 {
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: #67492e;
+    margin-top: 3em;
+}
+
+.paul-post h1:before, .paul-post h2:before, .paul-post h3:before, .paul-post h4:before, .paul-post h5:before {
+    content: ' ';
+    padding-left: 0.75em;
+    border-left: 2px solid #ffc107;
+}
+
+.paul-post li {
+    list-style: disc;
+}
+
+.paul-post li li {
+    list-style: circle;
+}
+.paul-post li li li {
+    list-style: square;
+}
+.paul-post li:before {
+    display: none;
+}
+
 /* -- 重写文章页样式 */
 .note-content {
     white-space: normal;
@@ -346,6 +374,14 @@ pre code {
 
 .note-content p {
     margin-bottom: 1.5rem;
+}
+
+.post-content ul ul {
+    margin-bottom: 0;
+}
+
+.post-content ul p {
+    display: inline;
 }
 
 .torTree {

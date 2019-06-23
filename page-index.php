@@ -20,8 +20,13 @@ require_once 'pages.php';
                 ?>
             <?php endforeach; ?>
         </nav>
-        <article class="post-content note-content">
-            <h1><?php $this->title(); ?></h1>
+        <?php if ($this->fields->title or $this->fields->intro): ?>
+      <section class="post-title">
+        <h1><?php $this->fields->title() ?></h1>
+        <h2><?php $this->fields->intro() ?></h2>
+          <?php endif; ?>
+      </section>
+        <article class="post-content paul-post">
             <?php $this->content() ?>
             <div class="paul-note">
                 <div class="note-action">
