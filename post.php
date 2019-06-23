@@ -14,6 +14,7 @@
 ?>
 
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php $this->need('until/until.php') ?>
 <?php
 $this->need('header.php');
 require_once 'functions.php';
@@ -111,8 +112,7 @@ require_once 'pages.php';
             <?php endif; ?>
             <div class="note-inform">
                 <span class="user"><?php $this->author(); ?></span>
-                <span class="views" title="阅读次数 <?php echo $this->views ?>"><i class="fa fa-leaf" aria-hidden="true"></i> <?php echo $this->views ?></span>
-                <span class="words" title="字数 <?php echo get_words($this) ?>"><i class="fa fa-file-word-o" aria-hidden="true"></i> <?php echo get_words($this) ?></span>
+                <span class="views" title="阅读次数 <?php echo get_views_num($this) ?>"><i class="fa fa-leaf" aria-hidden="true"></i> <?php echo get_views_num($this) ?></span>
                 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="color: currentColor;" target="_blank"><span class="CC BY-NC-SA 3.0 CN" title="署名-非商业性使用-相同方式共享 3.0 中国大陆 (CC BY-NC-SA 3.0 CN)"><i class="fa fa-creative-commons" aria-hidden="true"></i></span></a>
             </div>
             <div class="note-action">
@@ -124,52 +124,7 @@ require_once 'pages.php';
     </article>
     <?php $this->need('comments.php') ?>
     <script src="<?php $this->options->themeUrl('src/index.js') ?>"></script>
-    <script>
-        (function() {
-            // 点赞实现 ajax
-            const Like_btn = document.querySelectorAll('.like');
-            for (let el of Like_btn) {
-                el.onclick = function(e) {
-                    const that = this;
-                    ks.ajax({
-                        method: "POST",
-                        data: {
-                            type: "up",
-                            cid: this.getAttribute('data-cid'),
-                            cookie: document.cookie,
-
-                        },
-                        url: "<?php $this->options->siteUrl(); ?>index.php/action/void_like?up",
-                        success: function(res) {
-                            if (JSON.parse(res.responseText)['status'] === 1) {
-                                that.innerHTML = parseInt(that.innerHTML) + 1;
-                                ks.notice("感谢你的点赞~", {
-                                    color: "green",
-                                    time: 1500
-                                });
-                                that.onclick = function() {
-                                    ks.notice("你的爱我已经感受到了！", {
-                                        color: "yellow",
-                                        time: 1500
-                                    });
-                                }
-                            } else if (JSON.parse(res.responseText)['status'] === 0) {
-                                ks.notice("你的爱我已经感受到了！", {
-                                    color: "yellow",
-                                    time: 1500
-                                });
-                            }
-                        },
-                        failed: function(res) {
-                            ks.notice("FXXK！提交出错了！", {
-                                color: "red"
-                            });
-                        }
-                    })
-                }
-            }
-        }())
-    </script>
+    <?php $this->need('until.php') ?>
     <script src="<?php $this->options->themeUrl('src/prism.js') ?>"></script>
   <script>
     (() => {// 为小标题加上锚点
