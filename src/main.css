@@ -12,9 +12,6 @@ li {
 }
 
 ::selection {
-}
-
-::selection {
     background-color: rgba(134, 166, 151, .5);
     color: #000;
 }

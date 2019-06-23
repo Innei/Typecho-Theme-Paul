@@ -1,4 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
+<?php $this->need('until/until.php') ?>
 <?php
 $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($posts);
 // ajax 加载
@@ -16,8 +17,8 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
         return;endif;
     for ($i = 0; $i < $_GET['index']; $i++) {
         // 跳过代码
-      if (!$posts->next()): http_response_code(422);
-        return; endif;
+        if (!$posts->next()): http_response_code(422);
+            return; endif;
     }
     ?>
     <article>
@@ -52,8 +53,8 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
                 <span class="user"><?php $posts->author(); ?></span>
                 <span class="views" title="阅读次数 <?php echo get_views_num($posts) ?>"><i class="fa fa-leaf"
                                                                                         aria-hidden="true"></i> <?php echo get_views_num($posts) ?></span>
-                <span class="words" title="字数 <?php echo get_words($posts) ?>"><i class="fa fa-file-word-o"
-                                                                                  aria-hidden="true"></i> <?php echo get_words($posts) ?></span>
+<!--                <span class="words" title="字数 --><?php //echo get_words($posts) ?><!--"><i class="fa fa-file-word-o"-->
+<!--                                                                                  aria-hidden="true"></i> --><?php //echo get_words($posts) ?><!--</span>-->
 
             </div>
             <div class="note-action">
@@ -133,8 +134,8 @@ require_once 'pages.php';
                         <span class="user"><?php $posts->author(); ?></span>
                         <span class="views" title="阅读次数 <?php echo get_views_num($posts) ?>"><i class="fa fa-leaf"
                                                                                                 aria-hidden="true"></i> <?php echo get_views_num($posts) ?></span>
-                        <span class="words" title="字数 <?php echo get_words($posts) ?>"><i class="fa fa-file-word-o"
-                                                                                          aria-hidden="true"></i> <?php echo get_words($posts) ?></span>
+<!--                        <span class="words" title="字数 --><?php //echo get_words($posts) ?><!--"><i class="fa fa-file-word-o"-->
+<!--                                                                                          aria-hidden="true"></i> --><?php //echo get_words($posts) ?><!--</span>-->
 
                     </div>
                     <div class="note-action">
@@ -165,56 +166,9 @@ require_once 'pages.php';
                 <button id="load-more-btn">加载更多</button>
             </section>
         </article>
+        <?php $this->need('until.php') ?>
         <script>
             (function () {
-
-                notes_init()
-
-                function notes_init() {
-
-                    // 点赞实现 ajax
-                    const Like_btn = document.querySelectorAll('.like')
-                    for (let el of Like_btn) {
-                        el.onclick = function (e) {
-                            const that = this
-                            ks.ajax({
-                                method: "POST",
-                                data: {
-                                    type: "up",
-                                    cid: this.getAttribute('data-cid'),
-                                    cookie: document.cookie,
-
-                                },
-                                url: "<?php $this->options->siteUrl(); ?>index.php/action/void_like?up",
-                                success: function (res) {
-                                    if (JSON.parse(res.responseText)['status'] === 1) {
-                                        that.innerHTML = parseInt(that.innerHTML) + 1
-                                        ks.notice("感谢你的点赞~", {
-                                            color: "green",
-                                            time: 1500
-                                        });
-                                        that.onclick = function () {
-                                            ks.notice("你的爱我已经感受到了！", {
-                                                color: "yellow",
-                                                time: 1500
-                                            });
-                                        }
-                                    } else if (JSON.parse(res.responseText)['status'] === 0) {
-                                        ks.notice("你的爱我已经感受到了！", {
-                                            color: "yellow",
-                                            time: 1500
-                                        });
-                                    }
-                                },
-                                failed: function (res) {
-                                    ks.notice("FXXK！提交出错了！", {
-                                        color: "red"
-                                    });
-                                }
-                            })
-                        }
-                    }
-                }
 
                 // 加载更多 ajax 实现
                 let current_index = <?php echo $index ?>;
