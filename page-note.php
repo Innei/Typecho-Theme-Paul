@@ -13,7 +13,7 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
 
         }
         else{
-            header('Content-type: applicaction/json');
+            header('Content-type: application/json');
             print_r(json_encode(["msg" => "暗号错误"]));
             http_response_code(403);
             exit;
@@ -89,12 +89,10 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
         </section>
     <?php endif ?>
     <?php endfor;
-    print_r('</artcle>');
+    print_r('</article>');
     return; //完成ajax方式返回，退出此页面
 endif;
 ?>
-
-
 <?php
 /**
  * 日记页面
@@ -106,7 +104,6 @@ $this->need('header.php');
 require_once 'functions.php';
 require_once 'pages.php';
 ?>
-
     <main class="is-article">
         <nav class="navigation">
             <a href="<?php echo $GLOBALS['note']; ?>" class="active">日记</a>
@@ -200,18 +197,20 @@ require_once 'pages.php';
                     })
                     ks.ajax({
                         method: 'GET',
-                        <?php if ($this->options->is_hidden_note and empty(Typecho_Cookie::get('__post_'.$this->options->secret)) and !$this->user->hasLogin()): ?>
-                        url: window.location.href + '?load_type=ajax&index=' + current_index + '&secret=' + document.getElementById('secret').value,
-                        <?php else: ?>
+                        <?php if ($this->options->is_hidden_note and empty(Typecho_Cookie::get('__post_'.$this->options->secret)) and !$this->user->hasLogin()):
+                        echo "url: window.location.href + '?load_type=ajax&index=' + current_index + '&secret=' + document.getElementById('secret').value,";
+                        else: ?>
                         url: window.location.href + '?load_type=ajax&index=' + current_index,
                         <?php endif; ?>
                         success: res => {
                             noteNavigator.remove()
                             const strToDOM = doc(res.responseText)
+                            like_init(strToDOM)
                             window.pjax.refresh(strToDOM)
-                            article_body.appendChild(strToDOM.querySelector('article'))
+                            const article = strToDOM.querySelector('article')
+                            article.style.animation = 'fade-in-top 1s forwards'
+                            article_body.appendChild(article)
                             article_body.appendChild(noteNavigator)
-                            notes_init()
                             current_index += 5
                         },
                         failed: res => {

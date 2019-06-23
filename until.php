@@ -3,8 +3,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 ?>
 <script>
-    (() => { // 点赞实现 ajax
-        const Like_btn = document.querySelectorAll('.like');
+    function like_init(dom) { // 点赞实现 ajax
+        const Like_btn = dom.querySelectorAll('.like');
         for (let el of Like_btn) {
             el.onclick = function (e) {
                 const that = this;
@@ -13,8 +13,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     data: {
                         type: "up",
                         id: this.getAttribute('data-cid'),
-                        //cookie: document.cookie,
-
                     },
                     url: window.location.href,
                     success: function (res) {
@@ -45,5 +43,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 })
             }
         }
-    })();
+    }
+
+    like_init(document)
 </script>
