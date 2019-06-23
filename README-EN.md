@@ -58,7 +58,7 @@ Clone this repo, and go to dashboard -- theme -- Paul, enable it. In the this th
 
 ## Index Page
 
-On the index page, you will see four of nav button on the top of the window, Index, about, donate and dream. It will display according to your create the necessary pages. It will display `index` button , if your don't do anything, it is default. So you should do like following.
+On the index page, you will see four of nav button on the top of the window, Index, about, donate and dream. It will display according to your create the necessary pages. It will display `index` button , if you don't do anything, it will be default. So you should do like following.
 
 about page: you should create independent page, select the `首页模板` template, and you can write any content you like.
 
@@ -78,9 +78,9 @@ works according to if it is exists, and display them.
 
 ## Diary Page
 
-diary page is the most important page in this theme. It is the core. So you must be create it necessary and correctly.
+diary page is the most important page in this theme. It is the core. So you must be create it necessarily and correctly.
 
-diary page: you should create independent page, select the `日记页面` template, and you can write any content you like, because it will ingore you content which you wrote. How many diary will display according to your setting in the theme config. The others will loading by using ajax. And you also can set a secret key to prohibit user to access.
+diary page: you should create independent page, select the `日记页面` template, and you can write any content you like, because it will ingore you content which you wrote. How many diary will display according to your setting in the theme config. The others will load by using ajax. And you also can set a secret key to prohibit user to access.
 
 ## Other Page [Option]
 
@@ -152,8 +152,6 @@ var paul_music = new function () {
 }
 ```
 
-To like one article, you should use VOID_Plugin, because this demand based on VOID_Plugin, you should move the `VOID` directory to the `../plugins/`, and go to dashboard to enable it. '
-
 **Music page**: 
 
 Notice: Due to Netease Music Api's limitation, you will get `token` `key` `cookie` `par`  manually. 
@@ -168,10 +166,6 @@ Notice: Due to Netease Music Api's limitation, you will get `token` `key` `cooki
 ```
 
 Enjoy.
-
-## Notice
-
-Unless in `Post` page, other pages will not had referrer meta head, it will affect your analysis code.
 
 ## Copyright & Open Source
 
