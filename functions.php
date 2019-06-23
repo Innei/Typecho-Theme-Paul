@@ -30,8 +30,14 @@ function themeConfig($form)
     $blog_url = new Typecho_Widget_Helper_Form_Element_Text('blog_url', NULL, NULL, _t('博客地址'), _t('填写你的博客地址  https:// 开头'));
     $form->addInput($blog_url);
     // 自定义日记输出数量
-    $note_nums = new Typecho_Widget_Helper_Form_Element_Text('note_nums', NULL, NULL, _t('日记输出数量'), _t('在这里填入你需要在日记页面输出的日记数量'));
+    $note_nums = new Typecho_Widget_Helper_Form_Element_Text('note_nums', NULL, NULL, _t('日记输出数量'), _t('在这里填入你需要在日记页面输出的日记数量，后续文章可以设置隐藏也可以通过 Ajax 加载。隐藏的文章也将无法通过直链访问'));
     $form->addInput($note_nums);
+    // 是否隐藏后续的日记内容
+    $is_hidden_note = new Typecho_Widget_Helper_Form_Element_Radio('is_hidden_note', array('0' => _t('不隐藏'), '1' => _t('需要隐藏, 这是人家的小秘密啦')), _t('是否隐藏后续的日记内容'), _t('是否隐藏后续的日记内容'));
+    $form->addInput($is_hidden_note);
+    // 设置暗号, 需要开启隐藏日记开关
+    $secret = new Typecho_Widget_Helper_Form_Element_Text('secret', NULL, 'secret', _t('设置暗号'), _t('隐藏的文章通过直链访问, 需要暗号才可以查看'));
+    $form->addInput($secret);
     // 自定义追番输出数量
     $display_bgm_num = new Typecho_Widget_Helper_Form_Element_Text('display_bgm_num', NULL, NULL, _t('追番输出数量'), _t('在这里填入你需要在追番页面输出的追番数量'));
     $form->addInput($display_bgm_num);

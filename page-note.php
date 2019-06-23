@@ -3,6 +3,19 @@
 $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($posts);
 // ajax 加载
 if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
+
+    if ($this->options->is_hidden_note){
+        if (isset($_GET['secret']) and ($_GET['secret'] == $this->options->secret or !empty(Typecho_Cookie::get('__post_secret')))) {
+            Typecho_Cookie::set('__post_secret', $this->options->secret);
+        }
+        else{
+            header('Content-type: applicaction/json');
+            print_r(json_encode(["msg" => "暗号错误"]));
+            http_response_code(403);
+            exit;
+        }
+    }
+
     // 判断是否溢出
     function allpostnum($id)
     {
@@ -162,6 +175,9 @@ require_once 'pages.php';
             <?php endif ?>
             <?php endfor; ?>
             <section id="note-navigator" class="note-navigator">
+                <?php if ($this->options->is_hidden_note): ?>
+                <input type="text" id="secret" style="margin-right: 1rem" placeholder="主人设置了暗号" title="主人设置了暗号, 需要暗号才能查看哦" />
+                <?php endif; ?>
                 <button id="load-more-btn">加载更多</button>
             </section>
         </article>
@@ -233,7 +249,11 @@ require_once 'pages.php';
                     })
                     ks.ajax({
                         method: 'GET',
+                        <?php if ($this->options->is_hidden_note): ?>
+                        url: window.location.href + '?load_type=ajax&index=' + current_index + '&secret=' + document.getElementById('secret').value,
+                        <?php else: ?>
                         url: window.location.href + '?load_type=ajax&index=' + current_index,
+                        <?php endif; ?>
                         success: res => {
                             noteNavigator.remove()
                             const strToDOM = doc(res.responseText)
@@ -244,6 +264,12 @@ require_once 'pages.php';
                             current_index += 5
                         },
                         failed: res => {
+                            if (res.status === 403) {
+                                ks.notice (JSON.parse(res.responseText)['msg'], {
+                                    color: "red",
+                                    time: 1500
+                                })
+                            }
                             if (res.status === 422) {
                                 noteNavigator.remove()
                                 ks.notice("没了哦!~(｀・ω・´)", {
