@@ -34,21 +34,35 @@ Demo 地址: <https://shizuri.net>
 
 ## 预览
 
-![image](../master/screenshot.png)
+主页:
+![image](https://user-images.githubusercontent.com/41265413/59972764-ab828900-95c7-11e9-9d4c-2db223d42e37.png)
+![image](https://user-images.githubusercontent.com/41265413/59972769-c3f2a380-95c7-11e9-8f52-534a118757c8.png)
 
-![image](https://user-images.githubusercontent.com/41265413/59444149-e9e1b080-8e2f-11e9-94b8-2e45c59fcf8b.png)
+主页模板:
+![image](https://user-images.githubusercontent.com/41265413/59972774-cb19b180-95c7-11e9-82c4-bb157e6d6e76.png)
 
-![image](https://user-images.githubusercontent.com/41265413/59440870-39bd7900-8e2a-11e9-879b-04e7a792235c.png)
+日记页:
+![image](https://user-images.githubusercontent.com/41265413/59972779-d66cdd00-95c7-11e9-8f9d-25b1804d662c.png)
+![image](https://user-images.githubusercontent.com/41265413/59972796-2186f000-95c8-11e9-857d-5ed2b2ceb86d.png)
 
-![image](https://user-images.githubusercontent.com/41265413/59440890-40e48700-8e2a-11e9-8b71-3d1b4c5479b9.png)
+日记详细页:
+![image](https://user-images.githubusercontent.com/41265413/59972782-e8e71680-95c7-11e9-91f6-4a75828f80fe.png)
+![image](https://user-images.githubusercontent.com/41265413/59972798-2ea3df00-95c8-11e9-8ebd-1f70af2dd878.png)
 
-![image](https://user-images.githubusercontent.com/41265413/59440935-55288400-8e2a-11e9-8dc2-84a42e61343a.png)
+作品页:
+![image](https://user-images.githubusercontent.com/41265413/59972787-fbf9e680-95c7-11e9-8e12-878ae9c11cc0.png)
 
-![image](https://user-images.githubusercontent.com/41265413/59440958-5eb1ec00-8e2a-11e9-8176-42e60bff4164.png)
+作品信息页:
+![image](https://user-images.githubusercontent.com/41265413/59972786-f6040580-95c7-11e9-8713-f27dfc466fd9.png)
 
-![image](https://user-images.githubusercontent.com/41265413/59441089-99b41f80-8e2a-11e9-9a97-bd0c19946756.png)
-
+追番页:
 ![image](https://user-images.githubusercontent.com/41265413/59441120-a9cbff00-8e2a-11e9-87ef-241ff0edccdc.png)
+
+归档页：
+![image](https://user-images.githubusercontent.com/41265413/59972789-0a480280-95c8-11e9-86b5-1f7fd1f89e7e.png)
+
+歌单：
+![image](https://user-images.githubusercontent.com/41265413/59972793-146a0100-95c8-11e9-80f6-9ec672cc0351.png)
 
 你也可以前往 https://paul.ren ，光临保罗的小窝。他是设计原型。
 
