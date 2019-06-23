@@ -53,9 +53,6 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
                 <span class="user"><?php $posts->author(); ?></span>
                 <span class="views" title="阅读次数 <?php echo get_views_num($posts) ?>"><i class="fa fa-leaf"
                                                                                         aria-hidden="true"></i> <?php echo get_views_num($posts) ?></span>
-<!--                <span class="words" title="字数 --><?php //echo get_words($posts) ?><!--"><i class="fa fa-file-word-o"-->
-<!--                                                                                  aria-hidden="true"></i> --><?php //echo get_words($posts) ?><!--</span>-->
-
             </div>
             <div class="note-action">
                 <a href="<?php $posts->permalink(); ?>#want-comment">
@@ -134,9 +131,6 @@ require_once 'pages.php';
                         <span class="user"><?php $posts->author(); ?></span>
                         <span class="views" title="阅读次数 <?php echo get_views_num($posts) ?>"><i class="fa fa-leaf"
                                                                                                 aria-hidden="true"></i> <?php echo get_views_num($posts) ?></span>
-<!--                        <span class="words" title="字数 --><?php //echo get_words($posts) ?><!--"><i class="fa fa-file-word-o"-->
-<!--                                                                                          aria-hidden="true"></i> --><?php //echo get_words($posts) ?><!--</span>-->
-
                     </div>
                     <div class="note-action">
                         <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"

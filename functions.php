@@ -141,7 +141,7 @@ function get_words($archive)
 }
 
 function themeInit($archive) {
-    if ($archive->is('page')) {
+    if ($archive->is('archive')) {
         $archive->parameter->pageSize = 20; // 自定义条数
     }
 
