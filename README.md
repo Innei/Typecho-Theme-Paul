@@ -23,7 +23,7 @@ Demo 地址: <https://shizuri.net>
 - [x] 作品页
 - [x] 输出评论
 - [x] 输入评论
-- [x] 点赞, 字数统计, 浏览量 (需要接入 VOID 插件)
+- [x] 点赞, 浏览量
 - [x] 播放器
 - [x] 音乐页
 - [x] 其他
@@ -65,12 +65,6 @@ Demo 地址: <https://shizuri.net>
 ## 快速开始
 
 Clone 此项目，在 设置 中使用此主题。在设置主题中填写相关字段。
-
-复制或移动 `VIOD` 到 `Plugins` 目录。
-
-```bash
-cp ./VIOD ../../plugins
-```
 
 ## 使用方法
 

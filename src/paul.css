@@ -539,6 +539,10 @@ article > h1 small {
     content: "\f075"
 }
 
+code .comment:before {
+    display: none;
+}
+
 .paul-note .like.active:after {
     top: 0;
     left: 0;

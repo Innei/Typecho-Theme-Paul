@@ -40,7 +40,7 @@ See [Pual Typecho主题发布](https://shizuri.net/archives/131/).
 - [x] Awesome article page
 - [x] Beautiful Works page
 - [x] Commit
-- [x] Like, Views, Word Count (need VOID_Plugin)
+- [x] Like, Views
 - [x] Player
 - [x] Others
 - [x] No-refresh Full Website
@@ -55,12 +55,6 @@ This theme stems from <https://paul.ren>, this is not perfect now, probably had 
 ## Quickly Start
 
 Clone this repo, and go to dashboard -- theme -- Paul, enable it. In the this theme's setting, you should fill out form.
-
-**Important!** please copy or move `VOID` into `plugins` directory.
-
-```bash
-cp ./VIOD ../../plugins
-```
 
 ## Index Page
 

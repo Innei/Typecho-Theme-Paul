@@ -1,6 +1,7 @@
+<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php if (isset($_POST['key'])) {
     if ($_POST['key'] == $this->options->secret) {
-        Typecho_Cookie::set('__post_secret', $this->options->secret);
+        Typecho_Cookie::set('__post_'.$this->options->secret, $this->options->secret);
         header("Content-type: application/json");
         print_r(json_encode(["status" => "ok"]));
         exit;
@@ -12,16 +13,12 @@
     }
 }
 ?>
-
-<?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('until/until.php') ?>
 <?php
 $this->need('header.php');
 require_once 'functions.php';
 require_once 'pages.php';
 ?>
-
-
 <main class="is-article">
     <nav class="navigation">
         <a href="<?php echo $GLOBALS['note']; ?>" class="active">日记</a>
@@ -41,7 +38,7 @@ require_once 'pages.php';
       for ($i = 0; $i < 5 && $posts->next(); $i++):
       $cid_arr[] = $posts->cid;
       endfor;
-          if (!in_array($this->cid, $cid_arr) and empty(Typecho_Cookie::get('__post_secret'))) {
+          if (!in_array($this->cid, $cid_arr) and empty(Typecho_Cookie::get('__post_'.$this->options->secret)) and !$this->user->hasLogin()) {
               ?>
               <article>
                   <h1>人家也是有小秘密的啦</h1>
