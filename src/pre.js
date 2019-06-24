@@ -1,37 +1,37 @@
 (() => {
     window.getElementTop = function getElementTop(element) {
-        let actualTop = element.offsetTop;
-        let current = element.offsetParent;
+        let actualTop = element.offsetTop
+        let current = element.offsetParent
         while (current !== null) {
-            actualTop += current.offsetTop;
-            current = current.offsetParent;
+            actualTop += current.offsetTop
+            current = current.offsetParent
         }
-        return actualTop;
+        return actualTop
     }
 
     window.scrollSmoothTo = function scrollSmoothTo(position) {
         if (!window.requestAnimationFrame) {
             window.requestAnimationFrame = function (callback, element) {
-                return setTimeout(callback, 17);
-            };
+                return setTimeout(callback, 17)
+            }
         }
         // 当前滚动高度
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
         // 滚动step方法
         const step = function () {
             // 距离目标滚动距离
-            let distance = position - scrollTop;
+            let distance = position - scrollTop
             // 目标滚动位置
-            scrollTop = scrollTop + distance / 5;
+            scrollTop = scrollTop + distance / 5
             if (Math.abs(distance) < 1) {
-                window.scrollTo(0, position);
+                window.scrollTo(0, position)
             } else {
-                window.scrollTo(0, scrollTop);
-                requestAnimationFrame(step);
+                window.scrollTo(0, scrollTop)
+                requestAnimationFrame(step)
             }
-        };
-        step();
-    };
+        }
+        step()
+    }
     // 初始化评论按钮
 
     window.comment_init = function () {
@@ -45,13 +45,18 @@
                 window.parentId = href.match(/replyTo=(\d+)/)[1]
                 // 弹出回复框
                 replyForm.removeAttribute('style')
-                if (isComment.classList.contains('active')) isComment.classList.remove('active');
+                if (isComment.classList.contains('active')) isComment.classList.remove('active')
                 setTimeout(() => {
                     document.getElementById('cancel-comment-reply-link').addEventListener('click', () => {
-                        replyForm.style.display = 'none';
+                        replyForm.style.display = 'none'
                     })
                 })
             })
         }
+    }
+
+    window.parser = dom => {
+        const domParse = new DOMParser()
+        return domParse.parseFromString(dom, 'text/html')
     }
 })()
