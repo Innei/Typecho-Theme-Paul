@@ -22,6 +22,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 color: "green",
                                 time: 1500
                             });
+                            that.classList.add('active')
+                            that.style.color = 'red'
                             that.onclick = function () {
                                 ks.notice("你的爱我已经感受到了！", {
                                     color: "yellow",

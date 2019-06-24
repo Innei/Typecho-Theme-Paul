@@ -34,7 +34,7 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
     for ($i = 0; $i < $_GET['index']; $i++) {
         // 跳过代码
         if (!$posts->next()): http_response_code(422);
-            return; endif;
+            exit; endif;
     }
     ?>
     <article>
@@ -47,7 +47,7 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
             <div class="note-title"><?php $posts->title() ?></div>
         </h1>
         <div class="paul-note" id="cid-<?php $posts->cid(); ?>">
-            <div class="note-content">
+            <div class="note-content post-content">
                 <?php if ($this->options->is_display_all_content) {
                     $content = $posts->content;
                     $out = preg_split("/<p>|<\/p>|<h\d>|<\/h\d>/", $content);
@@ -76,7 +76,7 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
                               title="参与评论">评论 <?php $posts->commentsNum('%d '); ?></span>
                 </a>
                 <span class="like" data-cid="<?php $posts->cid();
-                ?>" title="已有 <?php get_like_num($posts) ?> 人点赞"><?php get_like_num($posts) ?></span>
+                ?>" title="已有 <?php get_like_num($posts) ?> 人点赞" <?php if (Typecho_Cookie::get('__post_likes')) print_r("style='color: var(--red)'") ?>><?php get_like_num($posts) ?></span>
             </div>
         </div>
         <?php if (!$posts->allow('comment')) : ?>
@@ -90,7 +90,7 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
     <?php endif ?>
     <?php endfor;
     print_r('</article>');
-    return; //完成ajax方式返回，退出此页面
+    exit; //完成ajax方式返回，退出此页面
 endif;
 ?>
 <?php
@@ -122,7 +122,7 @@ require_once 'pages.php';
                     <div class="note-title"><?php $posts->title() ?></div>
                 </h1>
                 <div class="paul-note" id="cid-<?php $posts->cid(); ?>">
-                    <div class="note-content">
+                    <div class="note-content post-content">
                         <?php if ($this->options->is_display_all_content) {
                             $content = $posts->content;
                             $out = preg_split("/<p>|<\/p>|<h\d>|<\/h\d>/", $content);
@@ -149,7 +149,7 @@ require_once 'pages.php';
                         <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"
                               title="参与评论">评论 <?php $posts->commentsNum('%d '); ?></span>
                         <span class="like" data-cid="<?php $posts->cid();
-                        ?>" title="已有 <?php get_like_num($posts) ?> 人点赞"><?php get_like_num($posts) ?></span>
+                        ?>" title="已有 <?php get_like_num($posts) ?> 人点赞" <?php if (Typecho_Cookie::get('__post_likes')) print_r("style='color: var(--red)'") ?>><?php get_like_num($posts) ?></span>
                     </div>
                 </div>
             <?php if (!$posts->allow('comment')) : ?>

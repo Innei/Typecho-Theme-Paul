@@ -4,7 +4,7 @@
 
 body {
     margin-left: 5em;
-    background: url(img/background.png) center fixed
+    background: url(img/background.png) center repeat-y;
 }
 
 body:before {
@@ -17,7 +17,7 @@ body:before {
     position: fixed;
     will-change: opacity;
     transition: opacity .3s;
-    background: url(https://i.loli.net/2019/01/12/5c3a00dea5b6d.png) right bottom/contain no-repeat
+    background: url(https://i.loli.net/2019/06/24/5d10335264ce337514.png) right bottom/contain no-repeat
 }
 
 @media screen and (max-width: 768px) {
@@ -542,7 +542,10 @@ article > h1 small {
 code .comment:before {
     display: none;
 }
-
+.paul-post .like {
+    will-change: transition;
+    transition: color .5s;
+}
 .paul-note .like.active:after {
     top: 0;
     left: 0;

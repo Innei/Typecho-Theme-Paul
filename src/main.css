@@ -356,9 +356,11 @@ pre code {
 .paul-post li li {
     list-style: circle;
 }
+
 .paul-post li li li {
     list-style: square;
 }
+
 .paul-post li:before {
     display: none;
 }
@@ -382,6 +384,11 @@ pre code {
 
 .post-content ul p {
     display: inline;
+}
+
+.post-category blockquote {
+   background-color: rgba(245, 250, 253, .8);
+    border-left: 3px #3498db solid;
 }
 
 .torTree {
@@ -530,6 +537,10 @@ article:not(.comment-list) li::before, .torTree li::before {
 
     .post-category li {
         width: 100%;
+    }
+
+    #load-more-btn {
+        margin-top: 1rem;
     }
 }
 
