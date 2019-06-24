@@ -115,7 +115,7 @@ require_once 'pages.php';
             <div class="note-action">
                 <span class="comment" data-cid="<?php $this->cid(); ?>" data-year="<?php $this->year(); ?>" title="参与评论">评论</span>
                 <span class="like" data-cid="<?php $this->cid();
-                                                ?>" title="已有 <?php get_like_num($this) ?> 人点赞"><?php get_like_num($this) ?></span>
+                                                ?>" title="已有 <?php get_like_num($this) ?> 人点赞" <?php if (isLiked($this->cid)) print_r('class="color: red"') ?>><?php get_like_num($this) ?></span>
             </div>
         </div>
     </article>

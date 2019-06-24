@@ -76,7 +76,7 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
                               title="参与评论">评论 <?php $posts->commentsNum('%d '); ?></span>
                 </a>
                 <span class="like" data-cid="<?php $posts->cid();
-                ?>" title="已有 <?php get_like_num($posts) ?> 人点赞" <?php if (Typecho_Cookie::get('__post_likes')) print_r("style='color: var(--red)'") ?>><?php get_like_num($posts) ?></span>
+                ?>" title="已有 <?php get_like_num($posts) ?> 人点赞" <?php if (isLiked($posts->cid)) print_r("style='color: var(--red)'") ?>><?php get_like_num($posts) ?></span>
             </div>
         </div>
         <?php if (!$posts->allow('comment')) : ?>
@@ -149,7 +149,7 @@ require_once 'pages.php';
                         <span class="comment" data-cid="<?php $posts->cid(); ?>" data-year="<?php $posts->year(); ?>"
                               title="参与评论">评论 <?php $posts->commentsNum('%d '); ?></span>
                         <span class="like" data-cid="<?php $posts->cid();
-                        ?>" title="已有 <?php get_like_num($posts) ?> 人点赞" <?php if (Typecho_Cookie::get('__post_likes')) print_r("style='color: var(--red)'") ?>><?php get_like_num($posts) ?></span>
+                        ?>" title="已有 <?php get_like_num($posts) ?> 人点赞" <?php if (isLiked($posts->cid)) print_r("style='color: red'") ?>><?php get_like_num($posts) ?></span>
                     </div>
                 </div>
             <?php if (!$posts->allow('comment')) : ?>

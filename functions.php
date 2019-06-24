@@ -167,3 +167,15 @@ function themeFields($layout) {
         $layout->addItem($intro);
     }
 }
+
+function isLiked ($cid) {
+    $likes = Typecho_Cookie::get('__post_likes');
+    if (empty($likes)) {
+        return false;
+    } else {
+        $likes = explode(',', $likes);
+    }
+    if (in_array($cid, $likes)) {
+        return true;
+    }
+}
