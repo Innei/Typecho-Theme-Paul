@@ -149,7 +149,7 @@
         const form = document.getElementById('want-login')
         form.addEventListener('submit', e => e.preventDefault())
         const submit = document.getElementById('login-submit')
-        submit.onclick = async () => await ks.ajax({
+        submit.onclick = () => ks.ajax({
             url: form.getAttribute('action'),
             data: {
                 name: document.getElementById('login-name').value,
@@ -203,9 +203,9 @@
     <?php endif; ?>
     document.addEventListener('pjax:complete', function () {
         <?php if ($this->user->hasLogin()): ?>
-        postNew.onclick = window.writeNew
+        document.querySelector('.post-new').onclick = postNew.onclick
         <?php else: ?>
-        postNew.onclick = window.login
+        document.querySelector('.post-new').onclick = postNew.onclick = window.login
         <?php endif; ?>
     } )
     console.log("%c Innei %c https://shizuri.net ", "color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;")
