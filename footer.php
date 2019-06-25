@@ -50,6 +50,8 @@
     </select>
     <div class="submit">
       <button class="btn yellow" id="edit-submit"><i class="fa fa-paper-plane"></i> 提交</button>
+      <button class="btn red" id="edit-cancel" type="reset"><i class="fa fa-times-circle"></i> 取消
+      </button>
     </div>
   </form>
 </section>
@@ -69,6 +71,7 @@
 <script src="<?php $this->options->themeUrl('src/pjax.js') ?>"></script>
 <script src="<?php $this->options->themeUrl('src/paul.js') ?>"></script>
 <script>
+    const postNew = document.querySelector('.post-new')
     window.writeNew = () => {
         const editFrom = document.getElementById('edit-form')
         editFrom.parentNode.classList.contains("active") ? editFrom.parentNode.classList.remove("active") : editFrom.parentNode.classList.add("active")
@@ -76,6 +79,7 @@
         const submit = document.getElementById('edit-submit')
         const url = editFrom.getAttribute('action')
         editFrom.addEventListener('submit', e => e.preventDefault())
+        document.getElementById('edit-cancel').onclick = () => editFrom.parentNode.classList.remove("active")
         submit.onclick = e => {
             const title = document.getElementById('edit-title').value
             const text = document.getElementById("content").value
@@ -133,21 +137,19 @@
     }
     window.login = () => {
         const login = document.getElementById('login')
-        ks.select('.post-new').onclick = () => {
-            ks.notice("我无法确定你的是我的主人呐 ❥(ゝω・✿ฺ)", {
-                color: "green",
-                time: 2000
-            })
-            login.classList.contains('active') ? login.classList.remove('active') : login.classList.add('active')
-            // 监听登陆
-            loginFn()
-        }
+        ks.notice("我无法确定你的是我的主人呐 ❥(ゝω・✿ฺ)", {
+            color: "green",
+            time: 2000
+        })
+        login.classList.contains('active') ? login.classList.remove('active') : login.classList.add('active')
+        // 监听登陆
+        loginFn()
     }
     const loginFn = () => {
         const form = document.getElementById('want-login')
         form.addEventListener('submit', e => e.preventDefault())
         const submit = document.getElementById('login-submit')
-        submit.onclick = () => ks.ajax({
+        submit.onclick = async () => await ks.ajax({
             url: form.getAttribute('action'),
             data: {
                 name: document.getElementById('login-name').value,
@@ -161,7 +163,7 @@
                         time: 2000
                     })
                     form.parentNode.classList.remove('active')
-                    window.writeNew()
+                    postNew.onclick = window.writeNew
                     // 重载组件
                     ks.ajax({
                         url: window.location.href,
@@ -172,7 +174,9 @@
                             const domTree = parser(res.responseText)
 
                             // 重载导航栏
-                            document.querySelector('header nav').innerHTML = domTree.querySelector('header nav').innerHTML
+                            const nav = document.querySelector('header nav')
+                            nav.innerHTML = domTree.querySelector('header nav').innerHTML
+                            pjax.refresh(nav)
 
                             // TODO 其他重载写这里
                         }
@@ -193,15 +197,15 @@
         })
     }
     <?php if($this->user->hasLogin()): ?>
-    document.querySelector('.post-new').onclick = window.writeNew
+    postNew.onclick = window.writeNew
     <?php else: ?>
-    document.querySelector('.post-new').onclick = window.login
+    postNew.onclick = window.login
     <?php endif; ?>
     document.addEventListener('pjax:complete', function () {
         <?php if ($this->user->hasLogin()): ?>
-        document.querySelector('.post-new').onclick = window.writeNew
+        postNew.onclick = window.writeNew
         <?php else: ?>
-        document.querySelector('.post-new').onclick = window.login
+        postNew.onclick = window.login
         <?php endif; ?>
     } )
     console.log("%c Innei %c https://shizuri.net ", "color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;")
