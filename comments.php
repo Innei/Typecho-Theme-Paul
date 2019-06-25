@@ -157,9 +157,6 @@ function threadedComments($comments, $options)
       const isComment = document.querySelector('.post-form.is-comment')
       const commentForm = document.querySelector(sel)
       const post_url = e.target.getAttribute('action')
-      const cookie = document.cookie
-      const domParser = new DOMParser()
-      const dom = str => domParser.parseFromString(str, 'text/html')
 
       // 如果是管理员登陆
       if (!document.querySelector('#comment-form #author')) {
@@ -180,7 +177,7 @@ function threadedComments($comments, $options)
           method: 'POST',
           data,
           success(res) {
-            const responseDOM = dom(res.responseText)
+            const responseDOM = parser(res.responseText)
 
             try {
               isComment.classList.contains('active') ? isComment.classList.remove('active') : false
@@ -230,7 +227,7 @@ function threadedComments($comments, $options)
           url: post_url,
           data,
           success(res) {
-            const responseDOM = dom(res.responseText)
+            const responseDOM = parser(res.responseText)
             isComment.classList.contains('active') ? isComment.classList.remove('active') : false
             try {
               const needPartten = responseDOM.querySelector('.comment-list').innerHTML

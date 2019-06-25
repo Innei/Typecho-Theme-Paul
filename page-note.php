@@ -37,7 +37,7 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
             exit; endif;
     }
     ?>
-    <article>
+    <article style="margin-top: 3rem">
     <?php
     for ($i = 0; $i < 5 && $posts->next(); $i++):
         ?>
@@ -185,10 +185,6 @@ require_once 'pages.php';
                 const noteNavigator = document.getElementById('note-navigator')
                 document.getElementById('load-more-btn').onclick = load_more
                 const article_body = document.querySelector('body > main > article')
-                const parser = new DOMParser()  // DOM 解析器
-                const doc = function (str) {
-                    return parser.parseFromString(str, 'text/html')
-                }
 
                 function load_more() {
                     ks.notice("稍等哈 φ(>ω<*) ", {
@@ -204,7 +200,7 @@ require_once 'pages.php';
                         <?php endif; ?>
                         success: res => {
                             noteNavigator.remove()
-                            const strToDOM = doc(res.responseText)
+                            const strToDOM = parser(res.responseText)
                             like_init(strToDOM)
                             window.pjax.refresh(strToDOM)
                             const article = strToDOM.querySelector('article')

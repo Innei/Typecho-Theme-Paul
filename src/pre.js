@@ -55,8 +55,8 @@
         }
     }
 
+    window.domParse = new DOMParser()
     window.parser = dom => {
-        const domParse = new DOMParser()
-        return domParse.parseFromString(dom, 'text/html')
+        return window.domParse.parseFromString(dom, 'text/html')
     }
 })()

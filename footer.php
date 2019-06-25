@@ -115,8 +115,9 @@
                                     pjax.refresh(mainTag)
                                     document.body.classList.remove("loading")
                                     window.history.pushState({}, html.querySelector('title').innerText, "<?php echo $GLOBALS['note'] ?>")
+                                    window.scrollSmoothTo(0)
                                     paul.init()
-                                }, 500)
+                                }, 2000)
                             },
                             failed(res) {
                                 ks.notice("网络连接异常！", {
@@ -169,8 +170,6 @@
                         url: window.location.href,
                         method: "GET",
                         success(res) {
-                            const domParse = new DOMParser()
-                            const parser = dom => domParse.parseFromString(dom, 'text/html')
                             const domTree = parser(res.responseText)
 
                             // 重载导航栏

@@ -5,18 +5,18 @@ window.onload = () => {
         selectors: ["title", "meta[property]", "main", "action", "meta[name=referrer]"],
         timeout: 10000,
         cacheBust: false
-    });
+    })
     document.addEventListener('pjax:send', function () {
-        document.body.classList.add("loading");
-        head.wrap.classList.remove("active");
-    });
+        document.body.classList.add("loading")
+        head.wrap.classList.remove("active")
+    })
     document.addEventListener('pjax:complete', function () {
-        document.body.classList.remove("loading");
-        paul.init();
-    });
-    document.addEventListener('pjax:error', function() {
+        document.body.classList.remove("loading")
+        paul.init()
+    })
+    document.addEventListener('pjax:error', function () {
         ks.notice("网络连接异常！", {
             color: "red"
-        });
-    });
+        })
+    })
 }
