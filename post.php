@@ -110,6 +110,7 @@ require_once 'pages.php';
             <div class="note-inform">
                 <span class="user"><?php $this->author(); ?></span>
                 <span class="views" title="阅读次数 <?php echo get_views_num($this) ?>"><i class="fa fa-leaf" aria-hidden="true"></i> <?php echo get_views_num($this) ?></span>
+                <?php if($this->fields->mood): ?><span class="mood" title="心情"><?php echo $this->fields->mood;endif; ?></span>
                 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" style="color: currentColor;" target="_blank"><span class="CC BY-NC-SA 3.0 CN" title="署名-非商业性使用-相同方式共享 3.0 中国大陆 (CC BY-NC-SA 3.0 CN)"><i class="fa fa-creative-commons" aria-hidden="true"></i></span></a>
             </div>
             <div class="note-action">

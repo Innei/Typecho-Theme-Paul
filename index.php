@@ -12,6 +12,7 @@
  * @link https://github.com/Innei/Typecho-Theme-Paul
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
 $this->need('header.php');
 require_once 'functions.php';
 require_once 'Pual.php';

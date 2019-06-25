@@ -181,6 +181,7 @@
                         }
                     })
                 } else {
+                    console.log(res)
                     ks.notice("你不是我的主人，哼", {
                         color: "red"
                     })
@@ -206,7 +207,8 @@
         <?php else: ?>
         document.querySelector('.post-new').onclick = postNew.onclick = window.login
         <?php endif; ?>
-    } )
+    })
+
     console.log("%c Innei %c https://shizuri.net ", "color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;")
     <?php $this->options->custom_script();?>
 </script>

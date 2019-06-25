@@ -1,4 +1,8 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+if (isset($_POST['action']) and $_POST['action']){
+  echo $this->options->loginAction;
+  exit;
+}
 require_once 'pages.php';
 ?>
 

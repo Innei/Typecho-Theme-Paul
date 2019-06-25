@@ -66,9 +66,9 @@ function get_randoms($min, $max, $num)
     $count = 0;
     $res = array();
     while ($count < $num) {
-      $res[] = rand($min, $max);
-      $res = array_flip(array_flip($res));
-      $count = count($res);
+        $res[] = rand($min, $max);
+        $res = array_flip(array_flip($res));
+        $count = count($res);
     }
     return $res;
 }
@@ -81,7 +81,7 @@ function parse_RSS($url, $site)
     global $body;
 
     if (isset($file)) {
-        $rand_arr = get_randoms(0,14, 5);
+        $rand_arr = get_randoms(0, 14, 5);
         for ($i = 0; $i < 4; $i++) {
             if ($file[$i]) {
                 $body .= '<div class="col-6 col-m-3">' . '<a href="' . $file[$i]->link . '" class="news-article" target="_blank">' . '<img src="' . $site . '/src/img/' . array_pop($rand_arr) . '.jpg">' . '<h4>' . $file[$i]->title . '</h4></a></div>';
@@ -146,7 +146,8 @@ function get_words($archive)
     return $row['wordCount'];
 }
 
-function themeInit($archive) {
+function themeInit($archive)
+{
     if ($archive->is('archive')) {
         $archive->parameter->pageSize = 20; // 自定义条数
     }
@@ -157,18 +158,25 @@ function themeInit($archive) {
     if (!array_key_exists('likes', $db->fetchRow($db->select()->from('table.contents')))) {
         $db->query('ALTER TABLE `' . $prefix . 'contents` ADD COLUMN `likes` INT(10) DEFAULT 0;');
     }
+    Helper::options()->commentsAntiSpam = false;
 }
 
-function themeFields($layout) {
+function themeFields($layout)
+{
     if (preg_match("/write-page.php/", $_SERVER['REQUEST_URI'])) {
         $title = new Typecho_Widget_Helper_Form_Element_Text('title', NULL, NULL, _t('标题'), _t('首页模板功能'));
         $layout->addItem($title);
         $intro = new Typecho_Widget_Helper_Form_Element_Text('intro', NULL, NULL, _t('介绍'), _t('首页模板功能'));
         $layout->addItem($intro);
     }
+    if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
+        $mood = new Typecho_Widget_Helper_Form_Element_Select('mood', array('一般' => '一般', '开心' => '开心', '伤心' => '伤心', '沉闷' => '沉闷', '无聊' => '无聊', '紧张' => '紧张', '愤怒' => '愤怒', '迷茫' => '迷茫'), '一般', '心情如何');
+        $layout->addItem($mood);
+    }
 }
 
-function isLiked ($cid) {
+function isLiked($cid)
+{
     $likes = Typecho_Cookie::get('__post_likes');
     if (empty($likes)) {
         return false;
