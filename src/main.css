@@ -602,8 +602,8 @@ article:not(.comment-list) li::before, .torTree li::before {
     right: 0;
     bottom: 0;
     margin: auto;
-    height: 30rem;
-    width: 30rem;
+    height: 5rem;
+    width: 5rem;
     transition: opacity .5s;
 }
 
@@ -626,6 +626,77 @@ body.loading #loading {
     transform: rotate(45deg);
     border-top: 4px solid #795548;
     animation: loading infinite 1s both linear;
+}
+
+/* - 样式二 */
+#loading .box {
+    top: -4rem;
+    left: -2rem;
+    position: absolute;
+}
+#loading .box:before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 60px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    background: #e74c3c;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    animation: box 0.8s infinite;
+}
+
+#loading .box:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 128px;
+    left: 52px;
+    width: 44px;
+    height: 3px;
+    background: #eaeaea;
+    border-radius: 100%;
+    animation: shadow 0.8s infinite;
+}
+@keyframes shadow {
+    0%,
+    100% {
+        left: 54px;
+        width: 40px;
+        background: #eaeaea;
+    }
+    50% {
+        top: 126px;
+        left: 50px; /*让阴影保持在原位*/
+        width: 50px;
+        height: 7px;
+        background: #eee;
+    }
+}
+@keyframes box {
+    0% {
+        top: 50px;
+        transform: rotate(90deg);
+    }
+    20% {
+        border-radius: .5rem;
+
+    }
+    50% {
+        top: 80px;
+        transform: rotate(45deg);
+        border-bottom-right-radius: 25px;
+        background-color: #e67e22
+    }
+    80% {
+        border-radius: 2px;
+    }
+    100% {
+        top: 50px;
+        transform: rotate(0deg);
+    }
 }
 
 #loading img {

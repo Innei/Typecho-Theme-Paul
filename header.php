@@ -57,7 +57,8 @@ require_once 'pages.php';
     <toggle></toggle>
     <div id="loading">
 <!--      <div class="loading-circle"></div>-->
-      <img src="<?php $this->options->themeUrl('src/img/loading.gif') ?>" id="loading-img"/>
+<!--      <img src="--><?php //$this->options->themeUrl('src/img/loading.gif') ?><!--" id="loading-img"/>-->
+      <div class="box"></div>
     </div>
     <nav>
         <a href="<?php $this->options->siteUrl(); ?>">
