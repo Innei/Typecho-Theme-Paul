@@ -68,7 +68,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
-<script src="<?php $this->options->themeUrl('src/pjax.js') ?>"></script>
 <script src="<?php $this->options->themeUrl('src/paul.js') ?>"></script>
 <script>
     const postNew = document.querySelector('.post-new')

@@ -745,3 +745,9 @@ body.loading #loading {
 .login-action .btn {
     border-radius: 12px;
 }
+
+@media (max-width: 900px) {
+    .news-article, .news-project {
+        min-height: 3rem;
+    }
+}
