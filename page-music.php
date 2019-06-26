@@ -72,9 +72,7 @@ $all_data = $data['1'];
             try {
                 paul_music.setList();
             } catch (e) {
-                window.onload = () => {
-                    paul_music.setList();
-                }
+                document.addEventListener('load', () => paul_music.setList())
             }
         })();
     </script>

@@ -80,25 +80,25 @@ class Paul
 
         $result = file_get_contents($url, false, $context);
         $json = json_decode($result, true);
-        $num = 0;
+
+        $num = 1;
         $week_data = array();
         foreach ($json['weekData'] as $key => $item) {
-            if ($num < 10):
-                $playTime = date('H:i:s', $item['song']['song']['playTime']);
+            if ($num <= 10):
+                $playTime = date('i:s', $item['song']['dt'] / 1000);
                 $week_data[] = ['name' => $item['song']['name'], 'id' => $item['song']['song']['id'], 'time' => $playTime, 'num' => $num++];
             else:break;
             endif;
         }
-        $num = 0;
+        $num = 1;
         $all_data = array();
         foreach ($json['allData'] as $key => $item) {
-            if ($num < 10):
-                $playTime = date('H:i:s', $item['song']['song']['playTime']);
-                $all_data[] = ['name' => $item['song']['name'], 'id' => $item['song']['song']['id'], 'time' => $playTime, 'num' => $num++];
+            if ($num <= 10):
+                $playTime = date('i:s', $item['song']['dt'] / 1000);
+                $all_data[] = ['name' => $item['song']['name'], 'id' => $item['song']['song']['id'], 'time' => $playTime, 'seq' => $num++, 'num' => $item['playCount']];
             else:break;
             endif;
         }
-
         return [$week_data, $all_data];
     }
 
