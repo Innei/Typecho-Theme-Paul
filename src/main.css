@@ -1,4 +1,5 @@
 /* -- 全局样式重置 */
+
 * {
     -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -106,7 +107,7 @@ li {
     margin-bottom: .5rem
 }
 
-.reply_form div > input[type=text] {
+.reply_form div>input[type=text] {
     display: block;
     width: 1000px
 }
@@ -216,7 +217,7 @@ article dl, article ol, article ul {
 
 /* -- code  */
 
-pre > code {
+pre>code {
     color: #fff;
     padding: 1em;
     display: block;
@@ -240,12 +241,12 @@ pre code {
     background-origin: content-box;
 }
 
-:not(pre) > code {
+:not(pre)>code {
     color: #ffa5a5;
     background: rgba(255, 255, 255, .2);
 }
 
-:not(pre) > code[class*="lang"] {
+:not(pre)>code[class*="lang"] {
     position: relative;
     padding: .2em;
     border-radius: 0.3em;
@@ -336,6 +337,7 @@ pre code {
 }
 
 /* -- 重写首页模板样式 */
+
 .paul-post h1, .paul-post h2, .paul-post h3, .paul-post h4, .paul-post h5 {
     font-size: 1.2em;
     font-weight: lighter;
@@ -366,6 +368,7 @@ pre code {
 }
 
 /* -- 重写文章页样式 */
+
 .note-content {
     white-space: normal;
 }
@@ -494,7 +497,7 @@ article:not(.comment-list) li::before, .torTree li::before {
     margin-bottom: 2rem;
 }
 
-.post-category li > a:nth-child(1) {
+.post-category li>a:nth-child(1) {
     display: inline-block;
     margin-left: 0;
 }
@@ -525,20 +528,16 @@ article:not(.comment-list) li::before, .torTree li::before {
     right: 0;
 }
 
-
 @media (max-width: 500px) {
     .note-title {
         display: none;
     }
-
     .paul-say {
         columns: 1;
     }
-
     .post-category li {
         width: 100%;
     }
-
     #load-more-btn {
         margin-top: 1rem;
     }
@@ -571,7 +570,7 @@ article:not(.comment-list) li::before, .torTree li::before {
     border: 1px solid transparent;
 }
 
-.page-navigator li > a {
+.page-navigator li>a {
     color: #000;
 }
 
@@ -613,6 +612,7 @@ body.loading #loading {
 }
 
 /* - 样式一 */
+
 .loading-circle {
     position: absolute;
     top: 0;
@@ -629,11 +629,13 @@ body.loading #loading {
 }
 
 /* - 样式二 */
+
 #loading .box {
     top: -4rem;
     left: -2rem;
     position: absolute;
 }
+
 #loading .box:before {
     content: "";
     position: absolute;
@@ -660,21 +662,23 @@ body.loading #loading {
     border-radius: 100%;
     animation: shadow 0.8s infinite;
 }
+
 @keyframes shadow {
-    0%,
-    100% {
+    0%, 100% {
         left: 54px;
         width: 40px;
         background: #eaeaea;
     }
     50% {
         top: 126px;
-        left: 50px; /*让阴影保持在原位*/
+        left: 50px;
+        /*让阴影保持在原位*/
         width: 50px;
         height: 7px;
         background: #eee;
     }
 }
+
 @keyframes box {
     0% {
         top: 50px;
@@ -682,7 +686,6 @@ body.loading #loading {
     }
     20% {
         border-radius: .5rem;
-
     }
     50% {
         top: 80px;
@@ -721,6 +724,7 @@ body.loading #loading {
 }
 
 /* -- 霓虹灯效果 */
+
 .text {
     font-size: 2rem;
     font-weight: lighter;
@@ -765,11 +769,11 @@ body.loading #loading {
     user-select: none;
 }
 
-.my-info h1:nth-child(1) > span:hover ~ svg {
+.my-info h1:nth-child(1)>span:hover~svg {
     opacity: 1;
 }
 
-.my-info h1:nth-child(1) > svg {
+.my-info h1:nth-child(1)>svg {
     position: absolute;
     top: 0;
     left: 0;
@@ -779,6 +783,7 @@ body.loading #loading {
 }
 
 /* -- 登录框相关 */
+
 .login-action {
     position: fixed;
     text-align: center;
@@ -821,4 +826,54 @@ body.loading #loading {
     .news-article, .news-project {
         min-height: 3rem;
     }
+}
+
+/* -- 开源 */
+
+.github {
+    width: 50%;
+    float: left;
+    top: 50%;
+    position: fixed;
+    transform: translateY(-80%);
+    
+}
+.repos {
+    float: right;
+    width: 50%;
+    
+}
+.repos li {
+    margin-bottom: 1rem
+}
+.repos .repo-name {
+    position: relative;
+    display: list-item;
+    list-style-type: disc;
+}
+.repos .repo-des {
+    margin-top: .5rem
+}
+@media (max-width: 500px) {
+    .github {
+        float: none;
+        width: auto;
+        transform: none;
+        top: auto;
+        position: relative;
+    }
+    .repos {
+        float: none;
+        width: auto;
+    }
+}
+
+#loading.jsonp-loading {
+    opacity: 1;
+    z-index: 99;
+}
+
+#opensource-wrap {
+    position: relative;
+    transition: opacity .5s;
 }
