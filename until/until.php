@@ -1,4 +1,8 @@
 <?php
+/**
+ * @package 点赞
+ * @author Innei 
+ */
 if (isset($_POST['id']) and $_POST['type'] == 'up'):
     $db = Typecho_Db::get();
     $prefix = $db->getPrefix();

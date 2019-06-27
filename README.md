@@ -26,12 +26,16 @@ Demo 地址: <https://shizuri.net>
 - [x] 播放器
 - [x] 音乐页
 - [x] 其他
+
+## 新增
+
 - [x] ajax 加载更多文章
 - [x] 全站无刷新体验 (可能只有 Chrome 支持)
 - [x] 评论 ajax 提交
 - [x] 文章内图片懒加载 (Safari 未通过测试)
 - [x] ajax 登陆后台
 - [x] ajax 前台提交新文章，带来不一样的体验
+- [x] GitHub 开源页
 
 ## 预览
 
@@ -65,7 +69,8 @@ Demo 地址: <https://shizuri.net>
 歌单：
 ![image](https://user-images.githubusercontent.com/41265413/59972793-146a0100-95c8-11e9-80f6-9ec672cc0351.png)
 
-你也可以前往 https://paul.ren ，光临保罗的小窝。他是设计原型。
+GitHub 开源页:
+![](https://raw.githubusercontent.com/Innei/img-bed/master/20190627131326.png)
 
 ## 故事
 
@@ -199,10 +204,6 @@ var paul_music = new function () {
 ## 附加
 
 - [x] 根据分类制定独立页面, 不同输出
-
-## 注意事项
-
-除了在 post 页面, 其他页面中都是不带 referrer 信息的, 可能会影响到你的统计代码.
 
 ## 版权 & 开源
 
