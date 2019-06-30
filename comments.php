@@ -172,7 +172,11 @@ function threadedComments($comments, $options)
             text
           }
         }
-        ks.ajax({
+        ks.notice("正在提交，请稍等哈", {
+              color: "yellow",
+              time: 1000
+        })
+         ks.ajax({
           url: post_url,
           method: 'POST',
           data,
@@ -221,7 +225,10 @@ function threadedComments($comments, $options)
             author, mail, url, text,
           }
         }
-
+        ks.notice("正在提交，请稍等哈", {
+            color: "yellow",
+            time: 1000
+        })
         ks.ajax({
           method: "POST",
           url: post_url,
@@ -264,7 +271,7 @@ function threadedComments($comments, $options)
     const commentFunction = document.head.querySelector('script[type]')
     const innerHTML = commentFunction.innerHTML
     if (innerHTML.match(/this.dom\('respond-.*?'\)/ig)) {
-      const after = innerHTML.replace(/this.dom\('respond-.*?'\)/ig, "this.dom('respond-post-<?php $this->cid() ?>')")
+      const after = innerHTML.replace(/this.dom\('respond-.*?'\)/ig, "this.dom('respond-<?php $this->is('post') ? print_r('post') : print_r('page') ?>-<?php $this->cid() ?>')")
       setTimeout(() => {
         eval(after)
       })
@@ -285,7 +292,7 @@ function threadedComments($comments, $options)
         },
         reply : function (cid, coid) {
             var comment = this.dom(cid), parent = comment.parentNode,
-                response = this.dom('respond-post-<?php $this->cid() ?>'), input = this.dom('comment-parent'),
+                response = this.dom('respond-<?php $this->is('post') ? print_r('post') : print_r('page') ?>-<?php $this->cid() ?>'), input = this.dom('comment-parent'),
                 form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
                 textarea = response.getElementsByTagName('textarea')[0];
             if (null == input) {
@@ -311,7 +318,7 @@ function threadedComments($comments, $options)
             return false;
         },
         cancelReply : function () {
-            var response = this.dom('respond-post-<?php $this->cid() ?>'),
+            var response = this.dom('respond-<?php $this->is('post') ? print_r('post') : print_r('page') ?>-<?php $this->cid() ?>'),
             holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
             if (null != input) {
                 input.parentNode.removeChild(input);
