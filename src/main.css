@@ -107,7 +107,7 @@ li {
     margin-bottom: .5rem
 }
 
-.reply_form div>input[type=text] {
+.reply_form div > input[type=text] {
     display: block;
     width: 1000px
 }
@@ -217,7 +217,7 @@ article dl, article ol, article ul {
 
 /* -- code  */
 
-pre>code {
+pre > code {
     color: #fff;
     padding: 1em;
     display: block;
@@ -241,12 +241,12 @@ pre code {
     background-origin: content-box;
 }
 
-:not(pre)>code {
+:not(pre) > code {
     color: #ffa5a5;
     background: rgba(255, 255, 255, .2);
 }
 
-:not(pre)>code[class*="lang"] {
+:not(pre) > code[class*="lang"] {
     position: relative;
     padding: .2em;
     border-radius: 0.3em;
@@ -368,6 +368,19 @@ pre code {
 }
 
 /* -- 重写文章页样式 */
+
+.post-edit {
+    margin-left: .5rem;
+}
+
+.post-edit a {
+    color: rgba(40, 185, 190, 0.3);
+    font-size: 1.2rem;
+    transition: color .5s;
+}
+.post-edit a:hover {
+    color: rgb(40, 185, 190)
+}
 
 .note-content {
     white-space: normal;
@@ -497,7 +510,7 @@ article:not(.comment-list) li::before, .torTree li::before {
     margin-bottom: 2rem;
 }
 
-.post-category li>a:nth-child(1) {
+.post-category li > a:nth-child(1) {
     display: inline-block;
     margin-left: 0;
 }
@@ -532,12 +545,15 @@ article:not(.comment-list) li::before, .torTree li::before {
     .note-title {
         display: none;
     }
+
     .paul-say {
         columns: 1;
     }
+
     .post-category li {
         width: 100%;
     }
+
     #load-more-btn {
         margin-top: 1rem;
     }
@@ -570,7 +586,7 @@ article:not(.comment-list) li::before, .torTree li::before {
     border: 1px solid transparent;
 }
 
-.page-navigator li>a {
+.page-navigator li > a {
     color: #000;
 }
 
@@ -769,11 +785,11 @@ body.loading #loading {
     user-select: none;
 }
 
-.my-info h1:nth-child(1)>span:hover~svg {
+.my-info h1:nth-child(1) > span:hover ~ svg {
     opacity: 1;
 }
 
-.my-info h1:nth-child(1)>svg {
+.my-info h1:nth-child(1) > svg {
     position: absolute;
     top: 0;
     left: 0;
@@ -836,24 +852,29 @@ body.loading #loading {
     top: 50%;
     position: fixed;
     transform: translateY(-80%);
-    
+
 }
+
 .repos {
     float: right;
     width: 50%;
-    
+
 }
+
 .repos li {
     margin-bottom: 1rem
 }
+
 .repos .repo-name {
     position: relative;
     display: list-item;
     list-style-type: disc;
 }
+
 .repos .repo-des {
     margin-top: .5rem
 }
+
 @media (max-width: 500px) {
     .github {
         float: none;
@@ -862,6 +883,7 @@ body.loading #loading {
         top: auto;
         position: relative;
     }
+
     .repos {
         float: none;
         width: auto;
@@ -877,3 +899,4 @@ body.loading #loading {
     position: relative;
     transition: opacity .5s;
 }
+

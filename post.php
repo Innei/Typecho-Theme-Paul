@@ -99,7 +99,10 @@ require_once 'pages.php';
         </h1>
         <div class="paul-note" id="<?php $this->cid() ?>">
             <div class="note-content post-content">
-                <h1 class="post-title"><?php $this->title() ?></h1>
+                <h1 class="post-title"><?php $this->title() ?><?php if ($this->authorId == $this->user->uid): ?>
+                    <small class="post-edit"><a class="edit-link" href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid; ?>"
+                                                target="_blank">编辑</a></small>
+                  <?php endif; ?></h1>
                 <?php $this->content(); ?>
             </div>
             <?php if ($this->options->author_text) : ?>
