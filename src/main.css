@@ -17,6 +17,32 @@ li {
     color: #000;
 }
 
+ol.comment-list, ul.comment-list {
+    margin-left: 0;
+}
+
+.comment-children ol.comment-list .line, .comment-children ul.comment-list .line {
+    position: absolute;
+    width: 2px;
+    height: 5.6rem;
+    top: -5rem;
+    background-color: #e1e1e1;
+    left: 1.5rem;
+    z-index: -1;
+
+}
+
+.comment_reply {
+    position: absolute;
+    right: .5rem;
+    top: .3rem;
+}
+
+.comment_meta {
+    margin-bottom: .3rem;
+    position: relative;
+}
+
 .comment-list {
     margin-top: 3rem
 }
@@ -30,10 +56,6 @@ li {
 }
 
 .comment-list img.avatar {
-    position: absolute;
-    top: 50%;
-    left: -5rem;
-    transform: translateY(-50%);
     border-radius: 50%;
     margin: .5rem 2rem 0 0;
     height: 3rem;
@@ -44,7 +66,8 @@ li {
     background-color: #f9f9f9;
     border-radius: 3px;
     padding: 10px;
-    transition: box-shadow .5s ease
+    transition: box-shadow .5s ease;
+    flex: 1;
 }
 
 .comment_main:hover {
@@ -75,7 +98,17 @@ li {
 }
 
 [id*=comment-] {
-    position: relative
+    position: relative;
+}
+
+.comment_time {
+    color: #a1a1a1;
+}
+
+.comments-body {
+    position: relative;
+    display: flex;
+    width: 100%;
 }
 
 .reply_form {
@@ -96,9 +129,13 @@ li {
     float: right
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .comment-list img.avatar {
-        display: none
+        margin-right: .3rem;
+    }
+
+    [id*=comment-] .comment_meta span {
+        margin-right: .3rem;
     }
 }
 
@@ -378,6 +415,7 @@ pre code {
     font-size: 1.2rem;
     transition: color .5s;
 }
+
 .post-edit a:hover {
     color: rgb(40, 185, 190)
 }

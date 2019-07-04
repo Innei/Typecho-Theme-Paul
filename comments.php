@@ -28,14 +28,17 @@ function threadedComments($comments, $options)
   echo $commentClass;
   ?>">
     <div id="<?php $comments->theId(); ?>">
-      <?php $avatar = 'https://secure.gravatar.com/avatar/' . md5(strtolower($comments->mail)) . '?s=80&r=X&d='; ?>
-      <img class="avatar" src="<?php echo $avatar ?>" alt="<?php echo $comments->author; ?>"/>
-      <div class="comment_main">
-        <?php $comments->content(); ?>
-        <div class="comment_meta">
-          <span class="comment_author"><?php echo $author ?></span> <span
-            class="comment_time"><?php $comments->date(); ?></span><span
-            class="comment_reply"><?php $comments->reply(); ?></span>
+      <div class="comments-body">
+        <?php $avatar = 'https://secure.gravatar.com/avatar/' . md5(strtolower($comments->mail)) . '?s=80&r=X&d='; ?>
+        <img class="avatar" src="<?php echo $avatar ?>" alt="<?php echo $comments->author; ?>"/>
+        <div class="line"></div>
+        <div class="comment_main">
+          <div class="comment_meta">
+            <span class="comment_author"><?php echo $author ?></span> <span
+              class="comment_time"><?php $comments->date('y-m-d'); ?></span><span
+              class="comment_reply"><i class="fa fa-reply" aria-hidden="true" name="回复"><?php $comments->reply() ?></i></span>
+          </div>
+          <?php $comments->content(); ?>
         </div>
       </div>
     </div>
@@ -139,12 +142,12 @@ function threadedComments($comments, $options)
     const ajax_init = () => {
       const form = document.getElementById('comment-form')
       form.onsubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
         post_by_ajax(e, '#comment-form')
       }
       const reply_form = document.querySelector('.reply_form')
       reply_form.onsubmit = e => {
-        e.preventDefault();
+        e.preventDefault()
         post_by_ajax(e, '.reply_form', true)
       }
     }
@@ -172,11 +175,11 @@ function threadedComments($comments, $options)
             text
           }
         }
-        ks.notice("正在提交，请稍等哈", {
-              color: "yellow",
-              time: 1000
+        ks.notice('正在提交，请稍等哈', {
+          color: 'yellow',
+          time: 1000
         })
-         ks.ajax({
+        ks.ajax({
           url: post_url,
           method: 'POST',
           data,
@@ -186,25 +189,25 @@ function threadedComments($comments, $options)
             try {
               isComment.classList.contains('active') ? isComment.classList.remove('active') : false
               const needPartten = responseDOM.querySelector('.comment-list').innerHTML
-              needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice("请等待审核哦 φ(>ω<*) ", {
-                color: "green",
+              needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice('请等待审核哦 φ(>ω<*) ', {
+                color: 'green',
                 time: 1000
-              }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice("评论成功了 (〃'▽'〃)", {
-                color: "green",
+              }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice('评论成功了 (〃\'▽\'〃)', {
+                color: 'green',
                 time: 1000
               }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
               comment_init()
               ajax_init()
             } catch (e) {
               ks.notice(responseDOM.querySelector('.container').innerText, {
-                color: "red",
+                color: 'red',
                 time: 1500
               })
             }
           },
           failed(res) {
             console.log(res)
-            ks.notice("(；´д｀)ゞ 失败了", {
+            ks.notice('(；´д｀)ゞ 失败了', {
               color: 'red',
               time: 1500
             })
@@ -225,12 +228,12 @@ function threadedComments($comments, $options)
             author, mail, url, text,
           }
         }
-        ks.notice("正在提交，请稍等哈", {
-            color: "yellow",
-            time: 1000
+        ks.notice('正在提交，请稍等哈', {
+          color: 'yellow',
+          time: 1000
         })
         ks.ajax({
-          method: "POST",
+          method: 'POST',
           url: post_url,
           data,
           success(res) {
@@ -238,18 +241,18 @@ function threadedComments($comments, $options)
             isComment.classList.contains('active') ? isComment.classList.remove('active') : false
             try {
               const needPartten = responseDOM.querySelector('.comment-list').innerHTML
-              needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice("请等待审核哦 φ(>ω<*) ", {
-                color: "green",
+              needPartten === document.querySelector('.comment-list').innerHTML ? ks.notice('请等待审核哦 φ(>ω<*) ', {
+                color: 'green',
                 time: 1000
-              }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice("评论成功了 (〃'▽'〃)", {
-                color: "green",
+              }) : (document.querySelector('.comment-list').innerHTML = needPartten, ks.notice('评论成功了 (〃\'▽\'〃)', {
+                color: 'green',
                 time: 1000
               }), (reply ? false : window.scrollSmoothTo(document.body.scrollHeight || document.documentElement.scrollHeight)))
               comment_init()
               ajax_init()
             } catch (e) {
               ks.notice(responseDOM.querySelector('.container').innerText, {
-                color: "red",
+                color: 'red',
                 time: 1500
               })
             }
@@ -257,7 +260,7 @@ function threadedComments($comments, $options)
           },
           failed(res) {
             console.log(res)
-            ks.notice("(；´д｀)ゞ 失败了", {
+            ks.notice('(；´д｀)ゞ 失败了', {
               color: 'red',
               time: 1500
             })
