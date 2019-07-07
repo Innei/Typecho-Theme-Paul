@@ -173,6 +173,10 @@ function themeFields($layout)
         $mood = new Typecho_Widget_Helper_Form_Element_Select('mood', array('一般' => '一般', '开心' => '开心', '伤心' => '伤心', '沉闷' => '沉闷', '无聊' => '无聊', '紧张' => '紧张', '愤怒' => '愤怒', '迷茫' => '迷茫', '心酸' => '心酸', '绝望' => '绝望'), '一般', '心情如何');
         $layout->addItem($mood);
     }
+    // 删除多余字段
+    $db = Typecho_Db::get();
+    $prefix = $db->getPrefix();
+    $db->query($db->delete($prefix . 'fields')->where('str_value = ? AND name = ?', '', 'title')->orWhere('str_value = ? AND name = ?', '', 'intro'));
 }
 
 function isLiked($cid)
