@@ -35,7 +35,7 @@
     // 初始化评论按钮
 
     window.comment_init = function () {
-        const commentsReply = document.querySelectorAll('span.comment_reply > a')
+        const commentsReply = document.querySelectorAll('.comment_reply a')
         const replyForm = document.querySelector('.reply')
         const isComment = document.querySelector('.post-form.is-comment')
         for (let el of commentsReply) {

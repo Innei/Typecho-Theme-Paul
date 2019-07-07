@@ -10,6 +10,8 @@ Demo 地址: <https://shizuri.net>
 
 开发不易，让我们向所有开发者致敬！
 
+**此主题经过长期更新与修复，现已可正常使用。**
+
 ## 浏览器兼容性
 
 至少需要支持 ES6 的现代浏览器, 推荐使用 Chrome
@@ -96,7 +98,7 @@ Clone 此项目，在 设置 中使用此主题。在设置主题中填写相关
 
 心愿页： 你需要建立独立页面，模版选择 `首页模版` ，内容自定。
 
-捐赠页： 你需要建立独立页面，模版选择 首页模版 ，内容自定。
+捐赠页： 你需要建立独立页面，模版选择 `首页模版` ，内容自定。
 
 主页有4个栏，分别是个人信息，最新博文，最近日记，作品。
 
@@ -184,8 +186,6 @@ var paul_music = new function () {
 }
 ```
 
-点赞使用方法: 基于 [VOID_Plugin](https://github.com/AlanDecode/VOID-Plugin) 进行了修改, 请将主题目录下的 `VOID` 移动到 `../plugins` 中, 开启此插件. 正在寻找更好的方式.
-
 #### 音乐页
 
 注意: 由于网易云限制, 解密过程较为繁琐, 所以采用自行获取`token` `key` `cookie` `par` 
@@ -201,6 +201,8 @@ var paul_music = new function () {
 }
 ```
 
+将上方内容直接填入文章内容即可。
+
 ## 附加
 
 - [x] 根据分类制定独立页面, 不同输出
@@ -214,7 +216,6 @@ var paul_music = new function () {
 - fontawesome 4
 - Kico Style
 - Kico Player
-- VOID_Plugin
 
 ## 鸣谢
 

@@ -180,7 +180,6 @@
                         }
                     })
                 } else {
-                    console.log(res)
                     ks.notice("你不是我的主人，哼", {
                         color: "red"
                     })

@@ -1,6 +1,12 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 <?php $this->need('until/until.php') ?>
 <?php
+/**
+ * 日记页面
+ *
+ * @author innei
+ * @package custom
+ */
 $this->widget('Widget_Contents_Post_Recent', 'pageSize=10000')->to($posts);
 // ajax 加载
 if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
@@ -95,12 +101,7 @@ if (isset($_GET['load_type']) and $_GET['load_type'] == 'ajax'):
 endif;
 ?>
 <?php
-/**
- * 日记页面
- *
- * @author innei
- * @package custom
- */
+
 $this->need('header.php');
 require_once 'functions.php';
 require_once 'pages.php';
