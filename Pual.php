@@ -83,10 +83,11 @@ class Paul
 
         $num = 1;
         $week_data = array();
+        
         foreach ($json['weekData'] as $key => $item) {
             if ($num <= 10):
                 $playTime = date('i:s', $item['song']['dt'] / 1000);
-                $week_data[] = ['name' => $item['song']['name'], 'id' => $item['song']['song']['id'], 'time' => $playTime, 'num' => $num++];
+                $week_data[] = ['name' => $item['song']['name'], 'id' => $item['song']['id'], 'time' => $playTime, 'num' => $num++];
             else:break;
             endif;
         }
