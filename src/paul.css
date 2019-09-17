@@ -4,7 +4,7 @@
 
 body {
     margin-left: 5em;
-    background: url(img/background.png) repeat;
+    background: url(img/background.png) repeat fixed;
 }
 
 body:before {
