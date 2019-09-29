@@ -208,8 +208,8 @@
     })
 
     console.log("%c Innei %c https://shizuri.net ", "color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;")
-    <?php $this->options->custom_script();?>
 </script>
+<?php $this->options->custom_script();?>
 <?php $this->footer(); ?>
 </body>
 </html>
