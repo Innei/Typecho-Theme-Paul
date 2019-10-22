@@ -12,6 +12,14 @@ li {
     list-style: none;
 }
 
+img {
+    user-select: none;
+}
+
+* > p:nth-last-child(1) {
+    margin-bottom: 0;
+}
+
 ::selection {
     background-color: rgba(134, 166, 151, .5);
     color: #000;
@@ -19,6 +27,17 @@ li {
 
 ol.comment-list, ul.comment-list {
     margin-left: 0;
+}
+
+.navigation {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.news-head {
+    user-select: none;
 }
 
 .comment-children ol.comment-list .line, .comment-children ul.comment-list .line {
@@ -502,6 +521,10 @@ pre code {
 
 .tier-6 {
     margin-left: .8rem;
+}
+
+.torTree * {
+    user-select: none;
 }
 
 .torTree-title {

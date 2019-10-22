@@ -99,7 +99,7 @@ require_once 'pages.php';
         </h1>
         <div class="paul-note" id="<?php $this->cid() ?>">
             <div class="note-content post-content">
-                <h1 class="post-title"><?php $this->title() ?><?php if ($this->authorId == $this->user->uid): ?>
+                <h1 class="post-title"><span><?php $this->title() ?></span><?php if ($this->authorId == $this->user->uid): ?>
                     <small class="post-edit"><a class="edit-link" href="<?php $this->options->adminUrl(); ?>write-post.php?cid=<?php echo $this->cid; ?>"
                                                 target="_blank">编辑</a></small>
                   <?php endif; ?></h1>
@@ -132,9 +132,10 @@ require_once 'pages.php';
       const postContent = ks.select('.post-content');
       const titleArr = [];
       for (let i = 1; i < 5; i++) {
-        [...postContent.querySelectorAll('h' + i)].forEach((item, index) => {
+        [...postContent.querySelectorAll(`h${i}`)].forEach((item, index) => {
 
-          titleArr.push({tier: i, name: item.innerText, top: window.getElementTop(item)})
+          const name = item.innerText.slice(-2) === '编辑' ? item.innerText.slice(0, item.innerText.length - 2) : item.innerText
+          titleArr.push({tier: i, name, top: window.getElementTop(item)})
         })
       }
       const torTreeWrap = ks.select('#torTree-wrap');
