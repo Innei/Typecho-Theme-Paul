@@ -138,7 +138,7 @@ require_once 'pages.php';
                                     $content .= '<p>'.$value.'</p>';
                                 }
                             }
-                            echo '<div>' . $content . '</div>';
+                           echo '<div>' . $content . '</div>';
                             if ($num > 8) {
                                  print_r('<section class="note-navigator"><a class="btn yellow" href="' . $posts->permalink . '">继续阅读</a></section>');
                             }
@@ -187,6 +187,15 @@ require_once 'pages.php';
         </article>
         <?php $this->need('until.php') ?>
         <script>
+          // 因为某个插件引起的 bug
+          function removeEmptyNode(el=document) {
+            [...el.querySelectorAll('.note-content.post-content p')].forEach(item => {
+              if (!item.innerText || item.innerText === '\n') item.remove()
+            })
+          }
+          removeEmptyNode()
+        </script>
+        <script>
             (function () {
 
                 // 加载更多 ajax 实现
@@ -215,6 +224,7 @@ require_once 'pages.php';
                             const article = strToDOM.querySelector('article')
                             article.style.animation = 'fade-in-top 1s forwards'
                             article_body.appendChild(article)
+                            removeEmptyNode(article)
                             article_body.appendChild(noteNavigator)
                             current_index += 5
                         },
