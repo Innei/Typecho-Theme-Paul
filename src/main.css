@@ -16,7 +16,7 @@ img {
     user-select: none;
 }
 
-* > p:nth-last-child(1) {
+* > p:last-child {
     margin-bottom: 0;
 }
 
@@ -237,6 +237,10 @@ header svg {
 
 .note-content h6 {
     font-size: .8rem;
+}
+
+.note-content > blockquote > p:last-child {
+    margin-bottom: 0;
 }
 
 .post-content h2::before {
