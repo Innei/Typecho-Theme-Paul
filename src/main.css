@@ -215,12 +215,12 @@ header svg {
 
 .note-content h1 {
     font-size: 1.5em;
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 .note-content h2 {
     font-size: 1.2rem;
-    font-weight: lighter;
+    font-weight: 200;
 }
 
 .note-content h3 {
