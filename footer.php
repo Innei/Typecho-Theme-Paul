@@ -1,70 +1,70 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
 <player>
-  <div class="player-left">
-    <div class="player-cover">
-      <div class="cover-img"
-           style="background-image: url(<?php $this->options->themeUrl('src/img/9.jpg') ?>)"></div>
+    <div class="player-left">
+        <div class="player-cover">
+            <div class="cover-img"
+                 style="background-image: url(<?php $this->options->themeUrl('src/img/9.jpg') ?>)"></div>
+        </div>
+        <div class="player-info">
+            <span class="title">奇趣音乐盒</span>
+            <span class="artist">技术源于 Kico Player</span>
+        </div>
     </div>
-    <div class="player-info">
-      <span class="title">奇趣音乐盒</span>
-      <span class="artist">技术源于 Kico Player</span>
+    <div class="player-center">
+        <div class="player-lyric">
+            <span>Emmm，这里是歌词君</span>
+        </div>
+        <div class="player-bar">
+            <div class="loaded"></div>
+            <div class="played"></div>
+        </div>
     </div>
-  </div>
-  <div class="player-center">
-    <div class="player-lyric">
-      <span>Emmm，这里是歌词君</span>
+    <div class="player-right">
+        <div class="prev"></div>
+        <div class="toggle"></div>
+        <div class="next"></div>
     </div>
-    <div class="player-bar">
-      <div class="loaded"></div>
-      <div class="played"></div>
-    </div>
-  </div>
-  <div class="player-right">
-    <div class="prev"></div>
-    <div class="toggle"></div>
-    <div class="next"></div>
-  </div>
 </player>
 <div class="login login-action" id="login">
-  <form action="<?php $this->options->loginAction() ?>" method="post" id="want-login">
-    <input type="text" name="name" id="login-name" placeholder="名字"/>
-    <input type="password" name="password" id="login-password" placeholder="密码"/>
-    <button class="btn yellow" id="login-submit">biubiu</button>
-  </form>
+    <form action="<?php $this->options->loginAction() ?>" method="post" id="want-login">
+        <input type="text" name="name" id="login-name" placeholder="名字"/>
+        <input type="password" name="password" id="login-password" placeholder="密码"/>
+        <button class="btn yellow" id="login-submit">biubiu</button>
+    </form>
 </div>
 <section class="post-form is-note">
-  <form action="<?php $security = Typecho_Widget::widget('Widget_Security');
-  $security->index('/action/contents-post-edit'); ?>" method="post" id="edit-form">
-    <h3><i class="fa fa-edit"></i>编写新日记</h3>
-    <input type="text" id="edit-title" placeholder="标题："/>
-    <textarea id="content" rows="8" placeholder="内容："
-              style="margin-top: 0; margin-bottom: 16px; height: 60vh;"></textarea>
-    <select name="cate" id="edit-cate">
-        <?php
-        Typecho_Widget::widget('Widget_Metas_Category_List')->to($category);
-        while ($category->next()): // 需要 mid name 
-            ?>
-          <option value="<?php $category->mid() ?>"><?php $category->name() ?></option>
-        <?php endwhile; ?>
-    </select>
-    <div class="submit">
-      <button class="btn yellow" id="edit-submit"><i class="fa fa-paper-plane"></i> 提交</button>
-      <button class="btn red" id="edit-cancel" type="reset"><i class="fa fa-times-circle"></i> 取消
-      </button>
-    </div>
-  </form>
+    <form action="<?php $security = Typecho_Widget::widget('Widget_Security');
+    $security->index('/action/contents-post-edit'); ?>" method="post" id="edit-form">
+        <h3><i class="fa fa-edit"></i>编写新日记</h3>
+        <input type="text" id="edit-title" placeholder="标题："/>
+        <textarea id="content" rows="8" placeholder="内容："
+                  style="margin-top: 0; margin-bottom: 16px; height: 60vh;"></textarea>
+        <select name="cate" id="edit-cate">
+            <?php
+            Typecho_Widget::widget('Widget_Metas_Category_List')->to($category);
+            while ($category->next()): // 需要 mid name
+                ?>
+                <option value="<?php $category->mid() ?>"><?php $category->name() ?></option>
+            <?php endwhile; ?>
+        </select>
+        <div class="submit">
+            <button class="btn yellow" id="edit-submit"><i class="fa fa-paper-plane"></i> 提交</button>
+            <button class="btn red" id="edit-cancel" type="reset"><i class="fa fa-times-circle"></i> 取消
+            </button>
+        </div>
+    </form>
 </section>
 
 <action>
-  <button class="top"><i class="fa fa-arrow-up"></i></button>
-  <button class="player"><i class="fa fa-headphones"></i></button>
-  <button class="post-new"><i class="fa fa-plus"></i></button>
+    <button class="top"><i class="fa fa-arrow-up"></i></button>
+    <button class="player"><i class="fa fa-headphones"></i></button>
+    <button class="post-new"><i class="fa fa-plus"></i></button>
 </action>
 <footer>
-  <p>© <?php $this->date('Y') ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author() ?></a>.</p>
-  Design By <a href="https://paul.ren" target="_blank">Paul</a>. Dev By <a href="https://shizuri.net" target="_blank">yiny</a>.
-  Theme <a href="https://github.com/Innei/Typecho-Theme-Paul" target="_blank">Paul</a>.
+    <p>© <?php $this->date('Y') ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author() ?></a>.</p>
+    Design By <a href="https://paul.ren" target="_blank">Paul</a>. Dev By <a href="https://shizuri.net" target="_blank">yiny</a>.
+    Theme <a href="https://github.com/Innei/Typecho-Theme-Paul" target="_blank">Paul</a>.
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
@@ -209,7 +209,7 @@
 
     console.log("%c Innei %c https://shizuri.net ", "color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;")
 </script>
-<?php $this->options->custom_script();?>
+<?php $this->options->custom_script(); ?>
 <?php $this->footer(); ?>
 </body>
 </html>

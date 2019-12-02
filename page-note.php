@@ -1,5 +1,5 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
-<?php $this->need('until/until.php') ?>
+<?php $this->need('utils/like.php') ?>
 <?php
 /**
  * 日记页面
@@ -185,7 +185,7 @@ require_once 'pages.php';
                 <button id="load-more-btn">加载更多</button>
             </section>
         </article>
-        <?php $this->need('until.php') ?>
+        <script src="<?php $this->options->themeUrl('src/like.js') ?>"></script>
         <script>
           // 因为某个插件引起的 bug
           function removeEmptyNode(el=document) {

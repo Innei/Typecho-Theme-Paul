@@ -2,9 +2,7 @@
 
 设计原型 <https://paul.ren>
 
-Demo 地址: <https://shizuri.net>
-
-<a href="../master/README-EN.md">English Document</a>
+Demo : <https://shizuri.net>
 
 如果你喜欢，请我一个 Star, 谢谢～
 
@@ -15,6 +13,11 @@ Demo 地址: <https://shizuri.net>
 ## 浏览器兼容性
 
 至少需要支持 ES6 的现代浏览器, 推荐使用 Chrome
+
+## ⚠️ 注意
+
+1. PHP > 7.1
+1. 评论使用了 Ajax 提交，测试发现发送评论和回复均无异常，但是监视评论的插件如**评论邮件提醒**将会失效。可能是钩子函数的问题，如有解决方式请 PR。谢谢
 
 ## 特点和实现
 
