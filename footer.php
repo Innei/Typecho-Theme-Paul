@@ -63,7 +63,7 @@
 </action>
 <footer>
     <p>© <?php $this->date('Y') ?> <a href="<?php $this->options->siteUrl(); ?>"><?php $this->author() ?></a>.</p>
-    Design By <a href="https://paul.ren" target="_blank">Paul</a>. Dev By <a href="https://shizuri.net" target="_blank">yiny</a>.
+    Design By <a href="https://paul.ren" target="_blank">Paul</a>. Dev By <a href="https://Innei.ren" target="_blank">Innei</a>.
     Theme <a href="https://github.com/Innei/Typecho-Theme-Paul" target="_blank">Paul</a>.
 </footer>
 
@@ -207,7 +207,7 @@
         <?php endif; ?>
     })
 
-    console.log("%c Innei %c https://shizuri.net ", "color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;")
+    console.log("%c Innei %c https://innei.ren ", "color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;")
 </script>
 <?php $this->options->custom_script(); ?>
 <?php $this->footer(); ?>

@@ -10,7 +10,7 @@
  * @author Dreamer-Paul & Innei
  * @design Dreamer-Paul
  * @deploy Innei
- * @version 1.5 release
+ * @version 1.9 release
  * @link https://github.com/Innei/Typecho-Theme-Paul
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
