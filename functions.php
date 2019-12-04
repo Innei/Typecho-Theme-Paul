@@ -91,6 +91,7 @@ function parse_RSS($url, $site)
         }
     } else {
         echo "博客连接失败啦，一请检查是否开启 OpenSSL 支持，二请检查地址是否正确。";
+        echo "使用 AppNode 或者 其他面板 的小伙伴请注意，请把网站的PHP设置 `allow_url_fopen = On`";
     }
     return $body;
 }
