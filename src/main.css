@@ -558,7 +558,7 @@ article:not(.comment-list) li::before, .torTree li::before {
     }
 }
 
-.link-warp {
+.link-wrap {
     columns: 2;
     margin-top: 5rem
 }

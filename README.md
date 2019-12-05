@@ -207,6 +207,42 @@ var paul_music = new function () {
 
 将上方内容直接填入文章内容即可。
 
+### 友链页
+
+一行名称
+一行地址
+
+```
+静之林
+https://blog.yiny.ml
+静之森
+https://shizuri.net
+监测中心
+https://stat.shizuri.net
+许建华博客
+https://www.xujianhua.com/
+猫与向日葵
+https://imjad.cn/
+森の色
+https://yumoe.com/
+保罗的小宇宙
+https://paugram.com/
+IT草根
+http://codepub.cn/
+空気の彼方
+http://kuukikun.tk/
+rxliuli's Blog
+https://blog.rxliuli.com
+一站之星
+https://www.izstar.cn/
+海上的宫殿
+https://soha.moe
+Eller Page Home
+https://eller.tech
+辰信博客 - 专注分享
+https://www.vftz.co/
+```
+
 ## 附加
 
 - [x] 根据分类制定独立页面, 不同输出

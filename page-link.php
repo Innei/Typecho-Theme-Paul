@@ -16,7 +16,7 @@ require_once 'Pual.php';
       <a href="<?php echo $GLOBALS['note']; ?>">日记</a>
       <a href="<?php echo $GLOBALS['link']; ?>" class="active">朋友们</a>
     </nav>
-    <article class="link-warp">
+    <article class="link-wrap">
       <?php
       Paul::parse_Flink($this->text)
       ?>
