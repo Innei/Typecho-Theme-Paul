@@ -7,30 +7,31 @@ class Paul
     {
         $uid = Typecho_Widget::widget('Widget_Options')->bili_id;
         $num = Typecho_Widget::widget('Widget_Options')->display_bgm_num;
-        $bgm = file_get_contents('https://api.bilibili.com/x/space/bangumi/follow/list?type=1&pn=2&ps=' . $num . '&vmid=' . $uid);
+        $bgm = file_get_contents('https://api.bilibili.com/x/space/bangumi/follow/list?type=1&pn=1&ps=' . ($num ? $num : '15') . '&vmid=' . $uid);
         $bgm = json_decode($bgm, true);
         $lists = $bgm['data']['list'];
-        $titles = array();
-        $covers = array();
-        $total_count = array();
+//        $titles = array();
+//        $covers = array();
+//        $total_count = array();
         foreach ($lists as $key => $list) {
-            $titles[] = $list['title'];
-            $covers[] = $list['cover'];
-            $total_count[] = $list['total_count'];
+//            $titles[] = $list['title'];
+//            $covers[] = str_replace('http://', 'https://', $list['cover']);
+//            $total_count[] = $list['total_count'];
+            preg_match('/^看到第(\d+)话/',$list['progress'], $res);
             echo '<div class="col-6 col-s-4 col-m-3">
-                <a class="bangumi-item" href="https://bangumi.bilibili.com/anime/' . $list['media_id'] . '/" target="_blank" rel="nofollow">
-                    <img src="' . $list['cover'] . '"/>
+                <a class="bangumi-item" href="https://bangumi.bilibili.com/anime/' . $list['season_id'] . '/" target="_blank" rel="nofollow">
+                    <img src="' . str_replace('http://', 'https://', $list['cover']) . '"/>
                     <h4>' . $list['title']
                 . '
                         <div class="bangumi-status">
-                            <div class="bangumi-status-bar"></div>
-                            <p>集数： ' . $list['total_count'] . '</p>
+                            <div class="bangumi-status-bar" style="width: '. $res[1] / $list['new_ep']['title'] .'%"></div>
+                            <p>' . $list['new_ep']['index_show'] . '</p>         
                         </div>
                     </h4>
                 </a>
             </div>';
         }
-        return array($titles, $covers, $total_count);
+//        return array($titles, $covers, $total_count);
     }
 
     static function parse_says($content)
@@ -83,7 +84,7 @@ class Paul
 
         $num = 1;
         $week_data = array();
-        
+
         foreach ($json['weekData'] as $key => $item) {
             if ($num <= 10):
                 $playTime = date('i:s', $item['song']['dt'] / 1000);
@@ -103,24 +104,24 @@ class Paul
         return [$week_data, $all_data];
     }
 
-  static function parse_Flink($link_string)
-  {
-    $arr = explode("\n", $link_string);
-    $arr = array_filter($arr);
-    $parse_link = function ($array) {
-      $link = $name = array();
-      for ($i = 0; $i < count($array); $i += 2) {
-        $link[] = $array[$i];
-        $name[] = $array[$i + 1];
-      }
-      $total = array_map(function ($i1, $i2) {
-        return '<li><a href="' . $i1 . '" target="_blank">' . $i2 . '</a></li>';
-      }, $name, $link);
-      return $total;
-    };
-    $s = $parse_link($arr);
-    foreach ($s as $item) {
-      echo $item;
+    static function parse_Flink($link_string)
+    {
+        $arr = explode("\n", $link_string);
+        $arr = array_filter($arr);
+        $parse_link = function ($array) {
+            $link = $name = array();
+            for ($i = 0; $i < count($array); $i += 2) {
+                $link[] = $array[$i];
+                $name[] = $array[$i + 1];
+            }
+            $total = array_map(function ($i1, $i2) {
+                return '<li><a href="' . $i1 . '" target="_blank">' . $i2 . '</a></li>';
+            }, $name, $link);
+            return $total;
+        };
+        $s = $parse_link($arr);
+        foreach ($s as $item) {
+            echo $item;
+        }
     }
-  }
 }

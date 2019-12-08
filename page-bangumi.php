@@ -19,9 +19,11 @@ require_once 'pages.php';
         <?php if ($GLOBALS['music']): ?><a href="<?php echo $GLOBALS['music'] ?>">音乐</a><?php endif; ?>
     </nav>
     <section class="paul-bangumi">
+      <?php if (Typecho_Widget::widget('Widget_Options')->bili_id):?>
         <div class="row">
            <?php Paul::bangumi() ?>
         </div>
+      <?php else: echo '请填写 Bilibili ID 后继续。'; endif; ?>
     </section>
 </main>
 
