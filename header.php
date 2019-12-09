@@ -36,6 +36,7 @@ require_once 'pages.php';
                 background-image: url(<?php $this -> options -> background(); ?>)
             }</style>
     <?php endif; ?>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1">
     <meta property="og:site_name" content="<?php $this->options->title(); ?>">
     <meta property="og:title" content="<?php $this->archiveTitle(array(
