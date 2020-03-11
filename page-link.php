@@ -7,7 +7,7 @@
  */
 $this->need('header.php');
 require_once 'pages.php';
-require_once 'Pual.php';
+
 ?>
 
   <main class="is-article">

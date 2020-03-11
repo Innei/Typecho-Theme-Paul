@@ -7,7 +7,6 @@
  */
 $this->need('header.php');
 require_once 'pages.php';
-require_once 'Pual.php';
 
 ?>
 
@@ -21,7 +20,7 @@ require_once 'Pual.php';
     </nav>
     <article class="paul-say">
         <?php
-        $says =  Paul::parse_says($this->content);
+        $says = Paul::parse_says($this->content);
         foreach ($says as $say => $avatar){
            echo '<blockquote><p>' . $avatar . '</p><p class="author"> ' . $say . '</p></blockquote>';
         }

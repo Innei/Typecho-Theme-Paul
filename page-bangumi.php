@@ -8,8 +8,8 @@
  */
 
 $this->need('header.php');
-require_once 'Pual.php';
 require_once 'pages.php';
+
 ?>
 
 <main>

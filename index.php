@@ -17,7 +17,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 $this->need('header.php');
 require_once 'functions.php';
-require_once 'Pual.php';
+require_once 'paul.php';
 require_once 'pages.php';
 ?>
 <main>

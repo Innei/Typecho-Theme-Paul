@@ -9,29 +9,28 @@ class Paul
         $num = Typecho_Widget::widget('Widget_Options')->display_bgm_num;
         $bgm = file_get_contents('https://api.bilibili.com/x/space/bangumi/follow/list?type=1&pn=1&ps=' . ($num ? $num : '15') . '&vmid=' . $uid);
         $bgm = json_decode($bgm, true);
-        $lists = $bgm['data']['list'];
-//        $titles = array();
-//        $covers = array();
-//        $total_count = array();
-        foreach ($lists as $key => $list) {
-//            $titles[] = $list['title'];
-//            $covers[] = str_replace('http://', 'https://', $list['cover']);
-//            $total_count[] = $list['total_count'];
-            preg_match('/^看到第(\d+)话/',$list['progress'], $res);
-            echo '<div class="col-6 col-s-4 col-m-3">
-                <a class="bangumi-item" href="https://bangumi.bilibili.com/anime/' . $list['season_id'] . '/" target="_blank" rel="nofollow">
-                    <img src="' . str_replace('http://', 'https://', $list['cover']) . '"/>
-                    <h4>' . $list['title']
-                . '
-                        <div class="bangumi-status">
-                            <div class="bangumi-status-bar" style="width: '. $res[1] / $list['new_ep']['title'] .'%"></div>
-                            <p>' . $list['new_ep']['index_show'] . '</p>         
-                        </div>
-                    </h4>
-                </a>
-            </div>';
+
+        if($bgm["code"] == 53013){
+            echo "<p>无法获取数据，请在 B 站隐私设置中开启</p>";
         }
-//        return array($titles, $covers, $total_count);
+        else{
+            $lists = $bgm['data']['list'];
+            foreach ($lists as $key => $list) {
+                preg_match('/^看到第(\d+)话/',$list['progress'], $res);
+                echo '<div class="col-6 col-s-4 col-m-3">
+                    <a class="bangumi-item" href="https://bangumi.bilibili.com/anime/' . $list['season_id'] . '/" target="_blank" rel="nofollow">
+                        <img src="' . str_replace('http://', 'https://', $list['cover']) . '"/>
+                        <h4>' . $list['title']
+                    . '
+                            <div class="bangumi-status">
+                                <div class="bangumi-status-bar" style="width: '. $res[1] / $list['new_ep']['title'] .'%"></div>
+                                <p>' . $list['new_ep']['index_show'] . '</p>         
+                            </div>
+                        </h4>
+                    </a>
+                </div>';
+            }
+        }
     }
 
     static function parse_says($content)
@@ -97,7 +96,7 @@ class Paul
         foreach ($json['allData'] as $key => $item) {
             if ($num <= 10):
                 $playTime = date('i:s', $item['song']['dt'] / 1000);
-                $all_data[] = ['name' => $item['song']['name'], 'id' => $item['song']['song']['id'], 'time' => $playTime, 'seq' => $num++, 'num' => $item['playCount']];
+                $all_data[] = ['name' => $item['song']['name'], 'id' => $item['song']['id'], 'time' => $playTime, 'seq' => $num++, 'num' => $item['playCount']];
             else:break;
             endif;
         }

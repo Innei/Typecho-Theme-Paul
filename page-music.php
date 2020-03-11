@@ -7,7 +7,6 @@
  * @package custom
  */
 require_once 'pages.php';
-require_once 'Pual.php';
 require_once 'functions.php';
 $this->need('header.php');
 
@@ -40,14 +39,13 @@ $all_data = $data['1'];
                 <?php $i = 0;
                 foreach ($week_data as $key => $item): if ($i++ < 10): ?>
                     <li data-sid="<?php echo $item['id'] ?>">
-                        <span class="num"><?php echo $item['num'] ?></span><?php echo $item['name']; ?>
+                        <span class="num"><?php echo ($key + 1) ?></span><?php echo $item['name']; ?>
                         <time><?php echo $item['time'] ?></time>
                     </li>
-                <?php endif;endforeach; ?>
+                <?php endif;endforeach; unset($key, $item); ?>
             </ul>
         </div>
     </section>
-
     <section class="paul-music">
         <div class="music-cover">
             <div class="fixed-cover">
@@ -60,7 +58,7 @@ $all_data = $data['1'];
                 <?php
                 foreach ($all_data as $key => $item): ?>
                     <li data-sid="<?php echo $item['id'] ?>">
-                        <span class="num"><?php echo $item['num'] ?></span><?php echo $item['name']; ?>
+                        <span class="num"><?php echo ($key + 1) ?></span><?php echo $item['name']; ?>
                         <time><?php echo $item['time'] ?></time>
                     </li>
                 <?php endforeach; ?>

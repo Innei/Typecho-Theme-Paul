@@ -1,5 +1,9 @@
 <?php
-if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
+if(!defined('__TYPECHO_ROOT_DIR__')) exit;
+
+require_once("paul.php");
+
 function themeConfig($form)
 {
     // 自定义站点图标

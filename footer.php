@@ -21,9 +21,7 @@
         </div>
     </div>
     <div class="player-right">
-        <div class="prev"></div>
-        <div class="toggle"></div>
-        <div class="next"></div>
+        <div class="prev"></div><div class="toggle"></div><div class="next"></div>
     </div>
 </player>
 <div class="login login-action" id="login">
