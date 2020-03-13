@@ -1,8 +1,10 @@
 # Paul Theme Typecho
 
-设计原型 <https://paul.ren>
+一个适用于展示，写日记的 Typecho 博客主题。
 
-Demo : <https://innei.ren>
+设计原型：<https://paul.ren>
+
+演示 Demo：<https://innei.ren>
 
 **文档请认真仔细的看~**
 
@@ -20,9 +22,9 @@ Demo : <https://innei.ren>
 
 1. PHP > 7.1
 1. 评论使用了 Ajax 提交，测试发现发送评论和回复均无异常，但是监视评论的插件如**评论邮件提醒**将会失效。可能是钩子函数的问题，如有解决方式请 PR。谢谢
-1. 使用 AppNode 或者 其他面板 的小伙伴请注意，请把网站的PHP设置 `allow_url_fopen = On`
+1. 使用 AppNode 或者其他面板的小伙伴请注意，请把网站的 PHP 设置 `allow_url_fopen = On`
 
-## 特点和实现
+## 主题亮点
 
 - [x] 日记
 - [x] 语录
@@ -33,15 +35,15 @@ Demo : <https://innei.ren>
 - [x] 点赞, 浏览量
 - [x] 播放器
 - [x] 音乐页
-- [x] ajax 加载更多文章
+- [x] Ajax 加载更多文章
 - [x] 全站无刷新体验 (可能只有 Chrome 支持)
-- [x] 评论 ajax 提交
+- [x] 评论 Ajax 提交
 - [x] 文章内图片懒加载 (Safari 未通过测试)
-- [x] ajax 登陆后台
-- [x] ajax 前台提交新文章，带来不一样的体验
+- [x] Ajax 登陆后台
+- [x] Ajax 前台提交新文章，带来不一样的体验
 - [x] GitHub 开源页
 
-## 预览
+## 主题截图
 
 主页:
 ![image](https://user-images.githubusercontent.com/41265413/59972764-ab828900-95c7-11e9-9d4c-2db223d42e37.png)
@@ -76,37 +78,37 @@ Demo : <https://innei.ren>
 GitHub 开源页:
 ![](https://raw.githubusercontent.com/Innei/img-bed/master/20190627131326.png)
 
-## 故事
+## 主题故事
 
-前往 [Pual Typecho主题发布](https://shizuri.net/archives/131/).
+开发历程：[Paul Typecho 主题发布](https://innei.ren/archives/131)
+帮助文档 & 常见问题：[Typecho 主题 Paul 一些说明以及问答](https://www.shizuri.net/Z-Turn/Typecho%E4%B8%BB%E9%A2%98Paul%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E4%BB%A5%E5%8F%8A%E9%97%AE%E7%AD%94.html)
 
 ## 开始之前
 
 这是一款适合写日记，也适合用于个人主页展示的主题。
 
-他的原出处来源于 <https://paul.ren> ，此移植主题现在仍有不完善的地方，一是因为 Typecho 的限制，二是因为时间比较匆忙。已实现的功能见上。
-
-## 快速开始
-
-Clone 此项目，在 设置 中使用此主题。在设置主题中填写相关字段。
+它的原出处来源于 <https://paul.ren> ，此移植主题现在仍有不完善的地方，一是因为 Typecho 的限制，二是因为时间比较匆忙。已实现的功能见上。
 
 ## 使用方法
 
-参见[Typecho主题Paul一些说明以及问答](https://blog.shizuri.net/Z-Turn/Typecho%E4%B8%BB%E9%A2%98Paul%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E4%BB%A5%E5%8F%8A%E9%97%AE%E7%AD%94.html)
+1. `Star` 本项目
+2. 从这里 [下载](https://github.com/Innei/Typecho-Theme-Paul/archive/master.zip) 主题源码
+3. 上传本主题，重命名为 `paul` 并放置在 `usr/themes/` 目录下
+4. 登录你的 Typecho 后台，选择启用主题即可食用~
+5. 如需添加其他页面，请确认在主题选项中已填写相关字段
 
-## 版权 & 开源
+## 开源协议
 
-@Dreamer-Paul & @Innei 所有, 开源遵循 MIT.
+@Dreamer-Paul & @Innei 所有, 开源遵循 MIT。
 
-### 使用的开源项目
+### 感谢
 
-- fontawesome 4
-- Kico Style
-- Kico Player
+感谢来自开源社区提供的解决方案，简化了本项目的不少工作！
 
-## 鸣谢
+- [Kico Style](https://github.com/Dreamer-Paul/Kico-Style)
+- [Font Awesome](https://github.com/FortAwesome/Font-Awesome)
+
+以及项目贡献者：
 
 - [@Dreamer-Paul](https://github.com/Dreamer-Paul)
 - [@moesoha](https://github.com/moesoha)
-
-
