@@ -207,6 +207,13 @@
 
     console.log("%c Innei %c https://innei.ren ", "color: #34495e; margin: 1em 0; padding: 5px 0; background: #ecf0f1;", "margin: 1em 0; padding: 5px 0; background: #efefef;")
 </script>
+<script src="https://cdn.jsdelivr.net/gh/rikumi/imouse@master/dist/index.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => IMouse.default.init({
+      defaultBackgroundColor: 'rgba(1, 80, 111, .1)',
+      activeBackgroundColor: 'rgba(1, 80, 111, .15)',
+    }))
+</script>
 <?php $this->options->custom_script(); ?>
 <?php $this->footer(); ?>
 </body>
