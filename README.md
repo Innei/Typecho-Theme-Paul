@@ -1,12 +1,22 @@
 # Paul Theme Typecho
 
+<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
+
+<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
+
+<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
+
+<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
+
+<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
+
+**所以不要再再再问我相关问题啦~**
+
 一个适用于展示，写日记的 Typecho 博客主题。
 
 设计原型：<https://paul.ren>
 
 演示 Demo：<https://innei.ren>
-
-**文档请认真仔细的看~**
 
 如果你喜欢，请我一个 Star, 谢谢～
 
