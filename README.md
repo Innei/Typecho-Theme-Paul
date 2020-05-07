@@ -1,6 +1,6 @@
 # Paul Theme Typecho
 
-下一代版本: Live Demo: <http://47.114.54.60:2323>
+下一代版本: Live Demo: <https://innei.ren>
 
 Repo: <https://github.com/mx-space/web>
 
@@ -13,8 +13,6 @@ Repo: <https://github.com/mx-space/web>
 <strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
 
 <strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
-
-**所以不要再再再问我相关问题啦~**
 
 一个适用于展示，写日记的 Typecho 博客主题。
 
