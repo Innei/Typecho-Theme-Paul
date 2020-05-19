@@ -6,19 +6,11 @@ Repo: <https://github.com/mx-space/web>
 
 <strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
 
-<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
-
-<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
-
-<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
-
-<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
-
 一个适用于展示，写日记的 Typecho 博客主题。
 
 设计原型：<https://paul.ren>
 
-演示 Demo：<https://innei.ren>
+~~演示 Demo：<https://innei.ren>~~
 
 如果你喜欢，请我一个 Star, 谢谢～
 
@@ -92,8 +84,8 @@ GitHub 开源页:
 
 ## 主题故事
 
-开发历程：[Paul Typecho 主题发布](https://innei.ren/archives/131)
-帮助文档 & 常见问题：[Typecho 主题 Paul 一些说明以及问答](https://www.shizuri.net/Z-Turn/Typecho%E4%B8%BB%E9%A2%98Paul%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E4%BB%A5%E5%8F%8A%E9%97%AE%E7%AD%94.html)
+开发历程：[Paul Typecho 主题发布](https://innei.ren/notes/32)
+帮助文档 & 常见问题：[Typecho 主题 Paul 一些说明以及问答](https://innei.ren/posts/Z-Turn/tc-paul-theme-qa)
 
 ## 开始之前
 
