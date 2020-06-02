@@ -15,12 +15,12 @@
         </nav>
         <section class="page">
             <section class="project-head">
-                <?php $parse['project_img']?print_r('<img src="'.$parse['project_img'].'" />'):print_r('<img src="'.$this->options->themeUrl.'/src/img/Kico.jpg"/>') ?>
+                <?php $parse['project_img']? print_r('<img src="' . $parse['project_img'] . '" />') : print_r('<img src="' . $this->options->themeUrl . '/src/img/Kico.jpg"/>') ?>
                 <h1><?php $this->title() ?></h1>
                 <p><?php print_r($parse['info']) ?></p>
                 <p>
-                    <?php $parse['url'] ? print_r('<a href="' . $parse['url'] . '" class="btn blue" target="_blank">预览站点</a>') : print_r('<button class="btn blue" disabled>此项目不提供预览</button>') ?>
-                    <?php $parse['doc_url'] ? print_r('<a href="' . $parse['url'] . '" class="btn blue" target="_blank">文档站点</a>') : print_r('') ?>
+                    <?php echo $parse['url'] ? '<a href="' . $parse['url'] . '" class="btn blue" target="_blank">预览站点</a>' : '<button class="btn blue" disabled>此项目不提供预览</button>' ?>
+                    <?php echo $parse['doc_url'] ? '<a href="' . $parse['doc_url'] . '" class="btn blue" target="_blank">文档站点</a>' : '' ?>
                 </p>
             </section>
             <section class="project-screenshot">
