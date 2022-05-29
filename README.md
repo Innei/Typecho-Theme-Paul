@@ -1,16 +1,14 @@
 # Paul Theme Typecho
 
-下一代版本: Live Demo: <https://innei.ren>
+Typecho 主题已经停止开发维护，但是可以来使用全新的 [mx-space](https://github.com/mx-space)！！
 
-Repo: <https://github.com/mx-space/web>
+---
 
-<strong style="color: red">此主题不再维护，欢迎期待我的下一代博客，[mx-space](https://github.com/mx-space)</strong>
+<strong style="color: red">此主题不再维护！！并且不接受任何咨询。</strong>
 
 一个适用于展示，写日记的 Typecho 博客主题。
 
-设计原型：<https://paul.ren>
-
-~~演示 Demo：<https://innei.ren>~~
+~~设计原型：<https://paul.ren>~~
 
 如果你喜欢，请我一个 Star, 谢谢～
 
